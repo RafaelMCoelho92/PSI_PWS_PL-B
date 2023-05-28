@@ -1,0 +1,6 @@
+fazer registos dos novos utilizadores na bd
+
+-> so se consegue alterar esse valor nas vistas de admin
+
+
+->ver registo dos numeros q da erro string para int
