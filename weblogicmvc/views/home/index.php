@@ -16,7 +16,6 @@
           </div>
           <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
           <hr class="my-4">
-          <a href='index.php?c=user&a=create'> Registo </a>
         </form>
       </div>
     </div>

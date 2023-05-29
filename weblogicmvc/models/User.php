@@ -10,6 +10,7 @@ class User extends \ActiveRecord\Model
         array('morada'),
         array('codigopostal'),
         array('localidade'),
+        array('role'),
     );
     static $validates_size_of =array(
         array('username', 'maximum'=> 10, 'message'=> 'Máximo 10 caracteres.'),
@@ -24,8 +25,8 @@ class User extends \ActiveRecord\Model
             array('telefone', 'only_integer'=>true),
 
         );
-/*     static $validates_inclusion_of = array(
+     static $validates_inclusion_of = array(
         array('role', 'in' => array('Cliente', 'Funcionario', 'Admin')),
-    ); */
+    );
 
 }

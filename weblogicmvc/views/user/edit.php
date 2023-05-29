@@ -2,6 +2,7 @@
 <h2 class="top-space"></h2>
 <div class="row">
     <div class="col-sm-12">
+        <form action="index.php?c=user&a=update&id=<?= $user->id ?>" method="post">
         <table class="table table-striped">
             <thead>
                 <th>
@@ -87,6 +88,8 @@
                 </tr>
             </tbody>
         </table>
+        <button class="btns" type="submit">Confirmar Alteração</button>
+        </form>
     </div>
     <div class="col-sm-6">
         <h3>Voltar index</h3>

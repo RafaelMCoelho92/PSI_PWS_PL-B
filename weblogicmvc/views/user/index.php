@@ -1,6 +1,8 @@
 <h1 class="text-left top-space">Utilizadores <?= APP_NAME ?></h1>
 <h2 class="top-space"></h2>
 <div class="row">
+<a href='index.php?c=user&a=create'> Registar novo Utilizador </a>
+
     <div class="col-sm-12">
         <table class="table table-striped">
             <thead>

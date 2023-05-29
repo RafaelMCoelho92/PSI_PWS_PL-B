@@ -11,10 +11,11 @@ function checkAuth($username, $password){ // ter atenção e começar funçao co
         // Inicia a sessão apenas se ela ainda não tiver sido iniciada
         session_start();
     }
-    $validUser ="user";
-    $validpass ="123";
-    if($validUser == $username && $validpass == $password){
-        $_SESSION["username"] = $username;
+$user = User::find_by_username_and_password($username, $password);// se devolver algo colocar na variavel de session, dai buscar o role 
+    if($user !== null){
+        $_SESSION["id"] = $user->id;
+        $_SESSION["username"] = $user->username;
+        $_SESSION["role"] = $user->role;
         return true;
     }else{
         return false;
@@ -35,6 +36,16 @@ function isLoggedIn(){
 function logout(){
 
     session_destroy();
+}
+
+public function getRole(){
+    return $_SESSION['role'];
+}
+public function getUsername(){
+    return $_SESSION['username'];
+}
+public function getId(){
+    return $_SESSION['id'];
 }
 }
 
