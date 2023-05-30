@@ -29,7 +29,7 @@
                         <td>
                             <a href="index.php?c=user&a=show&id=<?= $user->id ?>" class="btn btn-info" role="button">Ver mais</a>
                             <a href="index.php?c=user&a=edit&id=<?= $user->id ?>" class="btn btn-info" role="button">Editar</a>
-                            <a href="index.php?c=user&a=delete&id=<?= $user->id ?>" class="btn btn-warning" role="button">Delete</a>                         
+                            <a href="index.php?c=user&a=delete&id=<?= $user->id ?>" class="btn btn-warning" role="button">Delete</a>
                         </td>
                     </tr>
                 <?php } ?>

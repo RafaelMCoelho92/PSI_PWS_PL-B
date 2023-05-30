@@ -4,49 +4,58 @@ require_once 'controllers/HomeController.php';
 require_once 'controllers/EmpresaController.php';
 require_once 'controllers/ReservadoController.php';
 require_once 'controllers/UserController.php';
-
+require_once 'controllers/ServiceController.php';
 
 
 return [
     'defaultRoute' => ['GET', 'HomeController', 'index'],
-     'home' =>[
+
+    'home' => [
         'index' => ['GET', 'HomeController', 'index'],
-     ],
-     'auth' => [
+    ],
+
+    'auth' => [
         'index' => ['GET', 'AuthController', 'index'],
         'login' => ['POST', 'AuthController', 'login'],
-        'logout' =>['GET', 'AuthController','logout']
+        'logout' => ['GET', 'AuthController', 'logout']
     ],
-/*     'plano' => [
+    /*  
+    'plano' => [
         'index' => ['GET', 'PlanoController', 'index'],
         'show' => ['POST', 'PlanoController', 'show'],
     ], */
+
     'empresa' => [
-        'index' =>['GET', 'EmpresaController', 'index'],
-        'create' =>['GET', 'EmpresaController', 'create'],
-        'edit' =>['GET', 'EmpresaController', 'edit'],
-        'show' =>['GET', 'EmpresaController', 'show'],
-        'store' =>['POST', 'EmpresaController', 'store'],
+        'index' => ['GET', 'EmpresaController', 'index'],
+        'create' => ['GET', 'EmpresaController', 'create'],
+        'edit' => ['GET', 'EmpresaController', 'edit'],
+        'show' => ['GET', 'EmpresaController', 'show'],
+        'store' => ['POST', 'EmpresaController', 'store'],
         'delete' => ['GET', 'EmpresaController', 'delete'],
-        'update' =>['POST', 'EmpresaController', 'update'],
-
+        'update' => ['POST', 'EmpresaController', 'update'],
     ],
-    'reservado' =>[
+
+    'reservado' => [
         'admin' => ['GET', 'ReservadoController', 'admin']
-
     ],
-    'user' =>[
+
+    'user' => [
         'create' => ['GET', 'UserController', 'create'],
         'store' => ['POST', 'UserController', 'store'],
         'index' => ['GET', 'UserController', 'index'],
         'delete' => ['GET', 'UserController', 'delete'],
         'show' => ['GET', 'UserController', 'show'],
         'edit' => ['GET', 'UserController', 'edit'],
-        'update'=>['POST','UserController','update']
-
-
-
+        'update' => ['POST', 'UserController', 'update']
     ],
-   
 
+    'service' => [
+        'index' => ['GET', 'ServiceController', 'index'],
+        'create' => ['GET', 'ServiceController', 'create'],
+        'store' => ['POST', 'ServiceController', 'store'],
+        'show' => ['GET', 'ServiceController', 'show'],
+        'edit' => ['GET', 'ServiceController', 'edit'],
+        'update' => ['POST', 'ServiceController', 'update'],
+        'delete' => ['GET', 'ServiceController', 'delete']
+    ],
 ];
