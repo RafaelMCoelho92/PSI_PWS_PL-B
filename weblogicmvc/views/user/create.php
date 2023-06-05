@@ -109,25 +109,21 @@
                 Campo Obrigatorio!
               </div>
             </div>
+
             <div class="col-md-3">
-              <label for="nif" class="form-label">Role</label>
-              <input type="text" class="form-control"  placeholder="" required="" value="<?php if (isset($user)) {
-                                                                                echo $user->nif;
-                                                                            } ?>" name="role" id="role">
-              <p><?php if (isset($user->errors)) {
+            <label for="role">Role</label><br>
+                <select class="form-select" name="role">
+                  <?php $roles = array('Cliente', 'Funcionario', 'Admin') ?>
+                    <?php foreach ($roles as $role) { ?>
+                        <option value="<?= $role ?>"> <?= $role; ?></option>
+                    <?php } ?>
+                </select>
+                <p><?php if (isset($user->errors)) {
                     echo $user->errors->on('role');
                 } ?></p>
               <div class="invalid-feedback">
                 Campo Obrigatorio!
               </div>
-            </div>
-            <div class="col-md-3">
-            <label for="role">Role</label><br>
-                <select name="role">
-                    <?php foreach ($roles as $role) { ?>
-                        <option value="<?= $role ?>"> <?= $role; ?></option>
-                    <?php } ?>
-                </select>
                 </div>
           </div>
 

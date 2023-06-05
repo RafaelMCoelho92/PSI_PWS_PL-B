@@ -77,14 +77,25 @@
                                                                                             } ?>" name="localidade" id="localidade" required>
                         <?php if (isset($user->errors)) {
                             echo $user->errors->on('localidade');
-                        } ?></td>
-                    <?php $funcoes = array('Cliente', 'Funcionario', 'Admin') ?>
-                    <td><input id="role" placeholder="role" type="text" value="<?php if (isset($user)) {
-                                                                                    echo $user->role;
-                                                                                } ?>" name="role" id="role"required>
-                        <?php if (isset($user->errors)) {
-                            echo $user->errors->on('role');
-                        } ?></td>
+                        } ?>
+                        </td>
+
+                        <td>
+                        <select class="form-select" name="role">
+    <?php
+    $opcoes = array('Cliente', 'Funcionario', 'Admin');
+    
+    foreach ($opcoes as $opcao) {
+        if ($opcao == $user->role) { ?>
+            <option value="<?= $opcao ?>" selected><?= $opcao ?></option>
+        <?php } else {?>
+            <option value="<?= $opcao ?>"><?= $opcao ?></option>
+       <?php }
+    }?>
+    ?>
+</select>
+
+        </td>
                 </tr>
             </tbody>
         </table>

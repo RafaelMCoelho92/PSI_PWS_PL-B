@@ -37,7 +37,7 @@ class UserController extends Controller
         if ($user->is_valid()) {
             $user->save();
 
-            $this->redirectToRoute('home', 'index');
+            $this->redirectToRoute('user', 'index');
             //redirecionar para o index
         } else {
             //mostrar vista create passando o modelo como parâmetro
