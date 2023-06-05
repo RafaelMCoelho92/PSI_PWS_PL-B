@@ -55,11 +55,11 @@ class Auth
     {
         return $_SESSION['id'];
     }
-    public function isLoggedInAs($roles = [])
+    public function isLoggedInAs($rolesPermitidos = [])
     {
         if ($this->isLoggedIn()) {
             $role = $this->getRole();
-            return in_array($role, $roles);
+            return in_array($role, $rolesPermitidos);
         }
     }
 }

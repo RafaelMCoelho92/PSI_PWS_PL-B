@@ -4,6 +4,10 @@ require_once 'Controller.php';
 
 class EmpresaController extends Controller
 {
+    public function __construct()
+    {   
+        $this->authorizationFilter(['Funcionario','Admin']);
+    }
     public function index()
     {
         $empresas = Empresa::all(); // devolve sempre um array mesmo q seja só um 
