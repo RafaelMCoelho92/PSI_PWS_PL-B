@@ -66,7 +66,15 @@ Nota: utilize o modelo Auth que já tem esta funcionalidade implementada */
     protected function authenticationFilter()
     {
         $auth = new Auth;
-        if(!$auth->isLoggedIn()){
+        if(!$auth->isLoggedIn()){//logged in as 
+            header('Location: index.php?'.INVALID_ACCESS_ROUTE);
+        }
+
+    }
+    protected function authorizationFilter($roles)
+    {
+        $auth = new Auth;
+        if(!$auth->isLoggedInAs($roles)){ 
             header('Location: index.php?'.INVALID_ACCESS_ROUTE);
         }
 
