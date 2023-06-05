@@ -19,12 +19,7 @@ return [
         'login' => ['POST', 'AuthController', 'login'],
         'logout' => ['GET', 'AuthController', 'logout']
     ],
-    /*  
-    'plano' => [
-        'index' => ['GET', 'PlanoController', 'index'],
-        'show' => ['POST', 'PlanoController', 'show'],
-    ], */
-
+    
     'empresa' => [
         'index' => ['GET', 'EmpresaController', 'index'],
         'create' => ['GET', 'EmpresaController', 'create'],

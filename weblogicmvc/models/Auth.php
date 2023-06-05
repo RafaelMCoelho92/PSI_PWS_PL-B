@@ -48,5 +48,3 @@ public function getId(){
     return $_SESSION['id'];
 }
 }
-
-?>

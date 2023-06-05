@@ -5,7 +5,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $this->renderView('auth', 'index');  
+        $this->renderView('home', 'index');  
     }
     public function login()
     {
@@ -13,9 +13,10 @@ class AuthController extends Controller
         $password = $_POST['password'];
         $auth = new Auth();
         if ($auth->checkAuth($username, $password) == true) {
+            
             header('Location: index.php?c=reservado&a=admin'); //redirectroroute??
         } else {
-            $this->renderView('auth', 'index');
+            $this->renderView('home', 'index');
         }
     }
     public function logout()

@@ -4,8 +4,8 @@
 </p>
 <h2 class="top-space"></h2>
 <div class="row">
-    <div class="col-sm-12">
-        <table class="table table-striped">
+    <div class="col-sm-6">
+        <table class="table table-striped ">
             <form action="index.php?c=empresa&a=update&id=<?= $empresa->id ?>" method="post">
 
 
@@ -13,9 +13,7 @@
                     <th>
                         <a href="index.php?c=reservado&a=admin" class="btn btn-info" role="button">Voltar</a>
                     </th>
-                    <th>
-                        <button class="btn btn-success" type="submit">Alterar dados</button>
-                    </th>
+                    <th></th>
                     <tr>
                         <th>
                             <h6>Designação Social</h6>
@@ -104,6 +102,11 @@
                             <?php if (isset($empresa->errors)) {
                                 echo $empresa->errors->on('capitalsocial');
                             } ?></td>
+                    </tr>
+                    <tr><th></th>
+                    <th>
+                        <button class="btn btn-success" type="submit">Alterar dados</button>
+                    </th>
                     </tr>
                 </tbody>
             </form>
