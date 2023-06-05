@@ -12,8 +12,8 @@ class AuthController extends Controller
         $username = $_POST['username'];
         $password = $_POST['password'];
         $auth = new Auth();
-        if ($auth->checkAuth($username, $password) == true) {
-            
+        if ($auth->checkAuth($username, $password) == true) {//e seja cliente ,func, admin manda pra sitios diferentes
+
             header('Location: index.php?c=reservado&a=admin'); //redirectroroute??
         } else {
             $this->renderView('home', 'index');
