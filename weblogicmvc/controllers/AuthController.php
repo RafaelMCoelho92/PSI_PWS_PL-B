@@ -14,7 +14,7 @@ class AuthController extends Controller
         $auth = new Auth();
         if ($auth->checkAuth($username, $password) == true) {//e seja cliente ,func, admin manda pra sitios diferentes
 
-            header('Location: index.php?c=reservado&a=admin'); //redirectroroute??
+            header('Location: index.php?c=layout&a=backoffice'); //redirectroroute??
         } else {
             $this->renderView('home', 'index');
         }

@@ -2,9 +2,10 @@
 require_once 'controllers/AuthController.php';
 require_once 'controllers/HomeController.php';
 require_once 'controllers/EmpresaController.php';
-require_once 'controllers/ReservadoController.php';
 require_once 'controllers/UserController.php';
 require_once 'controllers/ServiceController.php';
+require_once 'controllers/LayoutController.php';
+
 
 
 return [
@@ -30,8 +31,8 @@ return [
         'update' => ['POST', 'EmpresaController', 'update'],
     ],
 
-    'reservado' => [
-        'admin' => ['GET', 'ReservadoController', 'admin']
+    'layout' => [
+        'backoffice' => ['GET', 'LayoutController', 'backoffice']
     ],
 
     'user' => [
