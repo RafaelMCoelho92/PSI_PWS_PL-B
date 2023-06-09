@@ -23,9 +23,9 @@
                         <td><?= $service->descricao ?></td>
                         <td><?= $service->precohora ?></td>
                         <td>
-                            <a href="index.php?c=user&a=show&id=<?= $service->id ?>" class="btn btn-info" role="button">Ver mais</a>
-                            <a href="index.php?c=user&a=edit&id=<?= $service->id ?>" class="btn btn-info" role="button">Editar</a>
-                            <a href="index.php?c=user&a=delete&id=<?= $service->id ?>" class="btn btn-warning" role="button">Delete</a>
+                            <a href="index.php?c=user&a=show&id=<?= $service->id ?>" class="btn btn-info">Ver mais</a>
+                            <a href="index.php?c=user&a=edit&id=<?= $service->id ?>" class="btn btn-info">Editar</a>
+                            <a href="index.php?c=user&a=delete&id=<?= $service->id ?>" class="btn btn-warning">Delete</a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -35,7 +35,7 @@
     <div class="col-sm-6">
         <h3>Lista de Serviços</h3>
         <p>
-            <a href="index.php?c=service&a=index.php" class="btn btn-info" role="button">Voltar</a>
+            <a href="index.php?c=service&a=index.php" class="btn btn-info">Ver</a>
         </p>
     </div>
 </div>
