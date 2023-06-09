@@ -53,7 +53,7 @@
       <div>
         <h3 class="fs-2">Serviços</h3>
         <p>Clique para entrar nas definições de Serviço.</p>
-        <a href="#" class="btn btn-primary">
+        <a href="index.php?c=service&a=index" class="btn btn-primary">
           Entrar
         </a>
       </div>
