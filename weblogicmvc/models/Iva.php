@@ -2,18 +2,18 @@
 class iva extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
-        array('taxa'),
+        array('percentagem'),
     );
 
     static $validates_inclusion_of = array(
-        array('taxa', 'in' => array(23, 13, 6, /* temos depois de decidir qual introduzir, sao obrigatorias 4*/)),
+        array('percentagem', 'in' => array(0.23, 0.13, 0.06, 0)),
     );
 
     static $validates_size_of = array(
-        array('taxa', 'maximum' => 2, 'message' => 'Máximo 2 caracteres.'),
+        array('percentagem', 'maximum' => 2, 'message' => 'Máximo 2 caracteres.'),
     );
 
     static $validates_numericality_of = array(
-        array('taxa', 'only_integer' => true)
+        array('percentagem', 'only_integer' => true)
     );
 }
