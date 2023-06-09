@@ -68,7 +68,7 @@
       <div>
         <h3 class="fs-2">Taxas de IVA</h3>
         <p>Clique para entrar nas definições de IVA.</p>
-        <a href="#" class="btn btn-primary">
+        <a href="index.php?c=iva&a=index" class="btn btn-primary">
           Entrar
         </a>
       </div>

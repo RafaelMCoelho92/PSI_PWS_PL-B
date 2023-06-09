@@ -5,7 +5,7 @@ require_once 'controllers/EmpresaController.php';
 require_once 'controllers/UserController.php';
 require_once 'controllers/ServiceController.php';
 require_once 'controllers/LayoutController.php';
-
+require_once 'controllers/IvaController.php';
 
 
 return [
@@ -20,7 +20,7 @@ return [
         'login' => ['POST', 'AuthController', 'login'],
         'logout' => ['GET', 'AuthController', 'logout']
     ],
-    
+
     'empresa' => [
         'index' => ['GET', 'EmpresaController', 'index'],
         'create' => ['GET', 'EmpresaController', 'create'],
@@ -53,5 +53,15 @@ return [
         'edit' => ['GET', 'ServiceController', 'edit'],
         'update' => ['POST', 'ServiceController', 'update'],
         'delete' => ['GET', 'ServiceController', 'delete']
+    ],
+
+    'iva' => [
+        'index' => ['GET', 'IvaController', 'index'],
+        'create' => ['GET', 'IvaController', 'create'],
+        'store' => ['POST', 'IvaController', 'store'],
+        'show' => ['GET', 'IvaController', 'show'],
+        'edit' => ['GET', 'IvaController', 'edit'],
+        'update' => ['POST', 'IvaController', 'update'],
+        'delete' => ['GET', 'IvaController', 'delete'],
     ],
 ];

@@ -2,15 +2,21 @@
 require_once 'models/Empresa.php';
 require_once 'Controller.php';
 
-class EmpresaController extends Controller
+class EmpresaController extends Controller // acesso aos métodos e propriedades definidos na classe Controller
 {
+    public function __construct()
+    {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
+        //Ele chama o método authorizationFilter(['Funcionario','Admin']) definido na classe Controller. 
+        //Esse método verifica se o usuário está autenticado como "Funcionario" ou "Admin". 
+        //Caso contrário, o usuário é redirecionado para uma rota de acesso inválido.
+    }
     public function index()
     {
         $empresas = Empresa::all(); // devolve sempre um array mesmo q seja só um 
         //$books = Book::find('all');  VERSAO 8.2
         //mostrar a vista index passando os dados por parâmetro
         $this->renderView('empresa', 'index', ['empresas' => $empresas]);
-
     }
     public function show($id)
     {
@@ -21,14 +27,12 @@ class EmpresaController extends Controller
         } else {
             //mostrar a vista show passando os dados por parâmetro
             $this->renderView('empresa', 'show', ['empresa' => $empresa]);
-
         }
     }
     public function create()
     {
         //mostra vista com form de criacao de registo
         $this->renderView('empresa', 'create');
-
     }
     public function store()
     {
@@ -41,7 +45,7 @@ class EmpresaController extends Controller
             //redirecionar para o index
         } else {
             //mostrar vista create passando o modelo como parâmetro
-            $this->renderView('empresa', 'create',['empresa'=> $empresa]);
+            $this->renderView('empresa', 'create', ['empresa' => $empresa]);
         }
     }
     public function edit($id)
@@ -51,7 +55,7 @@ class EmpresaController extends Controller
         if (is_null($empresa)) {
             //TODO redirect to standard error page
         } else {
-            $this->renderView('empresa','edit',['empresa'=>$empresa]);
+            $this->renderView('empresa', 'edit', ['empresa' => $empresa]);
             //mostrar a vista edit passando os dados por parâmetro
         }
     }
@@ -66,7 +70,7 @@ class EmpresaController extends Controller
             $this->redirectToRoute('empresa', 'index');
         } else {
             //mostrar vista edit passando o modelo como parâmetro
-            $this->renderView('empresa','edit',['empresa'=>$empresa]);
+            $this->renderView('empresa', 'edit', ['empresa' => $empresa]);
         }
     }
     public function delete($id)
