@@ -11,9 +11,9 @@
 
                 <tbody>
                     <th>
-                        <a href="index.php?c=reservado&a=admin" class="btn btn-info" role="button">Voltar</a>
                     </th>
-                    <th></th>
+                    <th> <button class="btn btn-success" type="submit">Alterar dados</button>
+                    </th>
                     <tr>
                         <th>
                             <h6>Designação Social</h6>
@@ -103,10 +103,9 @@
                                 echo $empresa->errors->on('capitalsocial');
                             } ?></td>
                     </tr>
-                    <tr><th></th>
-                    <th>
-                        <button class="btn btn-success" type="submit">Alterar dados</button>
-                    </th>
+                    <tr>
+                        <th></th>
+
                     </tr>
                 </tbody>
             </form>
