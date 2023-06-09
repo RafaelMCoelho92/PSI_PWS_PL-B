@@ -40,9 +40,7 @@
                         <td><?= $empresa->codigopostal ?></td>
                         <td><?= $empresa->localidade ?></td>
                         <td><?= $empresa->capitalsocial ." €" ?></td>
-                        <td>
-                            <a href="index.php?c=reservado&a=admin" class="btn btn-info" role="button">Area Reservada</a>
-                         </td>
+                        
                     </tr>
                 <?php } ?>
             </tbody>

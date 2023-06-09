@@ -7,8 +7,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        // vai mostrar a view sempre que for chamada
-        $this->renderView('home', 'index');
+        $this->renderView('home', 'index', [], 'login');  
     }
     public function login()
     {
@@ -19,7 +18,7 @@ class AuthController extends Controller
 
             header('Location: index.php?c=layout&a=backoffice'); //redirectroroute??
         } else {
-            $this->renderView('home', 'index');
+            $this->renderView('home', 'index', [], 'login');
         }
     }
     public function logout()
