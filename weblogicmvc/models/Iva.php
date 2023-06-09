@@ -1,5 +1,5 @@
 <?php
-class Service extends \ActiveRecord\Model
+class iva extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
         array('taxa'),
