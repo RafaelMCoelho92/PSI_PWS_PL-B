@@ -13,7 +13,7 @@
             <tbody>
                 <?php foreach ($ivas as $iva) { ?>
                     <tr>
-                        <td><?= $iva->taxa ?></td>
+                        <td><?= $iva->percentagem ?></td>
                         <!-- Adicione outras colunas da tabela aqui -->
                     </tr>
                 <?php } ?>
