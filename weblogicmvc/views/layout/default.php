@@ -289,13 +289,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/UI/general.html" class="nav-link">
+                  <a href="index.php?c=iva&a=index" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Visualizar</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/UI/icons.html" class="nav-link">
+                  <a href="index.php?c=iva&a=create" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Criar</p>
                   </a>

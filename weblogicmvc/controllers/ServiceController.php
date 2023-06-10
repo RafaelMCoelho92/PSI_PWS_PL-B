@@ -26,7 +26,13 @@ class ServiceController extends Controller
     public function create()
     {
         //mostra vista com form de criacao de registo
-        $this->renderView('service', 'create');
+        $ivas = iva::all();
+        $this->renderView('service', 'create', ['iva' => $ivas]);
+
+
+        /*$genres = Genre::all();
+        //mostra vista com form de criacao de registo
+        $this->renderView('book', 'create', ['genres' => $genres]);*/
     }
 
     public function store()
@@ -38,8 +44,9 @@ class ServiceController extends Controller
             //redirecionar para o index dos serviços
             $this->redirectToRoute('service', 'index');
         } else {
+            $ivas = iva::all();
             //mostrar vista create passando o modelo como parâmetro
-            $this->renderView('service', 'create', ['service' => $service]);
+            $this->renderView('service', 'create', ['service' => $service, 'iva' => $ivas]);
         }
     }
 
@@ -47,12 +54,13 @@ class ServiceController extends Controller
     {
         //mostra a vista com form de edicao de um registo identificado pelo seu ID
         $service = Service::find($id);
+        $ivas = iva::all();
         if (is_null($service)) {
             //TODO redirect to standard error page
             $this->renderView('service', 'index', ['service' => $service]);
         } else {
             //mostrar a vista edit passando os dados por parâmetro
-            $this->renderView('service', 'edit', ['service' => $service]);
+            $this->renderView('service', 'edit', ['service' => $service, 'iva' => $ivas]);
         }
     }
 
