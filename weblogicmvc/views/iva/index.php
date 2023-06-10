@@ -1,5 +1,10 @@
 <h1 class="text-left top-space">IVAs - <?= APP_NAME ?></h1>
 <h2 class="top-space"></h2>
+<!--
+<h1><//?= $service->referencia ?></h1>
+<h3><//?= $service->descricao ?></h3>
+<h3><//?= $service->iva->iva_id ?></h3>
+-->
 <div class="row">
     <div class="col-sm-12">
         <table class="table table-striped">
@@ -18,7 +23,7 @@
                 </th>
             </thead>
             <tbody>
-                <?php foreach ($ivas as $iva) { ?>
+                <?php foreach (/*$service->*/$ivas as $iva) { ?>
                     <tr>
                         <td><?= $iva->ivaVigor ?></td>
                         <td><?= $iva->descricao ?></td>

@@ -1,5 +1,6 @@
 <?php
 require_once 'models/Service.php';
+require_once 'models/Iva.php';
 require_once 'Controller.php';
 
 class ServiceController extends Controller
@@ -26,41 +27,37 @@ class ServiceController extends Controller
     public function create()
     {
         //mostra vista com form de criacao de registo
-        $ivas = iva::all();
+        $ivas = Iva::all();
         $this->renderView('service', 'create', ['iva' => $ivas]);
-
-
-        /*$genres = Genre::all();
-        //mostra vista com form de criacao de registo
-        $this->renderView('book', 'create', ['genres' => $genres]);*/
     }
 
     public function store()
     {
         //recebe os dados do form de criacao valida e persiste na BD
+        $ivas = Iva::all();
         $service = new Service($this->getHTTPPost());
         if ($service->is_valid()) {
             $service->save();
             //redirecionar para o index dos serviços
             $this->redirectToRoute('service', 'index');
         } else {
-            $ivas = iva::all();
+            $ivas = Iva::all();
             //mostrar vista create passando o modelo como parâmetro
-            $this->renderView('service', 'create', ['service' => $service, 'iva' => $ivas]);
+            $this->renderView('service', 'create', ['service' => $service, 'ivas' => $ivas]);
         }
     }
 
     public function edit($id)
     {
         //mostra a vista com form de edicao de um registo identificado pelo seu ID
+        $ivas = Iva::all();
         $service = Service::find($id);
-        $ivas = iva::all();
         if (is_null($service)) {
             //TODO redirect to standard error page
             $this->renderView('service', 'index', ['service' => $service]);
         } else {
             //mostrar a vista edit passando os dados por parâmetro
-            $this->renderView('service', 'edit', ['service' => $service, 'iva' => $ivas]);
+            $this->renderView('service', 'edit', ['service' => $service, 'ivas' => $ivas]);
         }
     }
 
