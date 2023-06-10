@@ -17,7 +17,7 @@
                     <h3>Role</h3>
                 </th>
                 <th>
-                <a href='index.php?c=user&a=create' class="btn btn-success"> Criar Utilizador </a>
+                    <a href='index.php?c=user&a=create' class="btn btn-success"> Criar Utilizador </a>
                 </th>
             </thead>
             <tbody>

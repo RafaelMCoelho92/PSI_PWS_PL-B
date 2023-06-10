@@ -264,13 +264,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/charts/chartjs.html" class="nav-link">
+                  <a href="index.php?c=service&a=index" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Ver todos</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/charts/flot.html" class="nav-link">
+                  <a href="index.php?c=service&a=create" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Criar novo</p>
                   </a>
