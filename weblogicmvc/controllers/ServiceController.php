@@ -54,7 +54,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
         if (is_null($service)) {
             //TODO redirect to standard error page
-            $this->renderView('service', 'index', ['service' => $service]);
+           // $this->renderView('service', 'index', ['service' => $service]);
         } else {
             //mostrar a vista edit passando os dados por parâmetro
             $this->renderView('service', 'edit', ['service' => $service, 'ivas' => $ivas]);

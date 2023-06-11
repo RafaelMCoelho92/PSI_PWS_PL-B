@@ -23,10 +23,7 @@
                     <td><?= $service->referencia ?></td>
                     <td><?= $service->descricao ?></td>
                     <td><?= $service->precohora ?></td>
-                    <td>
-                        <p>
-                            </ /?=$service->iva->iva_id ?></p>
-                    </td>
+                    <td><?=$service->iva->descricao ?></td>
             </tbody>
         </table>
     </div>
