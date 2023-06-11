@@ -1,20 +1,38 @@
-<h1 class="text-left top-space">Contatos <?= APP_NAME ?></h1>
+<h1 class="text-left top-space">IVAs - <?= APP_NAME ?></h1>
 <h2 class="top-space"></h2>
+<!--
+<h1><//?= $service->referencia ?></h1>
+<h3><//?= $service->descricao ?></h3>
+<h3><//?= $service->iva->iva_id ?></h3>
+-->
 <div class="row">
     <div class="col-sm-12">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>
-                        <h3>IVA</h3>
-                    </th>
-                </tr>
+                <th>
+                    <h3>IVA em Vigor</h3>
+                </th>
+                <th>
+                    <h3>Descrição</h3>
+                </th>
+                <th>
+                    <h3>Percentagem</h3>
+                </th>
+                <th>
+                    <a href='index.php?c=iva&a=create' class="btn btn-success">Criar IVA</a>
+                </th>
             </thead>
             <tbody>
-                <?php foreach ($ivas as $iva) { ?>
+                <?php foreach (/*$service->*/$ivas as $iva) { ?>
                     <tr>
+                        <td><?= $iva->ivaVigor ?></td>
+                        <td><?= $iva->descricao ?></td>
                         <td><?= $iva->percentagem ?></td>
-                        <!-- Adicione outras colunas da tabela aqui -->
+                        <td>
+                            <a href="index.php?c=iva&a=show&id=<?= $iva->id ?>" class="btn btn-primary" role="button">Ver mais</a>
+                            <a href="index.php?c=iva&a=edit&id=<?= $iva->id ?>" class="btn btn-secondary" role="button">Editar</a>
+                            <a href="index.php?c=iva&a=delete&id=<?= $iva->id ?>" class="btn btn-danger" role="button">Delete</a>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>

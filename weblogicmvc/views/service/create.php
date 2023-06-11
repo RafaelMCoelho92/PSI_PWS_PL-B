@@ -63,9 +63,9 @@
                                     <option value="<?= $iva->id ?>"> <?= $iva->referencia; ?></option required>
                                 <?php } ?>
                             </select>
-
+                            <br>
                             <input type="submit" value="Criar" class="btn btn-primary">
-                            <a href='index.php?c=service&a=index' class="btn btn-primary"> Voltar aos Serviços </a>
+                            <a href='index.php?c=service&a=index' class="btn btn-info"> Voltar aos Serviços </a>
                         </div>
                     </div>
                 </form>

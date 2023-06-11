@@ -3,103 +3,102 @@
 <div class="row">
     <div class="col-sm-12">
         <form action="index.php?c=user&a=update&id=<?= $user->id ?>" method="post">
-        <table class="table table-striped">
-            <thead>
-                <th>
-                    <h3>Nome</h3>
-                </th>
-                <th>
-                    <h3>Email</h3>
-                </th>
-                <th>
-                    <h3>Telefone</h3>
-                </th>
-                <th>
-                    <h3>NIF</h3>
-                </th>
+            <table class="table table-striped">
+                <thead>
+                    <th>
+                        <h3>Nome</h3>
+                    </th>
+                    <th>
+                        <h3>Email</h3>
+                    </th>
+                    <th>
+                        <h3>Telefone</h3>
+                    </th>
+                    <th>
+                        <h3>NIF</h3>
+                    </th>
 
-                <tr>
-                    <td><input id="username" placeholder="username" type="text" value="<?php if (isset($user)) {
-                                                                                            echo $user->username;
-                                                                                        } ?>" name="username" id="username" required>
-                        <?php if (isset($user->errors)) {
-                            echo $user->errors->on('username');
-                        } ?></td>
-                    <td><input id="email" placeholder="email" type="text" value="<?php if (isset($user)) {
-                                                                                        echo $user->email;
-                                                                                    } ?>" name="email" id="email" required >
-                        <?php if (isset($user->errors)) {
-                            echo $user->errors->on('email');
-                        } ?></td>
-                    <td><input id="telefone" placeholder="telefone" type="text" value="<?php if (isset($user)) {
-                                                                                            echo $user->telefone;
-                                                                                        } ?>" name="telefone" id="telefone"required>
-                        <?php if (isset($user->errors)) {
-                            echo $user->errors->on('telefone');
-                        } ?></td>
-                    <td><input id="nif" placeholder="nif" type="text" value="<?php if (isset($user)) {
-                                                                                    echo $user->nif;
-                                                                                } ?>" name="nif" id="nif" required>
-                </tr>
+                    <tr>
+                        <td><input id="username" placeholder="username" type="text" value="<?php if (isset($user)) {
+                                                                                                echo $user->username;
+                                                                                            } ?>" name="username" id="username" required>
+                            <?php if (isset($user->errors)) {
+                                echo $user->errors->on('username');
+                            } ?></td>
+                        <td><input id="email" placeholder="email" type="text" value="<?php if (isset($user)) {
+                                                                                            echo $user->email;
+                                                                                        } ?>" name="email" id="email" required>
+                            <?php if (isset($user->errors)) {
+                                echo $user->errors->on('email');
+                            } ?></td>
+                        <td><input id="telefone" placeholder="telefone" type="text" value="<?php if (isset($user)) {
+                                                                                                echo $user->telefone;
+                                                                                            } ?>" name="telefone" id="telefone" required>
+                            <?php if (isset($user->errors)) {
+                                echo $user->errors->on('telefone');
+                            } ?></td>
+                        <td><input id="nif" placeholder="nif" type="text" value="<?php if (isset($user)) {
+                                                                                        echo $user->nif;
+                                                                                    } ?>" name="nif" id="nif" required>
+                    </tr>
 
-                <th>
-                    <h3>Morada</h3>
-                </th>
-                <th>
-                    <h3>Codigo Postal</h3>
-                </th>
-                <th>
-                    <h3>Localidade</h3>
-                </th>
-                <th>
-                    <h3>Role</h3>
-                </th>
-            </thead>
-            <tbody>
-                <tr>
-                    <?php if (isset($user->errors)) {
-                        echo $user->errors->on('nif');
-                    } ?></td>
-                    <td><input id="morada" placeholder="morada" type="text" value="<?php if (isset($user)) {
-                                                                                        echo $user->morada;
-                                                                                    } ?>" name="morada" id="morada" required>
+                    <th>
+                        <h3>Morada</h3>
+                    </th>
+                    <th>
+                        <h3>Codigo Postal</h3>
+                    </th>
+                    <th>
+                        <h3>Localidade</h3>
+                    </th>
+                    <th>
+                        <h3>Role</h3>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
                         <?php if (isset($user->errors)) {
-                            echo $user->errors->on('morada');
+                            echo $user->errors->on('nif');
                         } ?></td>
-                    <td><input id="codigopostal" placeholder="codigopostal" type="text" value="<?php if (isset($user)) {
-                                                                                                    echo $user->codigopostal;
-                                                                                                } ?>" name="codigopostal" id="codigopostal" required>
-                        <?php if (isset($user->errors)) {
-                            echo $user->errors->on('codigopostal');
-                        } ?></td>
-                    <td><input id="localidade" placeholder="localidade" type="text" value="<?php if (isset($user)) {
-                                                                                                echo $user->localidade;
-                                                                                            } ?>" name="localidade" id="localidade" required>
-                        <?php if (isset($user->errors)) {
-                            echo $user->errors->on('localidade');
-                        } ?>
+                        <td><input id="morada" placeholder="morada" type="text" value="<?php if (isset($user)) {
+                                                                                            echo $user->morada;
+                                                                                        } ?>" name="morada" id="morada" required>
+                            <?php if (isset($user->errors)) {
+                                echo $user->errors->on('morada');
+                            } ?></td>
+                        <td><input id="codigopostal" placeholder="codigopostal" type="text" value="<?php if (isset($user)) {
+                                                                                                        echo $user->codigopostal;
+                                                                                                    } ?>" name="codigopostal" id="codigopostal" required>
+                            <?php if (isset($user->errors)) {
+                                echo $user->errors->on('codigopostal');
+                            } ?></td>
+                        <td><input id="localidade" placeholder="localidade" type="text" value="<?php if (isset($user)) {
+                                                                                                    echo $user->localidade;
+                                                                                                } ?>" name="localidade" id="localidade" required>
+                            <?php if (isset($user->errors)) {
+                                echo $user->errors->on('localidade');
+                            } ?>
                         </td>
 
                         <td>
-                        <select class="form-select" name="role">
-    <?php
-    $opcoes = array('Cliente', 'Funcionario', 'Admin');
-    
-    foreach ($opcoes as $opcao) {
-        if ($opcao == $user->role) { ?>
-            <option value="<?= $opcao ?>" selected><?= $opcao ?></option>
-        <?php } else {?>
-            <option value="<?= $opcao ?>"><?= $opcao ?></option>
-       <?php }
-    }?>
-    ?>
-</select>
+                            <select class="form-select" name="role">
+                                <?php
+                                $opcoes = array('Cliente', 'Funcionario', 'Admin');
 
-        </td>
-                </tr>
-            </tbody>
-        </table>
-        <button class="btns" type="submit">Confirmar Alteração</button>
+                                foreach ($opcoes as $opcao) {
+                                    if ($opcao == $user->role) { ?>
+                                        <option value="<?= $opcao ?>" selected><?= $opcao ?></option>
+                                    <?php } else { ?>
+                                        <option value="<?= $opcao ?>"><?= $opcao ?></option>
+                                <?php }
+                                } ?>
+                            </select>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btns" type="submit">Confirmar Alteração</button>
         </form>
     </div>
     <div class="col-sm-6">

@@ -5,7 +5,7 @@
         <table class="table table-striped">
             <thead>
                 <th>
-                    <h3>Referencia</h3>
+                    <h3>Referência</h3>
                 </th>
                 <th>
                     <h3>Descrição</h3>
@@ -16,17 +16,14 @@
                 <th>
                     <h3>IVA</h3>
                 </th>
-                <th>
             </thead>
             <tbody>
                 <tr>
                     <td><?= $service->referencia ?></td>
                     <td><?= $service->descricao ?></td>
                     <td><?= $service->precohora ?></td>
-                    <td>
-                        <p>
-                            </ /?=$service->iva->iva_id ?></p>
-                    </td>
+                    <td><?= $service->iva->referencia ?></td>
+                </tr>
             </tbody>
         </table>
     </div>

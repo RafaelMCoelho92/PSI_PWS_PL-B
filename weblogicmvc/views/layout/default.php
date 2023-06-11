@@ -191,7 +191,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="public/img/user.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="index.php?c=layout&a=backoffice" class="d-block"><?= $auth->getUsername(); ?></a>
@@ -343,7 +343,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 pb-2 border-bottom"><?=APP_NAME?> - Admin</h1>
+              <h1 class="m-0 pb-2 border-bottom"><?= APP_NAME ?> - Admin</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
