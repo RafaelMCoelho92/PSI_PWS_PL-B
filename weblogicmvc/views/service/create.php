@@ -58,10 +58,31 @@
                         </div>
                         <div class="col-12">
                             <label for="iva_id">Iva:</label><br>
-                            <select name="iva_id" class="form-control">
-                                <?php foreach ($ivas as $iva) { ?>
-                                    <option value="<?= $iva->id ?>"> <?= $iva->referencia; ?></option required>
-                                <?php } ?>
+                            <select class="form-control" name="iva_id">
+                                <?php
+
+                                foreach ($ivas as $iva) { ?>
+                                    <?php if ($iva->id == $service->iva_id) { ?>
+                                        <option value="<?= $iva->id ?>" selected><?= $iva->descricao;
+                                                                                    ?> </option>
+                                    <?php } else { ?>
+                                        <option value="<?= $iva->id ?>"> <?= $iva->descricao;
+                                                                            ?></option>
+                                <?php }
+                                } ?>
+                                <p>
+                                    <?php
+                                    if (isset($service->iva_id)) {
+                                        if (is_array($service->errors->on('iva_id'))) {
+                                            foreach ($service->errors->on('iva_id') as $error) {
+                                                echo $error . '<br>';
+                                            }
+                                        } else {
+                                            echo $service->errors->on('iva_id');
+                                        }
+                                    }
+                                    ?>
+                                </p>
                             </select>
                             <br>
                             <input type="submit" value="Criar" class="btn btn-primary">

@@ -28,7 +28,7 @@ class ServiceController extends Controller
     {
         //mostra vista com form de criacao de registo
         $ivas = Iva::all();
-        $this->renderView('service', 'create', ['iva' => $ivas]);
+        $this->renderView('service', 'create', ['ivas' => $ivas]);
     }
 
     public function store()
