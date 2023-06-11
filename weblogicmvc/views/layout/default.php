@@ -206,29 +206,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Empresa
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="index.php?c=empresa&a=edit&id=1" class="nav-link active">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Editar</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="index.php?c=empresa&a=index" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Visualizar</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+            
 
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -242,13 +220,13 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="index.php?c=user&a=index" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon far fa-circle text-info"></i>
                     <p>Ver todos</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="index.php?c=user&a=create" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon far fa-circle text-warning"></i>
                     <p>Criar</p>
                   </a>
                 </li>
@@ -265,13 +243,13 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="index.php?c=service&a=index" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon far fa-circle text-info"></i>
                     <p>Ver todos</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="index.php?c=service&a=create" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon far fa-circle text-warning"></i>
                     <p>Criar novo</p>
                   </a>
                 </li>
@@ -290,13 +268,13 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="index.php?c=iva&a=index" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon far fa-circle text-info"></i>
                     <p>Visualizar</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="index.php?c=iva&a=create" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                  <a href="pages/UI/icons.html" class="nav-link">
+                    <i class="nav-icon far fa-circle text-warning"></i>
                     <p>Criar</p>
                   </a>
                 </li>
@@ -314,13 +292,13 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="pages/forms/general.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon far fa-circle text-info"></i>
                     <p>Visualizar todas</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="pages/forms/advanced.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon far fa-circle text-warning"></i>
                     <p>Criar nova</p>
                   </a>
                 </li>
@@ -330,50 +308,27 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                  Tables
+                  Empresa
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/tables/simple.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Simple Tables</p>
+                  <a href="index.php?c=empresa&a=index" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p>Visualizar</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/tables/data.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>DataTables</p>
+                  <a href="index.php?c=empresa&a=edit&id=1" class="nav-link">
+                    <i class="nav-icon far fa-circle text-warning"></i>
+                    <p>Editar</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="pages/tables/jsgrid.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>jsGrid</p>
-                  </a>
-                </li>
+
               </ul>
             </li>
 
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-circle text-danger"></i>
-                <p class="text">Important</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-circle text-warning"></i>
-                <p>Warning</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-circle text-info"></i>
-                <p>Informational</p>
-              </a>
-            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

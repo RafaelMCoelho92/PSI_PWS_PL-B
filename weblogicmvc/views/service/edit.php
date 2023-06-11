@@ -45,12 +45,12 @@
                                 <?php
                                 $iva = array('6%', '13%', '23%');
 
-                                foreach ($iva_id as $iva) { ?>
+                                foreach ($ivas as $iva) { ?>
                                     <?php if ($iva->id == $service->iva_id) { ?>
-                                        <option value="<?= $iva->id ?>" selected><?= $iva->name;
+                                        <option value="<?= $iva->id ?>" selected><?= $iva->descricao;
                                                                                     ?> </option>
                                     <?php } else { ?>
-                                        <option value="<?= $iva->id ?>"> <?= $iva->name;
+                                        <option value="<?= $iva->id ?>"> <?= $iva->descricao;
                                                                             ?></option>
                                 <?php }
                                 } ?>
