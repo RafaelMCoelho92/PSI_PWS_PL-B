@@ -26,7 +26,7 @@
                         <td><?= $service->referencia ?></td>
                         <td><?= $service->descricao ?></td>
                         <td><?= $service->precohora ?></td>
-                        <td><?=$service->iva->descricao ?></td>
+                        <td><?= $service->iva->descricao ?></td>
                         <td>
                             <a href="index.php?c=service&a=show&id=<?= $service->id ?>" class="btn btn-primary">Ver mais</a>
                             <a href="index.php?c=service&a=edit&id=<?= $service->id ?>" class="btn btn-secondary">Editar</a>

@@ -25,7 +25,8 @@
             <tbody>
                 <?php foreach (/*$service->*/$ivas as $iva) { ?>
                     <tr>
-                        <td><?php echo $iva->ivaVigor; ?></td>
+                        <td><?php // echo $iva->emVigor; 
+                            ?></td>
                         <td><?php echo $iva->descricao; ?></td>
                         <td><?php echo $iva->percentagem; ?></td>
                         <td>
