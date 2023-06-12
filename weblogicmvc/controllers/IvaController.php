@@ -1,18 +1,20 @@
 <?php
-require_once 'models/IVA.php';
+require_once 'models/Iva.php';
 require_once 'Controller.php';
 
 class IvaController extends Controller
 {
     public function index()
     {
-        $ivas = IVA::all();
+        $ivas = Iva::all();
+        // Mostrar a vista index passando os dados por parâmetro
         $this->renderView('iva', 'index', ['ivas' => $ivas]);
     }
 
     public function show($id)
     {
-        $iva = IVA::find($id);
+        // Mostrar vista com detalhes
+        $iva = Iva::find($id);
         if (is_null($iva)) {
             // Redirecionar ou exibir mensagem de erro
         } else {
@@ -27,7 +29,8 @@ class IvaController extends Controller
 
     public function store()
     {
-        $iva = new IVA($this->getHTTPPost());
+        // Receber os dados do formulário de criação, validar e persistir no BD
+        $iva = new Iva($this->getHTTPPost());
         if ($iva->is_valid()) {
             $iva->save();
             $this->redirectToRoute('iva', 'index');
@@ -38,7 +41,8 @@ class IvaController extends Controller
 
     public function edit($id)
     {
-        $iva = IVA::find($id);
+        // Mostrar a vista com formulário de edição de um registo identificado pelo seu ID
+        $iva = Iva::find($id);
         if (is_null($iva)) {
             // Redirecionar ou exibir mensagem de erro
         } else {
@@ -48,7 +52,8 @@ class IvaController extends Controller
 
     public function update($id)
     {
-        $iva = IVA::find($id);
+        // Receber os dados do formulário de edição de um registo identificado pelo seu ID, validar e persistir no BD
+        $iva = Iva::find($id);
         $iva->update_attributes($this->getHTTPPost());
         if ($iva->is_valid()) {
             $iva->save();
@@ -60,7 +65,8 @@ class IvaController extends Controller
 
     public function delete($id)
     {
-        $iva = IVA::find($id);
+        // Apagar um registo do BD identificado pelo ID
+        $iva = Iva::find($id);
         $iva->delete();
         $this->redirectToRoute('iva', 'index');
     }
