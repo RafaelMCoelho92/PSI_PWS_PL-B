@@ -2,7 +2,7 @@
 class iva extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
-        array('emVigor'),
+        array('emvigor'),
         array('descricao'),
         array('percentagem'),
     );

@@ -5,31 +5,28 @@
         <table class="table table-striped">
             <thead>
                 <th>
-                    <h3>Referência</h3>
+                    <h3>Em Vigor</h3>
                 </th>
                 <th>
                     <h3>Descrição</h3>
                 </th>
                 <th>
-                    <h3>Preço / Hora</h3>
+                    <h3>Percentagem</h3>
                 </th>
-                <th>
-                    <h3>IVA</h3>
-                </th>
+
             </thead>
             <tbody>
                 <tr>
-                    <td><?= $service->referencia ?></td>
-                    <td><?= $service->descricao ?></td>
-                    <td><?= $service->precohora ?></td>
-                    <td><?= $service->iva->referencia ?></td>
+                    <td><?= $iva->emvigor ?></td>
+                    <td><?= $iva->descricao ?></td>
+                    <td><?= $iva->percentagem ?></td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="col-sm-6">
         <p>
-            <a href="index.php?c=service&a=index" class="btn btn-info">Voltar aos Serviços</a>
+            <a href="index.php?c=iva&a=index" class="btn btn-info">Voltar aos IVAS</a>
         </p>
     </div>
 </div>
