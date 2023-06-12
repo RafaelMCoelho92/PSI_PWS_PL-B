@@ -1,5 +1,5 @@
 <?php
-class iva extends \ActiveRecord\Model
+class Iva extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
         array('emvigor'),
