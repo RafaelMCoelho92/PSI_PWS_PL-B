@@ -23,12 +23,11 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach (/*$service->*/$ivas as $iva) { ?>
+                <?php foreach ($ivas as $iva) { ?>
                     <tr>
-                        <td><?php // echo $iva->emVigor; 
-                            ?></td>
-                        <td><?php echo $iva->descricao; ?></td>
-                        <td><?php echo $iva->percentagem; ?></td>
+                        <td><?= $iva->emvigor ?></td>
+                        <td><?= $iva->descricao ?></td>
+                        <td><?= $iva->percentagem ?></td>
                         <td>
                             <a href="index.php?c=iva&a=show&id=<?php echo $iva->id; ?>" class="btn btn-primary" role="button">Ver mais</a>
                             <a href="index.php?c=iva&a=edit&id=<?php echo $iva->id; ?>" class="btn btn-secondary" role="button">Editar</a>

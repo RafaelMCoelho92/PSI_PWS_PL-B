@@ -2,12 +2,11 @@
 class iva extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
+        array('emvigor'),
+        array('descricao'),
         array('percentagem'),
     );
 
-    static $validates_inclusion_of = array(
-        array('percentagem', 'in' => array(0.23, 0.13, 0.06, 0)),
-    );
 
     static $validates_size_of = array(
         array('percentagem', 'maximum' => 2, 'message' => 'Máximo 2 caracteres.'),

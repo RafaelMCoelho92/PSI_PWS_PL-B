@@ -43,7 +43,6 @@
                         </td>
                         <td><select class="form-control" name="iva_id">
                                 <?php
-                                $iva = array('6%', '13%', '23%');
 
                                 foreach ($ivas as $iva) { ?>
                                     <?php if ($iva->id == $service->iva_id) { ?>

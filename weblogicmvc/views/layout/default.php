@@ -273,7 +273,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/UI/icons.html" class="nav-link">
+                  <a href="index.php?c=iva&a=create" class="nav-link">
                     <i class="nav-icon far fa-circle text-warning"></i>
                     <p>Criar</p>
                   </a>

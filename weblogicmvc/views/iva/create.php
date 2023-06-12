@@ -7,15 +7,19 @@
                 <form class="needs-validation" action="index.php?c=iva&a=store" method="POST">
                     <div class="row g-3">
                         <div class="col-12">
-                            <label for="ivaVigor" class="form-label">IVA em vigor</label><br>
-                            <input type="text" class="form-control" name="ivaVigor" value="<?php if (isset($iva)) {
-                                                                                                echo $iva->ivaVigor;
-                                                                                            } ?>" placeholder="IVA em vigor" required>
-                            <p>
-                                <?php if (isset($iva->errors)) {
-                                    echo $iva->errors->on('ivaVigor');
-                                } ?>
-                            </p>
+                            <label for="emvigor">Em Vigor</label><br>
+                            <select class="form-control" name="emvigor">
+                                <?php $opcoes = array('Sim', 'Não') ?>
+                                <?php foreach ($opcoes as $opcao) { ?>
+                                    <option value="<?= $opcao ?>"> <?= $opcao; ?></option>
+                                <?php } ?>
+                            </select>
+                            <p><?php if (isset($iva->errors)) {
+                                    echo $iva->errors->on('emvigor');
+                                } ?></p>
+                            <div class="invalid-feedback">
+                                Campo Obrigatorio!
+                            </div>
                         </div>
                         <div class="col-12">
                             <label for="descricao" class="form-label">Descrição</label><br>
