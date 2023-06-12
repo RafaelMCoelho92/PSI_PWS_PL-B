@@ -53,7 +53,7 @@ class ServiceController extends Controller
         $service = Service::find($id);
         if (is_null($service)) {
             //TODO redirect to standard error page
-           // $this->renderView('service', 'index', ['service' => $service]);
+            // $this->renderView('service', 'index', ['service' => $service]);
         } else {
             //mostrar a vista edit passando os dados por parâmetro
             $this->renderView('service', 'edit', ['service' => $service, 'ivas' => $ivas]);
@@ -65,7 +65,7 @@ class ServiceController extends Controller
         // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
         $service = Service::find($id);
         $service->update_attributes($this->getHTTPPost());
-        $service->precohora="adsdasda";
+        $service->precohora = "adsdasda";
         if ($service->is_valid()) {
             var_dump($service->errors);
             die();
