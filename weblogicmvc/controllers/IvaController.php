@@ -10,21 +10,20 @@ class IvaController extends Controller
         // Mostrar a vista index passando os dados por parâmetro
         $this->renderView('iva', 'index', ['ivas' => $ivas]);
     }
+
     public function show($id)
     {
         // Mostrar vista com detalhes
         $iva = Iva::find($id);
         if (is_null($iva)) {
-            // TODO: Redirecionar para página de erro padrão
+            // Redirecionar ou exibir mensagem de erro
         } else {
-            // Mostrar a vista show passando os dados por parâmetro
             $this->renderView('iva', 'show', ['iva' => $iva]);
         }
     }
 
     public function create()
     {
-        // Mostrar vista com formulário de criação de registo
         $this->renderView('iva', 'create');
     }
 
@@ -34,10 +33,8 @@ class IvaController extends Controller
         $iva = new Iva($this->getHTTPPost());
         if ($iva->is_valid()) {
             $iva->save();
-            // Redirecionar para o index das IVA
             $this->redirectToRoute('iva', 'index');
         } else {
-            // Mostrar vista create passando o modelo como parâmetro
             $this->renderView('iva', 'create', ['iva' => $iva]);
         }
     }
@@ -47,10 +44,8 @@ class IvaController extends Controller
         // Mostrar a vista com formulário de edição de um registo identificado pelo seu ID
         $iva = Iva::find($id);
         if (is_null($iva)) {
-            // TODO: Redirecionar para página de erro padrão
-            $this->renderView('iva', 'index', ['iva' => $iva]);
+            // Redirecionar ou exibir mensagem de erro
         } else {
-            // Mostrar a vista edit passando os dados por parâmetro
             $this->renderView('iva', 'edit', ['iva' => $iva]);
         }
     }
@@ -62,10 +57,8 @@ class IvaController extends Controller
         $iva->update_attributes($this->getHTTPPost());
         if ($iva->is_valid()) {
             $iva->save();
-            // Redirecionar para o index
             $this->redirectToRoute('iva', 'index');
         } else {
-            // Mostrar vista edit passando o modelo como parâmetro
             $this->renderView('iva', 'edit', ['iva' => $iva]);
         }
     }
@@ -75,7 +68,6 @@ class IvaController extends Controller
         // Apagar um registo do BD identificado pelo ID
         $iva = Iva::find($id);
         $iva->delete();
-        // Redirecionar para o index
         $this->redirectToRoute('iva', 'index');
     }
 }
