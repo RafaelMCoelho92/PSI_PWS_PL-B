@@ -7,7 +7,6 @@ class Iva extends \ActiveRecord\Model
         array('percentagem'),
     );
 
-
     static $validates_size_of = array(
         array('percentagem', 'maximum' => 2, 'message' => 'Máximo 2 caracteres.'),
     );
