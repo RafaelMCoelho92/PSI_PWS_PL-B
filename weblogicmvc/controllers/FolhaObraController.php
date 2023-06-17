@@ -20,4 +20,15 @@ class FolhaObraController extends Controller
             $this->renderView('folhaObra', 'show', ['folhasObra' => $folhaObra]);
         }
     }
+
+    public function create()
+    {
+        //mostra vista com form de criacao de registo
+        $empresas = Empresa::all();
+        $ivas = Iva::all();
+        $services = Service::all();
+        $users = User::all();
+
+        $this->renderView('folhaObra', 'create', ['folhasObra' => $empresas, 'folhasObra' => $ivas, 'folhaObra' => $services, 'folhasObra' => $users]);
+    }
 }
