@@ -8,11 +8,13 @@ class LayoutController extends Controller
     {
         $this->authenticationFilter(); // chamando a função de verificação de autenticação
     }
-    public function backoffice()
+    public function default()
     {     
         $role = $_SESSION['role'];                         
             if ($role == "Admin" || $role == "Funcionario"){
-            $this->renderView('layout', 'backoffice');
+                $folhasobras = Folhaobra::all();
+                $numfolhasobras = count($folhasobras);
+            $this->renderView('home', 'dashboardbo', ['numfolhasobras'=> $numfolhasobras],'default');
             }
     }
     public function frontoffice()

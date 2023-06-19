@@ -1,5 +1,5 @@
 <?php
 
-class FolhaObra extends \ActiveRecord\Model
+class Folhaobra extends \ActiveRecord\Model
 {
 }
