@@ -3,14 +3,13 @@
 class Folhaobra extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
-        array('empresa'),
-        array('cliente'),
+        array('id'),
         array('data'),
-        array('service'),
         array('valortotal'),
         array('ivatotal'),
         array('estado'),
-        array('user'),
+        array('idclientes'),
+        array('idfuncionario'),
     );
 
     static $validates_numericality_of = array(
