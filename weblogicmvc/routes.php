@@ -6,6 +6,7 @@ require_once 'controllers/UserController.php';
 require_once 'controllers/ServiceController.php';
 require_once 'controllers/LayoutController.php';
 require_once 'controllers/IvaController.php';
+require_once 'controllers/FolhaObraController.php';
 
 
 return [
@@ -34,6 +35,10 @@ return [
     'layout' => [
         'backoffice' => ['GET', 'LayoutController', 'backoffice'],
         'frontoffice' => ['GET', 'LayoutController', 'frontoffice']
+    ],
+    'folhaObra' =>[
+        'index' =>['GET', 'FolhaObraController', 'index' ],
+        'create'=>['GET', 'FolhaObraController', 'create'],
     ],
 
     'user' => [
