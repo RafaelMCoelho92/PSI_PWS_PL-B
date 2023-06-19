@@ -9,8 +9,17 @@ class LayoutController extends Controller
         $this->authenticationFilter(); // chamando a função de verificação de autenticação
     }
     public function backoffice()
-    {   
-            // fazer um switch pro role q devolver
+    {     
+        $role = $_SESSION['role'];                         
+            if ($role == "Admin" || $role == "Funcionario"){
             $this->renderView('layout', 'backoffice');
+            }
+    }
+    public function frontoffice()
+    {   
+        $role = $_SESSION['role'];                          
+        if ($role == "Cliente"){
+            $this->renderView('layout', 'frontoffice');
+        }
     }
 }

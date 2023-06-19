@@ -32,7 +32,8 @@ return [
     ],
 
     'layout' => [
-        'backoffice' => ['GET', 'LayoutController', 'backoffice']
+        'backoffice' => ['GET', 'LayoutController', 'backoffice'],
+        'frontoffice' => ['GET', 'LayoutController', 'frontoffice']
     ],
 
     'user' => [
