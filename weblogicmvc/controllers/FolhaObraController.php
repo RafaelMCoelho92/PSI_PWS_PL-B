@@ -17,7 +17,7 @@ class FolhaObraController extends Controller
             //TODO redirect to standard error page
         } else {
             //mostrar a vista show passando os dados por parâmetro
-            $this->renderView('folhaObra', 'show', ['folhasObra' => $folhaObra]);
+            $this->renderView('folhaObra', 'show', ['folhaObra' => $folhaObra]);
         }
     }
 
