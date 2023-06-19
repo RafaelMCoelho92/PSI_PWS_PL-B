@@ -42,9 +42,10 @@ return [
         'default' => ['GET', 'LayoutController', 'default'],
         'frontoffice' => ['GET', 'LayoutController', 'frontoffice']
     ],
-    'folhaObra' =>[
-        'index' =>['GET', 'FolhaObraController', 'index' ],
-        'create'=>['GET', 'FolhaObraController', 'create'],
+    'folhaObra' => [
+        'index' => ['GET', 'FolhaObraController', 'index'],
+        'create' => ['GET', 'FolhaObraController', 'create'],
+        'show' => ['GET', 'FolhaObraController', 'show'],
     ],
 
     'user' => [
