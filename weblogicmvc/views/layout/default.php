@@ -291,13 +291,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/forms/general.html" class="nav-link">
+                  <a href="index.php?c=folhaObra&a=index" class="nav-link">
                     <i class="nav-icon far fa-circle text-info"></i>
                     <p>Visualizar todas</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/forms/advanced.html" class="nav-link">
+                  <a href="index.php?c=folhaObra&a=create" class="nav-link">
                     <i class="nav-icon far fa-circle text-warning"></i>
                     <p>Criar nova</p>
                   </a>
@@ -362,9 +362,6 @@
 
       <!-- /.content -->
     </div>
-
-
-
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->

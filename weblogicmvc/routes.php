@@ -6,6 +6,8 @@ require_once 'controllers/UserController.php';
 require_once 'controllers/ServiceController.php';
 require_once 'controllers/LayoutController.php';
 require_once 'controllers/IvaController.php';
+require_once 'controllers/FolhaObraController.php';
+require_once 'controllers/ClienteController.php';
 
 
 return [
@@ -13,6 +15,8 @@ return [
 
     'home' => [
         'index' => ['GET', 'HomeController', 'index'],
+        'dashboardbo' => ['GET', 'HomeController', 'dashboardbo'],
+
     ],
 
     'auth' => [
@@ -30,9 +34,18 @@ return [
         'delete' => ['GET', 'EmpresaController', 'delete'],
         'update' => ['POST', 'EmpresaController', 'update'],
     ],
+    'cliente'=>[
+        'empresa' => ['GET', 'ClienteController', 'empresa'],
+    ],
 
     'layout' => [
-        'backoffice' => ['GET', 'LayoutController', 'backoffice']
+        'default' => ['GET', 'LayoutController', 'default'],
+        'frontoffice' => ['GET', 'LayoutController', 'frontoffice']
+    ],
+    'folhaObra' => [
+        'index' => ['GET', 'FolhaObraController', 'index'],
+        'create' => ['GET', 'FolhaObraController', 'create'],
+        'show' => ['GET', 'FolhaObraController', 'show'],
     ],
 
     'user' => [

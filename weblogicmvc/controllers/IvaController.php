@@ -8,7 +8,7 @@ class IvaController extends Controller
     {
         $ivas = Iva::all();
         // Mostrar a vista index passando os dados por parâmetro
-        $this->renderView('iva', 'index', ['ivas' => $ivas]);
+        $this->renderView('iva', 'index', ['ivas' => $ivas], 'default');
     }
 
     public function show($id)

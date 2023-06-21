@@ -64,17 +64,15 @@ class ServiceController extends Controller
     {
         // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
         $service = Service::find($id);
+        $ivas = Iva::all();
         $service->update_attributes($this->getHTTPPost());
-        $service->precohora = "adsdasda";
         if ($service->is_valid()) {
-            var_dump($service->errors);
-            die();
             $service->save();
             //redirecionar para o index
             $this->redirectToRoute('service', 'index');
         } else {
             //mostrar vista edit passando o modelo como parâmetro
-            $this->renderView('service', 'edit', ['service' => $service]);
+            $this->renderView('service', 'edit', ['service' => $service, 'ivas' => $ivas]);
         }
     }
 

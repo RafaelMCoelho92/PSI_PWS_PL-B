@@ -113,7 +113,13 @@
             <div class="col-md-3">
               <label for="role">Role</label><br>
               <select class="form-select" name="role">
-                <?php $roles = array('Cliente', 'Funcionario', 'Admin') ?>
+              <?php $auth = $_SESSION['role'];?>
+                <?php if ($auth == "Admin") {
+                  $roles = array('Cliente', 'Funcionario', 'Admin');
+                } elseif ($auth == "Funcionario") {
+                  $roles = array('Cliente', 'Funcionario');
+                } ?>
+
                 <?php foreach ($roles as $role) { ?>
                   <option value="<?= $role ?>"> <?= $role; ?></option>
                 <?php } ?>

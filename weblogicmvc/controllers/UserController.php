@@ -27,7 +27,7 @@ class UserController extends Controller
     public function create()
     {
         //mostra vista com form de criacao de registo
-        $this->renderView('user', 'create');
+        $this->renderView('user', 'create');//['roles' => $roles]
 
     }
     public function store()

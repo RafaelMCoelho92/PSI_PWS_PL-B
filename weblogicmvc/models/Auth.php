@@ -30,7 +30,6 @@ class Auth
         if (!isset($_SESSION)) {
             session_start();
         }
-        // se eu comentar o if de cima da erro 
         if (isset($_SESSION["username"])) {
             return true; // return role e switch do outro lado
         } else {
