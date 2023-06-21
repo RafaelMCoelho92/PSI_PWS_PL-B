@@ -25,7 +25,16 @@
             <tbody>
                 <?php foreach ($ivas as $iva) { ?>
                     <tr>
-                        <td><?= $iva->emvigor ?></td>
+                        
+                        <?php if ($iva->emvigor== 'Sim')
+                    {
+                        //echo '<td class="btn btn-success">Ativo</td>';
+                        echo '<td><a href="index.php?c=iva&a=update&id=<?php echo $iva->id; ?>" class="btn btn-primary" role="button">Ativo</a></td>';
+
+                    }
+                    else{
+                        echo '<td class="btn btn-danger">Desativo</td>';
+                    }?>
                         <td><?= $iva->descricao ?></td>
                         <td><?= $iva->percentagem ?></td>
                         <td>
