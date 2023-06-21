@@ -42,7 +42,7 @@ return [
         'default' => ['GET', 'LayoutController', 'default'],
         'frontoffice' => ['GET', 'LayoutController', 'frontoffice']
     ],
-    'folhaObra' => [
+    'folhaobra' => [
         'index' => ['GET', 'FolhaObraController', 'index'],
         'create' => ['GET', 'FolhaObraController', 'create'],
         'show' => ['GET', 'FolhaObraController', 'show'],

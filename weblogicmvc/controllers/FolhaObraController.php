@@ -1,20 +1,21 @@
 <?php
-require_once 'models/FolhaObra.php';
+require_once 'models/Folhaobra.php';
 require_once 'models/Service.php';
 require_once 'models/Iva.php';
+require_once 'models/Empresa.php';
 require_once 'Controller.php';
 
 class FolhaObraController extends Controller
 {
     public function index()
     {
-        $folhasObra = FolhaObra::all();
+        $folhasObra = Folhaobra::all();
         $this->renderView('folhaObra', 'index', ['folhasObra' => $folhasObra]);
     }
 
     public function show($id)
     {
-        $folhaObra = FolhaObra::find($id);
+        $folhaObra = Folhaobra::find($id);
         if (is_null($$folhaObra)) {
             //TODO redirect to standard error page
         } else {
@@ -26,12 +27,12 @@ class FolhaObraController extends Controller
     public function create()
     {
         //mostra vista com form de criacao de registo
-        $empresas = Empresa::all();
+        $empresas = Empresa::first();
         $ivas = Iva::all();
         $services = Service::all();
         $users = User::all();
 
-        $this->renderView('folhaObra', 'create', ['folhasObra' => $empresas, $ivas, $services, $users]);
+        $this->renderView('folhaObra', 'create', ['empresas' => $empresas, 'ivas'=>$ivas, 'services'=>$services, 'users'=>$users]);
     }
 
     public function store()
@@ -41,7 +42,7 @@ class FolhaObraController extends Controller
         $ivas = Iva::all();
         $services = Service::all();
         $users = User::all();
-        $folhaObra = new FolhaObra($this->getHTTPPost());
+        $folhaObra = new Folhaobra($this->getHTTPPost());
         if ($folhaObra->is_valid()) {
             $folhaObra->save();
             //redirecionar para o index das folhas de obra
@@ -59,7 +60,7 @@ class FolhaObraController extends Controller
         $ivas = Iva::all();
         $services = Service::all();
         $users = User::all();
-        $folhaObra = FolhaObra::find($id);
+        $folhaObra = Folhaobra::find($id);
         if (is_null($folhaObra)) {
             //TODO redirect to standard error page
         } else {
@@ -71,7 +72,7 @@ class FolhaObraController extends Controller
     public function update($id)
     {
         // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
-        $folhaObra = FolhaObra::find($id);
+        $folhaObra = Folhaobra::find($id);
         $empresas = Empresa::all();
         $ivas = Iva::all();
         $services = Service::all();
@@ -90,7 +91,7 @@ class FolhaObraController extends Controller
     public function delete($id)
     {
         //apaga um registo da BD identificado pelo ID
-        $folhaObra = FolhaObra::find($id);
+        $folhaObra = Folhaobra::find($id);
         $folhaObra->delete();
         //redirecionar para o index
         $this->redirectToRoute('folhaObra', 'index');
