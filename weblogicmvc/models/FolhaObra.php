@@ -16,7 +16,10 @@ class Folhaobra extends \ActiveRecord\Model
         array('valortotal', 'only_float' => true),
         array('ivatotal', 'only_float' => true),
     );
-
+    static $belongs_to = array(
+        array('user', 'class_name' => 'User', 'foreign_key' => 'idcliente')
+    );
+    
   /*  static $belongs_to = array( // tive que comentar aqui pq n tenho esse linhaObra, se ja tiveres a bd atualizada manda
         array('linhaObra') // vai estar relacionado com uma linha de obra???
     );*/

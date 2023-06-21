@@ -25,11 +25,11 @@ Email: <?= $empresas->email?>
 <div class="col-sm-4 invoice-col">
 To
 <address>
-<strong>John Doe</strong><br>
-795 Folsom Ave, Suite 600<br>
-San Francisco, CA 94107<br>
-Phone: (555) 539-1037<br>
-Email: john.doe@example.com
+<strong><?= $folhaobra->user->username?></strong><br>
+<?= $folhaobra->user->morada?><br>
+<?= $folhaobra->user->codigopostal?>, <?= $folhaobra->user->localidade?><br>
+Teleone: <?= $folhaobra->user->telefone?><br>
+Email: <?= $folhaobra->user->email?>
 </address>
 </div>
 
@@ -49,9 +49,9 @@ Email: john.doe@example.com
 <table class="table table-striped">
 <thead>
 <tr>
-<th>Qty</th>
-<th>Product</th>
-<th>Serial #</th>
+<th>Qtd</th>
+<th>Serviço</th>
+<th>IVA</th>
 <th>Description</th>
 <th>Subtotal</th>
 </tr>

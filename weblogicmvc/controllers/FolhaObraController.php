@@ -28,11 +28,13 @@ class FolhaObraController extends Controller
     {
         //mostra vista com form de criacao de registo
         $empresas = Empresa::first();
-        $ivas = Iva::all();
+        //$ivas = Iva::all();
         $services = Service::all();
-        $users = User::all();
-
-        $this->renderView('folhaObra', 'create', ['empresas' => $empresas, 'ivas'=>$ivas, 'services'=>$services, 'users'=>$users]);
+        //$users = User::all();
+        $folhaobra = Folhaobra::find(1); // tava so a testar aqui,o que temos de fazer é
+                                        //quando ele carrega em criar uma folha de obra ele tem q criar uma folha de obra
+                                        // associar essa folha de obra a um cliente e depois preencher o resto das coisas
+        $this->renderView('folhaObra', 'create', ['folhaobra'=> $folhaobra,'empresas' => $empresas,  'services'=>$services]);// iva ja esta associado ao serviço em principio n precisa de aparecer aqui 'ivas'=>$ivas, users vai estar associado a folhaobra , 'users'=>$users
     }
 
     public function store()
