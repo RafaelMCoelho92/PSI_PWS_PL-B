@@ -19,7 +19,11 @@ class HomeController extends Controller
             if ($role == "Admin" || $role == "Funcionario"){
                 $folhasobras = Folhaobra::all();
                 $numfolhasobras = count($folhasobras);
-            $this->renderView('home', 'dashboardbo', ['numfolhasobras'=> $numfolhasobras],'default');
+                $users = User::all();
+                $numusers = count($users);
+                $servicos = Service::all();
+                $numservicos = count($servicos);
+            $this->renderView('home', 'dashboardbo', ['numfolhasobras'=> $numfolhasobras, 'numusers' => $numusers, 'numservicos'=>$numservicos],'default');
             }
     }
 }
