@@ -25,18 +25,23 @@
             <tbody>
                 <?php foreach ($ivas as $iva) { ?>
                     <tr>
-                        
-                        <?php if ($iva->emvigor== 'Sim')
-                    {
-                        //echo '<td class="btn btn-success">Ativo</td>';
-                        echo '<td><a href="index.php?c=iva&a=update&id=<?php echo $iva->id; ?>" class="btn btn-primary" role="button">Ativo</a></td>';
 
-                    }
-                    else{
-                        echo '<td class="btn btn-danger">Desativo</td>';
-                    }?>
-                        <td><?= $iva->descricao ?></td>
-                        <td><?= $iva->percentagem ?></td>
+                        <?php if ($iva->emvigor == 'Sim') {
+                            //echo '<td class="btn btn-success">Ativo</td>';
+                        ?><td>
+                                <form action="index.php?c=iva&a=update&id=<?= $iva->id; ?>" method="POST">
+                                    <button type="submit" name="emvigor" value="Não" class="btn btn-success">Ativo</button>
+                                </form>
+                            </td>
+                        <?php } else { ?>
+                            <td>
+                                <form action="index.php?c=iva&a=update&id=<?= $iva->id; ?>" method="POST">
+                                    <button type="submit" name="emvigor" value="Sim" class="btn btn-danger">Inativo</button>
+                                </form>
+                            </td>
+                        <?php } ?>
+                        <td name="descricao" value="<?= $iva->descricao ?>"><?= $iva->descricao ?></td>
+                        <td name="percentagem" value="<?= $iva->percentagem ?>"><?= $iva->percentagem ?></td>
                         <td>
                             <a href="index.php?c=iva&a=show&id=<?php echo $iva->id; ?>" class="btn btn-primary" role="button">Ver mais</a>
                             <a href="index.php?c=iva&a=edit&id=<?php echo $iva->id; ?>" class="btn btn-secondary" role="button">Editar</a>
