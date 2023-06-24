@@ -21,7 +21,7 @@ folhas de obra.
 ## Requisitos de Sistema
 
 - Sistema operacional: Windows
-- Plataforma: Servidor Apache
+- Plataforma: Servidor Apache e Browser
 - Outros requisitos: Processador: Intel Core i3 ou superior
 
 ## Instalação
