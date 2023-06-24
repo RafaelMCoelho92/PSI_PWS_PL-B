@@ -31,6 +31,7 @@
                             <a href="index.php?c=user&a=show&id=<?= $user->id ?>" class="btn btn-primary" role="button">Ver mais</a>
                             <a href="index.php?c=user&a=edit&id=<?= $user->id ?>" class="btn btn-secondary" role="button">Editar</a>
                             <a href="index.php?c=user&a=delete&id=<?= $user->id ?>" class="btn btn-danger" role="button">Delete</a>
+                            <a href="index.php?c=folhaobra&a=create&id=<?= $user->id ?>" class="btn btn-info" role="button">Criar Folha de Obra</a>
                         </td>
                     </tr>
                 <?php } ?>
