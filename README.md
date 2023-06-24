@@ -2,7 +2,7 @@
 # PROGRAMAÇÃO PARA A WEB - SERVIDOR
 
 # Desenvolvido pelos alunos do TeSP de PSI-PL 22/23.
-# PSI_DA_PL-B
+# PSI_PWS_PL-B
 
 **2220894 Andre Duarte
 2220905 Patrick Soares
