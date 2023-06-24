@@ -14,7 +14,7 @@ class Service extends \ActiveRecord\Model
     );
 
     static $validates_numericality_of = array(
-        array('precohora', 'only_float' => true),
+        array('precohora', 'ogreater_than_or_equal_to' => 0), // only float não existe no active record, tropa não se metam a inventar, confirmem as cenas no site https://www.phpactiverecord.org/projects/main/wiki/Validations#validates_format_of 
     );
 
     static $belongs_to = array(

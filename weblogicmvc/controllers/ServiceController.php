@@ -27,7 +27,7 @@ class ServiceController extends Controller
     public function create()
     {
         //mostra vista com form de criacao de registo
-        $ivas = Iva::all();
+        $ivas = Iva::find_all_by_emvigor('Sim'); // vai procurar na coluna do emvigor pelos que tem Sim 
         $this->renderView('service', 'create', ['ivas' => $ivas]);
     }
 

@@ -60,7 +60,7 @@
                             <label for="iva_id">Iva:</label><br>
                             <select class="form-control" name="iva_id">
                                 <?php
-
+   
                                 foreach ($ivas as $iva) { ?>
                                     <?php if ($iva->id == $service->iva_id) { ?>
                                         <option value="<?= $iva->id ?>" selected><?= $iva->descricao;
