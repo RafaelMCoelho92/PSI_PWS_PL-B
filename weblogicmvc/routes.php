@@ -16,7 +16,7 @@ return [
     'home' => [
         'index' => ['GET', 'HomeController', 'index'],
         'dashboardbo' => ['GET', 'HomeController', 'dashboardbo'],
-
+        'dashboardfo' => ['GET', 'HomeController', 'dashboardfo'],
     ],
 
     'auth' => [
@@ -34,7 +34,7 @@ return [
         'delete' => ['GET', 'EmpresaController', 'delete'],
         'update' => ['POST', 'EmpresaController', 'update'],
     ],
-    'cliente'=>[
+    'cliente' => [
         'empresa' => ['GET', 'ClienteController', 'empresa'],
     ],
 

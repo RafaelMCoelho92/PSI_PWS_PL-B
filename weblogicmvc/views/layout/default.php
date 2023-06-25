@@ -206,7 +206,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            
+
 
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -232,6 +232,7 @@
                 </li>
               </ul>
             </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
@@ -253,10 +254,9 @@
                     <p>Criar novo</p>
                   </a>
                 </li>
-
-
               </ul>
             </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
@@ -278,9 +278,9 @@
                     <p>Criar</p>
                   </a>
                 </li>
-
               </ul>
             </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
@@ -304,6 +304,7 @@
                 </li>
               </ul>
             </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
@@ -325,10 +326,8 @@
                     <p>Editar</p>
                   </a>
                 </li>
-
               </ul>
             </li>
-
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -347,8 +346,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
+                <li class="breadcrumb-item"><a href="index.php?c=auth&a=logout">Logout</a></li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->

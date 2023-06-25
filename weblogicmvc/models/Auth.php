@@ -38,7 +38,6 @@ class Auth
     }
     function logout()
     {
-
         session_destroy();
     }
 

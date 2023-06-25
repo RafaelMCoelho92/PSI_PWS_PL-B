@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 require_once 'Controller.php';
 class HomeController extends Controller
@@ -9,21 +9,33 @@ class HomeController extends Controller
     }
     public function index()
     {
-        
-        $this->renderView('home', 'index', [], 'login');  
+
+        $this->renderView('home', 'index', [], 'login');
     }
 
     public function dashboardbo()
-    {     
-        $role = $_SESSION['role'];                         
-            if ($role == "Admin" || $role == "Funcionario"){
-                $folhasobras = Folhaobra::all();
-                $numfolhasobras = count($folhasobras);
-                $users = User::all();
-                $numusers = count($users);
-                $servicos = Service::all();
-                $numservicos = count($servicos);
-            $this->renderView('home', 'dashboardbo', ['numfolhasobras'=> $numfolhasobras, 'numusers' => $numusers, 'numservicos'=>$numservicos],'default');
-            }
+    {
+        $role = $_SESSION['role'];
+        if ($role == "Admin" || $role == "Funcionario") {
+            $folhasobras = Folhaobra::all();
+            $numfolhasobras = count($folhasobras);
+            $users = User::all();
+            $numusers = count($users);
+            $servicos = Service::all();
+            $numservicos = count($servicos);
+            $this->renderView('home', 'dashboardbo', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers, 'numservicos' => $numservicos], 'default');
+        }
+    }
+
+    public function dashboardfo()
+    {
+        $role = $_SESSION['role'];
+        if ($role == "Cliente") {
+            $folhasobras = Folhaobra::all();
+            $numfolhasobras = count($folhasobras);
+            $users = User::all();
+            $numusers = count($users);
+            $this->renderView('home', 'frontoffice', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers], 'default');
+        }
     }
 }
