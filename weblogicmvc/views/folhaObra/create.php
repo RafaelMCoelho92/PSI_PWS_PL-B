@@ -34,10 +34,9 @@
         </div>
 
         <div class="col-sm-4 invoice-col">
-            <b>Invoice #007612</b><br>
             <br>
             <b>Order ID:</b> <?= $folhaobra->id ?><br>
-            <b><a href="index.php?c=folhaObra&a=edit" class="btn btn-success">Adicionar linha de Obra</a>
+            <b><a href="index.php?c=linhaobra&a=create&id=<?= $folhaobra->id ?>" class="btn btn-success">Adicionar linha de Obra</a>
             </b><br>
             <br>
         </div>
@@ -61,17 +60,25 @@
                     <tr>
                         <td>
                         </td>
-                        <td>
+                        <td> <input type="number" class="form-control" name="quantidade" value="<?php if (isset($linhaobra)) {
+                                                                                                    echo $linhaobra->quantidade;
+                                                                                                } ?>" placeholder="Qtd" required>
                         </td>
-                        <td>
+                        <td><input type="text" class="form-control" name="descricao" value="<?php if (isset($linhaobra)) {
+                                                                                                    echo $linhaobra->servico->descricao;
+                                                                                                } ?>" placeholder="Descrição do Serviço" required>
                         </td>
-                        <td>
+                        <td><input type="number" class="form-control" name="precohora" value="<?php if (isset($linhaobra)) {
+                                                                                                    echo $linhaobra->servico->precohora;
+                                                                                                } ?>" placeholder="precohora" required>
                         </td>
-                        <td>
+                        <td><input type="number" class="form-control" name="iva" value="<?php if (isset($linhaobra)) {
+                                                                                                    echo $linhaobra->servico->precohora;
+                                                                                                } ?>" placeholder="precohora" required>
                         </td>
-                        <td>
+                        <td><?= ?>
                         </td>
-                        <td>
+                        <td>aa
                         </td>
                         <td>
                         </td>
@@ -99,16 +106,16 @@
                     <tbody>
                         <tr>
                             <th style="width:50%">Subtotal:</th>
-                            <td><?= $folhaobra->valortotal; ?></td>
+                            <td><?= $folhaobra->valortotal; ?> €</td>
                         </tr>
                         <tr>
                             <th>IVA Total</th>
-                            <td><?= $folhaobra->ivatotal; ?></td>
+                            <td><?= $folhaobra->ivatotal; ?> €</td>
                         </tr>
 
                         <tr>
                             <th>Total:</th>
-                            <td><?= $folhaobra->valortotal + $folhaobra->ivatotal; ?></td>
+                            <td><?= $folhaobra->valortotal + $folhaobra->ivatotal; ?> €</td>
                         </tr>
                     </tbody>
                 </table>
