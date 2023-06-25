@@ -43,50 +43,44 @@
 
     </div>
 
-
     <div class="row">
         <div class="col-12 table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Qtd</th>
-                        <th>Serviço</th>
-                        <th>IVA</th>
-                        <th>Description</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Call of Duty</td>
-                        <td>455-981-221</td>
-                        <td>El snort testosterone trophy driving gloves handsome</td>
-                        <td>$64.50</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Need for Speed IV</td>
-                        <td>247-925-726</td>
-                        <td>Wes Anderson umami biodiesel</td>
-                        <td>$50.00</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Monsters DVD</td>
-                        <td>735-845-642</td>
-                        <td>Terry Richardson helvetica tousled street art master</td>
-                        <td>$10.70</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Grown Ups Blue Ray</td>
-                        <td>422-568-642</td>
-                        <td>Tousled lomo letterpress</td>
-                        <td>$25.99</td>
-                    </tr>
-                </tbody>
-            </table>
+            <form action="update_invoice.php" method="POST">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Quantidade</th>
+                            <th>Serviço</th>
+                            <th>IVA</th>
+                            <th>Descrição</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="form-control" name="Quantidade[]" value="Quantidade"></td>
+                            <td><input type="text" class="form-control" name="Servico[]" value="Serviço"></td>
+                            <td><input type="text" class="form-control" name="Iva[]" value="Iva"></td>
+                            <td><input type="text" class="form-control" name="Descricao[]" value="Descrição"></td>
+                            <td><input type="text" class="form-control" name="Subtotal[]" value="Valor"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" name="Quantidade[]" value="Quantidade"></td>
+                            <td><input type="text" class="form-control" name="Servico[]" value="Serviço"></td>
+                            <td><input type="text" class="form-control" name="Iva[]" value="Iva"></td>
+                            <td><input type="text" class="form-control" name="Descricao[]" value="Descrição"></td>
+                            <td><input type="text" class="form-control" name="Subtotal[]" value="Valor"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" name="Quantidade[]" value="Quantidade"></td>
+                            <td><input type="text" class="form-control" name="Servico[]" value="Serviço"></td>
+                            <td><input type="text" class="form-control" name="Iva[]" value="Iva"></td>
+                            <td><input type="text" class="form-control" name="Descricao[]" value="Descrição"></td>
+                            <td><input type="text" class="form-control" name="Subtotal[]" value="Valor"></td>
+                        </tr>
+                        </tr>
+                    </tbody>
+                </table>
         </div>
 
     </div>
