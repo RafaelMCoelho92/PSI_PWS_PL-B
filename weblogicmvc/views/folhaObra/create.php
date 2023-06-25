@@ -141,6 +141,9 @@
             <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                 Payment
             </button>
+            <th>
+                <a href="index.php?c=folhaObra&a=edit" class="btn btn-success">Editar folha de Obra</a>
+            </th>
             <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                 <i class="fas fa-download"></i> Generate PDF
             </button>
