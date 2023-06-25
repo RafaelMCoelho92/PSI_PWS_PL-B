@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <h1 class="text-left top-space">Editar IVA - <?= APP_NAME ?></h1>
 <h2 class="top-space"></h2>
 <div class="row">
