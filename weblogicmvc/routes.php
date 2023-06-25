@@ -8,6 +8,8 @@ require_once 'controllers/LayoutController.php';
 require_once 'controllers/IvaController.php';
 require_once 'controllers/FolhaObraController.php';
 require_once 'controllers/ClienteController.php';
+require_once 'controllers/LinhaobraController.php';
+
 
 
 return [
@@ -46,6 +48,12 @@ return [
         'index' => ['GET', 'FolhaObraController', 'index'],
         'create' => ['GET', 'FolhaObraController', 'create'],
         'show' => ['GET', 'FolhaObraController', 'show'],
+        'edit' => ['GET|POST', 'FolhaObraController', 'edit'],
+
+
+    ],
+    'linhaobra' => [
+        'store' => ['POST', 'LinhaobraController', 'store'],
     ],
 
     'user' => [

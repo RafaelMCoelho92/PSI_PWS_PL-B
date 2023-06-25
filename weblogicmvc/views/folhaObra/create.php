@@ -37,15 +37,21 @@
             <br>
             <b>Order ID:</b> <?= $folhaobra->id ?><br>
             </b>
-            <b><a href="index.php?c=service&a=select&id=<?= $folhaobra->id ?>" class="btn btn-success">Selecionar Serviço</a>
                 <br><br>
                 <div class="row">
-                    <div class="col">
-                        <input type="text" id="inserirservico" placeholder="Insira o ID do Serviço" class="form-control">
-                    </div>
-                    <div class="col-auto">
-                        <button id="inserirservico" class="btn btn-primary" role="button">Introduzir Serviço</button>
-                    </div>
+                <form method="post" action="index.php?c=linhaobra&a=store&id=<?=$folhaobra->id?>">
+                        <div class="col">
+                        <label for="servico">Serviço:</label><br>
+                            <select class="form-control" name="servico">
+                                <?php
+                                foreach ($services as $service) { ?>
+                                        <option value="<?= $service->id ?>" selected><?= $service->descricao;?> </option>
+                                    </option>
+                                <?php } ?>
+                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>                        
+                            <button class="btn btn-primary" role="button">Introduzir Serviço</button>
+                        </div>
+                    </form>
                 </div>
                 <br>
         </div>
@@ -66,30 +72,11 @@
                     </tr>
                 </thead>
                 <tbody>
-    <?php foreach ($linhaobras as $linha) { ?>
-        <tr>
-            <td><?php echo $linha->id; ?></td> <!-- Ref -->
-            <td><?php echo $linha->quantidade; ?></td><!-- Qtd -->
-            <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
-            <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
-            <td><?php echo $linha->servico->iva->percentagem . " €" ?><!-- IVA -->
-            <td><?= ($linha->servico->precohora * $linha->quantidade) . " €"?><!-- Subtotal s/ iva -->
-            <td><?php echo ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100  . " €"?></td><!-- IVA TOTAL -->
-            <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
-            ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100 . 
-            "€" ?></td><!-- VALOR TOTAL-->            
-        </tr>
-    <?php } ?>
-</tbody>
-
-
+                </tbody>
             </table>
         </div>
-
     </div>
-
     <div class="row">
-
         <div class="col-6">
             <p class="lead">Payment Methods:</p>
             <img src="public/img/credit/visa.png" alt="Visa">

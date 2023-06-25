@@ -39,9 +39,25 @@ class FolhaObraController extends Controller
         $folhaobra->valortotal = 0;
         $folhaobra->ivatotal = 0;
         $folhaobra->save();
-        $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
-        $this->renderView('folhaObra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'services' => $services, 'linhaobras' => $linhaobras]);
+        $this->renderView('folhaObra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'services'=>$services]);
     }
+    public function edit()
+    {
+        //$linhaobra = new Linhaobra();
+        //$linhaobra->idservico = $this->getHTTPGetParam('idservico');
+        //$linhaobra->idfolhaobra = $id;
+        //mostra a vista com form de edicao de um registo identificado pelo seu ID
+        $empresa = Empresa::first();
+        $folhaobra = Folhaobra::find($id);
+        $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
+        if (is_null($folhaobra)) {
+            //TODO redirect to standard error page
+        } else {
+            //mostrar a vista edit passando os dados por parâmetro
+            $this->renderView('folhaObra', 'edit', ['folhaObra' => $folhaobra, 'empresa' => $empresa,'linhaobras' => $linhaobras]);
+        }
+    }
+    
 
     public function store()
     {
@@ -58,22 +74,6 @@ class FolhaObraController extends Controller
         } else {
             //mostrar vista create passando o modelo como parâmetro
             $this->renderView('folhaObra', 'create', ['folhaObra' => $folhaObra, 'empresas' => $empresas, 'ivas' => $ivas, 'services' => $services, 'users' => $users]);
-        }
-    }
-
-    public function edit($id)
-    {
-        //mostra a vista com form de edicao de um registo identificado pelo seu ID
-        $empresas = Empresa::all();
-        $ivas = Iva::all();
-        $services = Service::all();
-        $users = User::all();
-        $folhaObra = Folhaobra::find($id);
-        if (is_null($folhaObra)) {
-            //TODO redirect to standard error page
-        } else {
-            //mostrar a vista edit passando os dados por parâmetro
-            $this->renderView('service', 'edit', ['folhaObra' => $folhaObra, 'empresas' => $empresas, 'ivas' => $ivas, 'services' => $services, 'users' => $users]);
         }
     }
 

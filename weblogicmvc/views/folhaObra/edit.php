@@ -1,76 +1,141 @@
-<? //SEMELHANTE AO EDIT DO IVA, MAS É SUPOSTO TER UM EDITAR SÓ DEPOIS DE ALGUM CRIADO NA BASE DE DADOS, CORRETO? 
-//OU SEJA PARA JÁ AINDA NAO ESTÁ A SER CHAMADO 
-?>
+<div class="invoice p-3 mb-3">
 
+    <div class="row">
+        <div class="col-12">
+            <h4>
+                <i class="fas fa-globe"></i> <?= APP_NAME ?>
+                <small class="float-right"><?= date('d/m/Y') ?> </small>
+            </h4>
+        </div>
 
-<div class="container">
-    <main>
-        <div class="row g-5">
-            <div class="col-md-7 col-lg-8">
-                <h4 class="mb-3">Editar Folha de Obra</h4>
-                <h6 class="mb-3">Preencha todos os campos!</h6>
-                <form class="needs-validation" action="index.php?c=folhaobra&a=update&id=<?php echo $folhaObra->id; ?>" method="POST">
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <label for="emvigor">Em Vigor</label><br>
-                            <select class="form-control" name="emvigor">
-                                <?php $opcoes = array('Sim', 'Não') ?>
-                                <?php foreach ($opcoes as $opcao) { ?>
-                                    <option value="<?= $opcao ?>"> <?= $opcao; ?></option>
-                                <?php } ?>
-                            </select>
-                            <p><?php if (isset($folhaObra->errors)) {
-                                    echo $folhaObra->errors->on('emvigor');
-                                } ?></p>
-                            <div class="invalid-feedback">
-                                Campo Obrigatório!
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <label for="descricao" class="form-label">Descrição</label><br>
-                            <input type="text" class="form-control" name="descricao" value="<?php if (isset($folhaObra)) {
-                                                                                                echo $folhaObra->descricao;
-                                                                                            } ?>" required>
-                            <p>
-                                <?php
-                                if (isset($folhaObra->errors)) {
-                                    if (is_array($folhaObra->errors->on('descricao'))) {
-                                        foreach ($folhaObra->errors->on('descricao') as $error) {
-                                            echo $error . '<br>';
-                                        }
-                                    } else {
-                                        echo $folhaObra->errors->on('descricao');
-                                    }
-                                }
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-12">
-                            <label for="percentagem" class="form-label">Percentagem</label><br>
-                            <input type="text" class="form-control" name="percentagem" value="<?php if (isset($folhaObra)) {
-                                                                                                    echo $folhaObra->percentagem;
-                                                                                                } ?>" placeholder="Percentagem" required>
-                            <p>
-                                <?php
-                                if (isset($folhaObra->errors)) {
-                                    if (is_array($folhaObra->errors->on('percentagem'))) {
-                                        foreach ($folhaObra->errors->on('percentagem') as $error) {
-                                            echo $error . '<br>';
-                                        }
-                                    } else {
-                                        echo $folhaObra->errors->on('percentagem');
-                                    }
-                                }
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-12">
-                            <input type="submit" value="Atualizar" class="btn btn-primary">
-                            <a href='index.php?c=folhaobra&a=index' class="btn btn-info">Voltar às Folhas de Obra</a>
-                        </div>
+    </div>
+
+    <div class="row invoice-info">
+        <div class="col-sm-4 invoice-col">
+            From
+            <address>
+                <strong><?= $folhaobra->funcionario->username ?></strong><br>
+                <?= $empresas->morada ?><br>
+                <?= $empresas->codigopostal; ?> <?= $empresas->localidade ?> <br>
+                Telefone: <?= $empresas->telefone ?><br>
+                Email: <?= $empresas->email ?>
+            </address>
+        </div>
+
+        <div class="col-sm-4 invoice-col">
+            To
+            <address>
+                <strong><?= $folhaobra->user->username ?></strong><br>
+                <?= $folhaobra->user->morada ?><br>
+                <?= $folhaobra->user->codigopostal ?>, <?= $folhaobra->user->localidade ?><br>
+                Teleone: <?= $folhaobra->user->telefone ?><br>
+                Email: <?= $folhaobra->user->email ?>
+            </address>
+        </div>
+
+        <div class="col-sm-4 invoice-col">
+            <br>
+            <b>Order ID:</b> <?= $folhaobra->id ?><br>
+            </b>
+            <b><a href="index.php?c=service&a=select&id=<?= $folhaobra->id ?>" class="btn btn-success">Selecionar Serviço</a>
+                <br><br>
+                <div class="row">
+                    <form method="POST" action="index.php?c=folhaobra&a=edit&id=<?= $folhaobra->id ?>">
+                    <div class="col">
+                        <input type="text" id="idservico" placeholder="Insira o ID do Serviço" class="form-control" required>
                     </div>
-                </form>
+                    <div class="col-auto">
+                        <button id="idservico" class="btn btn-primary" role="button">Introduzir Serviço</button>
+                    </div>
+                    </form>
+                </div>
+                <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Ref.</th>
+                        <th>Qtd</th>
+                        <th>Serviço</th>
+                        <th>Preço/Hora</th>
+                        <th>IVA</th>
+                        <th>Subtotal (s/ IVA)</th>
+                        <th>IVA Total</th>
+                        <th>Valor Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <?php foreach ($linhaobras as $linha) { ?>
+        <tr>
+            <td><?php echo $linha->id; ?></td> <!-- Ref -->
+            <td><?php echo $linha->quantidade; ?></td><!-- Qtd -->
+            <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
+            <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
+            <td><?php echo $linha->servico->iva->percentagem . " €" ?><!-- IVA -->
+            <td><?= ($linha->servico->precohora * $linha->quantidade) . " €"?><!-- Subtotal s/ iva -->
+            <td><?php echo ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100  . " €"?></td><!-- IVA TOTAL -->
+            <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
+            ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100 . 
+            "€" ?></td><!-- VALOR TOTAL-->            
+        </tr>
+    <?php } ?>
+</tbody>
+
+
+            </table>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-6">
+            <p class="lead">Payment Methods:</p>
+            <img src="public/img/credit/visa.png" alt="Visa">
+            <img src="public/img/credit/mastercard.png" alt="Mastercard">
+            <img src="public/img/credit/american-express.png" alt="American Express">
+            <img src="public/img/credit/paypal2.png" alt="Paypal">
+        </div>
+
+        <div class="col-6">
+            <p class="lead">Amount Due 2/22/2014</p>
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th style="width:50%">Subtotal:</th>
+                            <td><?= $folhaobra->valortotal; ?> €</td>
+                        </tr>
+                        <tr>
+                            <th>IVA Total</th>
+                            <td><?= $folhaobra->ivatotal; ?> €</td>
+                        </tr>
+
+                        <tr>
+                            <th>Total:</th>
+                            <td><?= $folhaobra->valortotal + $folhaobra->ivatotal; ?> €</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </main>
+
+    </div>
+
+
+    <div class="row no-print">
+        <div class="col-12">
+            <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+            <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
+                Payment
+            </button>
+
+            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                <i class="fas fa-download"></i> Generate PDF
+            </button>
+        </div>
+    </div>
 </div>
