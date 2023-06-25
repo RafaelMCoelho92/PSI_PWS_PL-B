@@ -36,8 +36,16 @@
         <div class="col-sm-4 invoice-col">
             <br>
             <b>Order ID:</b> <?= $folhaobra->id ?><br>
-            <b><a href="index.php?c=linhaobra&a=create&id=<?= $folhaobra->id ?>" class="btn btn-success">Adicionar linha de Obra</a>
-            </b><br>
+            </b>
+            <b><a href="index.php?c=service&a=select&id=<?= $folhaobra->id ?>" class="btn btn-success">Selecionar Serviço</a>
+            <br><br><div class="row">
+                <div class="col">
+                    <input type="text" id="inserirservico" placeholder="Insira o ID do Serviço" class="form-control">
+                </div>
+                <div class="col-auto">
+                    <button id="inserirservico" class="btn btn-primary" role="button">Introduzir Serviço</button>
+                </div>
+            </div>
             <br>
         </div>
     </div>
@@ -60,25 +68,17 @@
                     <tr>
                         <td>
                         </td>
-                        <td> <input type="number" class="form-control" name="quantidade" value="<?php if (isset($linhaobra)) {
-                                                                                                    echo $linhaobra->quantidade;
-                                                                                                } ?>" placeholder="Qtd" required>
+                        <td>
                         </td>
-                        <td><input type="text" class="form-control" name="descricao" value="<?php if (isset($linhaobra)) {
-                                                                                                    echo $linhaobra->servico->descricao;
-                                                                                                } ?>" placeholder="Descrição do Serviço" required>
+                        <td>
                         </td>
-                        <td><input type="number" class="form-control" name="precohora" value="<?php if (isset($linhaobra)) {
-                                                                                                    echo $linhaobra->servico->precohora;
-                                                                                                } ?>" placeholder="precohora" required>
+                        <td>
                         </td>
-                        <td><input type="number" class="form-control" name="iva" value="<?php if (isset($linhaobra)) {
-                                                                                                    echo $linhaobra->servico->precohora;
-                                                                                                } ?>" placeholder="precohora" required>
+                        <td>
                         </td>
-                        <td><?= ?>
+                        <td>
                         </td>
-                        <td>aa
+                        <td>
                         </td>
                         <td>
                         </td>
