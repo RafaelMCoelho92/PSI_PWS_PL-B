@@ -14,7 +14,7 @@
         <div class="col-sm-4 invoice-col">
             From
             <address>
-                <strong><?= $empresas->designacaosocial ?></strong><br>
+                <strong><?= $folhaobra->funcionario->username ?></strong><br>
                 <?= $empresas->morada ?><br>
                 <?= $empresas->codigopostal; ?> <?= $empresas->localidade ?> <br>
                 Telefone: <?= $empresas->telefone ?><br>
@@ -36,7 +36,7 @@
         <div class="col-sm-4 invoice-col">
             <b>Invoice #007612</b><br>
             <br>
-            <b>Order ID:</b> 4F3S8J<br>
+            <b>Order ID:</b> <?= $folhaobra->id ?><br>
             <b>Payment Due:</b> 2/22/2014<br>
             <b>Account:</b> 968-34567
         </div>
@@ -49,10 +49,11 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>Ref.</th>
                         <th>Qtd</th>
                         <th>Serviço</th>
                         <th>IVA</th>
-                        <th>Description</th>
+                        <th>Preço/Hora</th>
                         <th>Subtotal</th>
                     </tr>
                 </thead>
