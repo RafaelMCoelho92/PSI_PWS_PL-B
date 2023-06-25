@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?= APP_NAME .  ' - Cliente' ?></title>
+  <title><?= APP_NAME . ' - Cliente' ?></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -53,7 +53,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?= $numfolhasobras = 0 ?></h3> <!-- igualei a 0 para nao dar erro -->
+                <h3><?= $numfolhasobras = 0 ?></h3>
                 <p>N.º de Folhas de obra</p>
               </div>
               <div class="icon">
@@ -91,12 +91,28 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="index.php?c=user&a=index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="index.php?c=folhaObra&a=show" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>65</h3>
 
+                <p>Realizar pagamentos em Falta </p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+
+      </div><!-- /.container-fluid -->
     </section>
 
 
