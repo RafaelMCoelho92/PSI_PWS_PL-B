@@ -37,12 +37,11 @@
             <b>Invoice #007612</b><br>
             <br>
             <b>Order ID:</b> <?= $folhaobra->id ?><br>
-            <b>Payment Due:</b> 2/22/2014<br>
-            <b>Account:</b> 968-34567
+            <b><a href="index.php?c=folhaObra&a=edit" class="btn btn-success">Adicionar linha de Obra</a>
+            </b><br>
+            <br>
         </div>
-
     </div>
-
     <div class="row">
         <div class="col-12 table-responsive">
             <table class="table table-striped">
@@ -51,39 +50,31 @@
                         <th>Ref.</th>
                         <th>Qtd</th>
                         <th>Serviço</th>
-                        <th>IVA</th>
                         <th>Preço/Hora</th>
-                        <th>Subtotal</th>
+                        <th>IVA</th>
+                        <th>Subtotal (s/ IVA)</th>
+                        <th>IVA Total</th>
+                        <th>Valor Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>Call of Duty</td>
-                        <td>455-981-221</td>
-                        <td>El snort testosterone trophy driving gloves handsome</td>
-                        <td>$64.50</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Need for Speed IV</td>
-                        <td>247-925-726</td>
-                        <td>Wes Anderson umami biodiesel</td>
-                        <td>$50.00</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Monsters DVD</td>
-                        <td>735-845-642</td>
-                        <td>Terry Richardson helvetica tousled street art master</td>
-                        <td>$10.70</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Grown Ups Blue Ray</td>
-                        <td>422-568-642</td>
-                        <td>Tousled lomo letterpress</td>
-                        <td>$25.99</td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -95,15 +86,10 @@
 
         <div class="col-6">
             <p class="lead">Payment Methods:</p>
-            <img src="../../dist/img/credit/visa.png" alt="Visa">
-            <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-            <img src="../../dist/img/credit/american-express.png" alt="American Express">
-            <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
-            <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
-                plugg
-                dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-            </p>
+            <img src="public/img/credit/visa.png" alt="Visa">
+            <img src="public/img/credit/mastercard.png" alt="Mastercard">
+            <img src="public/img/credit/american-express.png" alt="American Express">
+            <img src="public/img/credit/paypal2.png" alt="Paypal">
         </div>
 
         <div class="col-6">
@@ -113,19 +99,16 @@
                     <tbody>
                         <tr>
                             <th style="width:50%">Subtotal:</th>
-                            <td>$250.30</td>
+                            <td><?= $folhaobra->valortotal; ?></td>
                         </tr>
                         <tr>
-                            <th>Tax (9.3%)</th>
-                            <td>$10.34</td>
+                            <th>IVA Total</th>
+                            <td><?= $folhaobra->ivatotal; ?></td>
                         </tr>
-                        <tr>
-                            <th>Shipping:</th>
-                            <td>$5.80</td>
-                        </tr>
+
                         <tr>
                             <th>Total:</th>
-                            <td>$265.24</td>
+                            <td><?= $folhaobra->valortotal + $folhaobra->ivatotal; ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -141,9 +124,7 @@
             <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                 Payment
             </button>
-            <th>
-                <a href="index.php?c=folhaObra&a=edit" class="btn btn-success">Editar folha de Obra</a>
-            </th>
+
             <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                 <i class="fas fa-download"></i> Generate PDF
             </button>

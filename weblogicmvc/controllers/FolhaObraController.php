@@ -35,6 +35,10 @@ class FolhaObraController extends Controller
         $funcionario = new Auth();
         $idfuncionario = $funcionario->getId();
         $folhaobra->idfuncionario = $idfuncionario;
+        $folhaobra->data = date('d-m-Y H:i:s');
+        $folhaobra->valortotal = 0;
+        $folhaobra->ivatotal = 0;
+        $folhaobra->save();
         $this->renderView('folhaObra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas,  'services' => $services]); // iva ja esta associado ao serviço em principio n precisa de aparecer aqui 'ivas'=>$ivas, users vai estar associado a folhaobra , 'users'=>$users
     }
 
