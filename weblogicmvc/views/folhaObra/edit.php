@@ -15,10 +15,10 @@
             From
             <address>
                 <strong><?= $folhaobra->funcionario->username ?></strong><br>
-                <?= $empresas->morada ?><br>
-                <?= $empresas->codigopostal; ?> <?= $empresas->localidade ?> <br>
-                Telefone: <?= $empresas->telefone ?><br>
-                Email: <?= $empresas->email ?>
+                <?= $empresa->morada ?><br>
+                <?= $empresa->codigopostal; ?> <?= $empresa->localidade ?> <br>
+                Telefone: <?= $empresa->telefone ?><br>
+                Email: <?= $empresa->email ?>
             </address>
         </div>
 
@@ -37,16 +37,20 @@
             <br>
             <b>Order ID:</b> <?= $folhaobra->id ?><br>
             </b>
-            <b><a href="index.php?c=service&a=select&id=<?= $folhaobra->id ?>" class="btn btn-success">Selecionar Serviço</a>
                 <br><br>
                 <div class="row">
-                    <form method="POST" action="index.php?c=folhaobra&a=edit&id=<?= $folhaobra->id ?>">
-                    <div class="col">
-                        <input type="text" id="idservico" placeholder="Insira o ID do Serviço" class="form-control" required>
-                    </div>
-                    <div class="col-auto">
-                        <button id="idservico" class="btn btn-primary" role="button">Introduzir Serviço</button>
-                    </div>
+                <form method="post" action="index.php?c=linhaobra&a=store&id=<?=$folhaobra->id?>">
+                        <div class="col">
+                        <label for="servico">Serviço:</label><br>
+                            <select class="form-control" name="servico">
+                                <?php
+                                foreach ($services as $service) { ?>
+                                        <option value="<?= $service->id ?>" selected><?= $service->descricao;?> </option>
+                                    </option>
+                                <?php } ?>
+                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>                        
+                            <button class="btn btn-primary" role="button">Introduzir Serviço</button>
+                        </div>
                     </form>
                 </div>
                 <br>

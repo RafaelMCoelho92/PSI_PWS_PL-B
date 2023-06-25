@@ -41,12 +41,13 @@ class FolhaObraController extends Controller
         $folhaobra->save();
         $this->renderView('folhaObra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'services'=>$services]);
     }
-    public function edit()
+    public function edit($id)
     {
         //$linhaobra = new Linhaobra();
         //$linhaobra->idservico = $this->getHTTPGetParam('idservico');
         //$linhaobra->idfolhaobra = $id;
         //mostra a vista com form de edicao de um registo identificado pelo seu ID
+        $services = Service::all();
         $empresa = Empresa::first();
         $folhaobra = Folhaobra::find($id);
         $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
@@ -54,7 +55,7 @@ class FolhaObraController extends Controller
             //TODO redirect to standard error page
         } else {
             //mostrar a vista edit passando os dados por parâmetro
-            $this->renderView('folhaObra', 'edit', ['folhaObra' => $folhaobra, 'empresa' => $empresa,'linhaobras' => $linhaobras]);
+            $this->renderView('folhaObra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa,'linhaobras' => $linhaobras,'services'=>$services]);
         }
     }
     

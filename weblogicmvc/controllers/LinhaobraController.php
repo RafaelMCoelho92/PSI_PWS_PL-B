@@ -16,7 +16,7 @@ class LinhaobraController extends Controller
         if($linhaobra->is_valid()){  
         $linhaobra->save();
             //redirect para o edit da folha de obra e passa o modelo como parametro
-            $this->redirectToRoute('folhaobra', 'edit', $param = $id);
+            $this->redirectToRoute('folhaobra', 'edit', ['id' => $id]);
         } else{
             //mostra a vista do edit e passa o modelo como parametro
         }
