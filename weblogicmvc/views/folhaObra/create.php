@@ -38,15 +38,16 @@
             <b>Order ID:</b> <?= $folhaobra->id ?><br>
             </b>
             <b><a href="index.php?c=service&a=select&id=<?= $folhaobra->id ?>" class="btn btn-success">Selecionar Serviço</a>
-            <br><br><div class="row">
-                <div class="col">
-                    <input type="text" id="inserirservico" placeholder="Insira o ID do Serviço" class="form-control">
+                <br><br>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" id="inserirservico" placeholder="Insira o ID do Serviço" class="form-control">
+                    </div>
+                    <div class="col-auto">
+                        <button id="inserirservico" class="btn btn-primary" role="button">Introduzir Serviço</button>
+                    </div>
                 </div>
-                <div class="col-auto">
-                    <button id="inserirservico" class="btn btn-primary" role="button">Introduzir Serviço</button>
-                </div>
-            </div>
-            <br>
+                <br>
         </div>
     </div>
     <div class="row">
@@ -65,25 +66,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                </tbody>
+    <?php foreach ($linhaobras as $linha) { ?>
+        <tr>
+            <td><?php echo $linha->id; ?></td> <!-- Ref -->
+            <td><?php echo $linha->quantidade; ?></td><!-- Qtd -->
+            <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
+            <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
+            <td><?php echo $linha->servico->iva->percentagem . " €" ?><!-- IVA -->
+            <td><?= ($linha->servico->precohora * $linha->quantidade) . " €"?><!-- Subtotal s/ iva -->
+            <td><?php echo ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100  . " €"?></td><!-- IVA TOTAL -->
+            <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
+            ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100 . 
+            "€" ?></td><!-- VALOR TOTAL-->            
+        </tr>
+    <?php } ?>
+</tbody>
+
+
             </table>
         </div>
 

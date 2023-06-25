@@ -39,7 +39,8 @@ class FolhaObraController extends Controller
         $folhaobra->valortotal = 0;
         $folhaobra->ivatotal = 0;
         $folhaobra->save();
-        $this->renderView('folhaObra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas,  'services' => $services]); // iva ja esta associado ao serviço em principio n precisa de aparecer aqui 'ivas'=>$ivas, users vai estar associado a folhaobra , 'users'=>$users
+        $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
+        $this->renderView('folhaObra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'services' => $services, 'linhaobras' => $linhaobras]);
     }
 
     public function store()
