@@ -78,6 +78,30 @@
                             <td><input type="text" class="form-control" name="Descricao[]" value="Descrição"></td>
                             <td><input type="text" class="form-control" name="Subtotal[]" value="Valor"></td>
                         </tr>
+
+
+                        <!-- NÃO SERÁ DESTA FORMA PARA SELECIONAR O QUE ESTÁ NA BD? -->
+
+                        <!-- <tr>
+                            <td><input type="text" class="form-control" name="Quantidade[]" value="Quantidade"></td>
+                            <td>
+                                <select class="form-control" name="Servico[]"> 
+                                    <?php  /*foreach ($services as $service) : ?>
+                                        <option value="<?= $service->id ?>"><?= $service->name ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control" name="Iva[]">
+                                    <?php foreach ($ivas as $iva) : ?>
+                                        <option value="<?= $iva->id ?>"><?= $iva->value ?></option>
+                                    <?php endforeach; */ ?>
+                                </select>
+                            </td>
+                            <td><input type="text" class="form-control" name="Descricao[]" value="Descrição"></td>
+                            <td><input type="text" class="form-control" name="Subtotal[]" value="Valor"></td>
+                        </tr>
+                        -->
                         </tr>
                     </tbody>
                 </table>
