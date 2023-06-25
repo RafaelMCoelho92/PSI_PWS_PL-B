@@ -31,9 +31,10 @@
                     </td>
 
 
-                    <td> <input class="form-control" type="text" name="descricao" value="<?php if (isset($service)) {
-                                                                                                echo $service->descricao;
-                                                                                            } ?>" placeholder="Descição">
+                    <td> <input class="form-control" type="text" name="descricao" value="<?php if (isset($iva)) {
+                                                                                                echo $iva->descricao;
+                                                                                            } ?>" required>
+                        <p>
 
                     </td>
 
