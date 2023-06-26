@@ -14,7 +14,7 @@ class LinhaobraController extends Controller
         //Esse método verifica se o usuário está autenticado como "Funcionario" ou "Admin". 
         //Caso contrário, o usuário é redirecionado para uma rota de acesso inválido.
     }
-    public function store($id)
+    public function store($id)// recebe o id de que?
     {
         $linhaobra = new Linhaobra();
         $linhaobra->idservico = ($this->getHTTPPostParam('servico'));
