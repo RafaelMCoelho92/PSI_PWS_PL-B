@@ -14,7 +14,7 @@ class LinhaobraController extends Controller
         //Esse método verifica se o usuário está autenticado como "Funcionario" ou "Admin". 
         //Caso contrário, o usuário é redirecionado para uma rota de acesso inválido.
     }
-    public function store($id) // recebe o id de que?
+    public function store($id) // recebe o id da folha de obra
     {
         $linhaobra = new Linhaobra();
         $linhaobra->idservico = ($this->getHTTPPostParam('servico'));
@@ -24,7 +24,7 @@ class LinhaobraController extends Controller
         $linhaobra->idfolhaobra = $id;
         if ($linhaobra->is_valid()) {
             $linhaobra->save();
-            //redirect para o edit da folha de obra e passa o modelo como parametro
+            //redirect para o update da folha de obra e passa o id como parametro
             $this->redirectToRoute('folhaobra', 'update', ['id' => $id]);
         } else {
             //mostra a vista do edit e passa o modelo como parametro
