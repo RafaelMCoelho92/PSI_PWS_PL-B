@@ -38,6 +38,7 @@ return [
     ],
     'cliente' => [
         'empresa' => ['GET', 'ClienteController', 'empresa'],
+        'folhaobraindex' => ['GET', 'ClienteController', 'folhaobraindex'],
     ],
 
     'layout' => [
