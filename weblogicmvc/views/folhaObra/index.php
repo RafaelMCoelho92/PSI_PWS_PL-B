@@ -29,7 +29,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($folhasObra as $folhaObra) { ?>
+                    <?php
+                    foreach ($folhasObra as $folhaObra) { ?>
                         <tr>
                             <td><?= $folhaObra->id ?></td>
                             <td><?= $folhaObra->descricao ?></td>

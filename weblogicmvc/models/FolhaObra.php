@@ -3,7 +3,8 @@
 class Folhaobra extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
-        //array('data'),
+        array('descricao'),
+        array('data'),
         //array('valortotal'),
         //array('ivatotal'),
         //array('estado'),
@@ -19,5 +20,9 @@ class Folhaobra extends \ActiveRecord\Model
     static $belongs_to = array(
         array('user', 'class_name' => 'User', 'foreign_key' => 'idcliente'),
         array('funcionario', 'class_name' => 'User', 'foreign_key' => 'idfuncionario')
+    );
+
+    static $has_many = array(
+        array('linhaobra')
     );
 }

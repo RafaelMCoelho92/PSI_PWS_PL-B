@@ -1,9 +1,11 @@
 <?php
-require_once 'models/Folhaobra.php';
+require_once 'models/FolhaObra.php';
 require_once 'models/Service.php';
 require_once 'models/Iva.php';
 require_once 'models/Empresa.php';
 require_once 'Controller.php';
+require_once 'models/User.php';
+require_once 'models/Linhaobra.php';
 
 class FolhaObraController extends Controller
 {
@@ -16,7 +18,7 @@ class FolhaObraController extends Controller
     public function show($id)
     {
         $folhaObra = Folhaobra::find($id);
-        if (is_null($$folhaObra)) {
+        if (is_null($folhaObra)) {
             //TODO redirect to standard error page
         } else {
             //mostrar a vista show passando os dados por parâmetro
@@ -51,7 +53,7 @@ class FolhaObraController extends Controller
             //TODO redirect to standard error page
         } else {
             //mostrar a vista edit passando os dados por parâmetro
-            $this->renderView('folhaobra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa,'linhaobras' => $linhaobras,'services'=>$services]);
+            $this->renderView('folhaobra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa, 'linhaobras' => $linhaobras, 'services' => $services]);
         }
     }
 
@@ -85,7 +87,7 @@ class FolhaObraController extends Controller
         foreach ($linhaobras as $linhaobra) {
             $linhaobra->valor = $linhaobra->quantidade * $linhaobra->servico->precohora;
             $linhaobra->valoriva = ($linhaobra->servico->precohora * $linhaobra->servico->iva->percentagem) / 100;
-           // $linhaobra->save();
+            // $linhaobra->save();
             $valortotal += $linhaobra->valor;
             $ivatotal += $linhaobra->valoriva * $linhaobra->quantidade;
         }
@@ -94,7 +96,7 @@ class FolhaObraController extends Controller
         if ($folhaobra->is_valid()) {
             $folhaobra->save();
             //redirecionar para o index
-            $this->redirectToRoute('folhaobra', 'edit',['id' => $id]);
+            $this->redirectToRoute('folhaobra', 'edit', ['id' => $id]);
         } else {
             //mostrar vista edit passando o modelo como parâmetro
             $this->renderView('folhaobra', 'edit', ['folhaobra' => $folhaobra]);
