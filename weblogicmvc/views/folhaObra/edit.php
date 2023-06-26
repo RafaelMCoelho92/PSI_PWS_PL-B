@@ -37,23 +37,23 @@
             <br>
             <b>Order ID:</b> <?= $folhaobra->id ?><br>
             </b>
-                <br><br>
-                <div class="row">
-                <form method="post" action="index.php?c=linhaobra&a=store&id=<?=$folhaobra->id?>">
-                        <div class="col">
+            <br><br>
+            <div class="row">
+                <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
+                    <div class="col">
                         <label for="servico">Serviço:</label><br>
-                            <select class="form-control" name="servico">
-                                <?php
-                                foreach ($services as $service) { ?>
-                                        <option value="<?= $service->id ?>" selected><?= $service->descricao;?> </option>
-                                    </option>
-                                <?php } ?>
-                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>                        
+                        <select class="form-control" name="servico">
+                            <?php
+                            foreach ($services as $service) { ?>
+                                <option value="<?= $service->id ?>" selected><?= $service->descricao; ?> </option>
+                                </option>
+                            <?php } ?>
+                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
                             <button class="btn btn-primary" role="button">Introduzir Serviço</button>
-                        </div>
-                    </form>
-                </div>
-                <br>
+                    </div>
+                </form>
+            </div>
+            <br>
         </div>
     </div>
     <div class="row">
@@ -72,29 +72,26 @@
                     </tr>
                 </thead>
                 <tbody>
-    <?php foreach ($linhaobras as $linha) { ?>
+                    <?php foreach ($linhaobras as $linha) { ?>
 
-        <tr>
-            <td><?php echo $linha->id; ?></td> <!-- Ref -->
-            <td><?php echo $linha->quantidade; ?></td><!-- Qtd -->
-            <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
-            <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
-            <td><?php echo $linha->servico->iva->percentagem . " %" ?></td><!-- IVA -->
-            <td><?= ($linha->servico->precohora * $linha->quantidade) . " €"?></td><!-- Subtotal s/ iva -->
-            <td><?php echo ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100  . " €"?></td><!-- IVA TOTAL -->
-            <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
-            ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100 . 
-            "€" ?></td><!-- VALOR TOTAL-->            
-        </tr>
-    <?php } ?>
-</tbody>
-
-
+                        <tr>
+                            <td><?php echo $linha->id; ?></td> <!-- Ref -->
+                            <td><?php echo $linha->quantidade; ?></td><!-- Qtd -->
+                            <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
+                            <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
+                            <td><?php echo $linha->servico->iva->percentagem . " %" ?></td><!-- IVA -->
+                            <td><?= ($linha->servico->precohora * $linha->quantidade) . " €" ?></td><!-- Subtotal s/ iva -->
+                            <td><?php echo ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100  . " €" ?></td><!-- IVA TOTAL -->
+                            <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
+                                    ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100 .
+                                    "€" ?></td><!-- VALOR TOTAL-->
+                            <td><a href="index.php?c=linhaobra&a=delete&id=<?= $linha->id ?>" class="btn btn-info" role="button">Remover Linha</a></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
             </table>
         </div>
-
     </div>
-
     <div class="row">
 
         <div class="col-6">

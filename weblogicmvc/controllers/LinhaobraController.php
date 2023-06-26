@@ -23,6 +23,14 @@ class LinhaobraController extends Controller
             //mostra a vista do edit e passa o modelo como parametro
         }
     }
+    public function delete($id){
+
+                //apaga um registo da BD identificado pelo ID
+                $linhaobra = Linhaobra::find($id);
+                $linhaobra->delete();
+                //redirecionar 
+                $this->redirectToRoute('folhaobra', 'update',['id' => $linhaobra->idfolhaobra]);
+    }
 
 
 // redirect para o edit

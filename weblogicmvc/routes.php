@@ -57,6 +57,7 @@ return [
     ],
     'linhaobra' => [
         'store' => ['POST', 'LinhaobraController', 'store'],
+        'delete' => ['GET', 'LinhaobraController', 'delete'],
     ],
 
     'user' => [
