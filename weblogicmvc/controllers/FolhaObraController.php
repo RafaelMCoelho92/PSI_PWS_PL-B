@@ -20,13 +20,8 @@ class FolhaobraController extends Controller
     {
         $empresa = Empresa::first();
         $services = Service::all();
-        //$funcionario = new Auth();
-        //$user = User::find($id);
         $folhaObra = Folhaobra::find($id);
         $linhaObras = Linhaobra::find('all', array('conditions' => array('idfolhaObra = ?', $folhaObra->id)));
-        //$idfuncionario = $funcionario->getId();
-        //$folhaObra->idfuncionario = $idfuncionario;
-        //$folhaObra->idcliente = $user->id;
         if (is_null($folhaObra)) {
             //TODO redirect to standard error page
         } else {
@@ -108,7 +103,7 @@ class FolhaobraController extends Controller
         $folhaobra->ivatotal = $ivatotal;
         $folhaobra->valortotal = $subtotal + $ivatotal;
 
-        
+
         if ($folhaobra->is_valid()) {
             $folhaobra->save();
             //redirecionar para o index
