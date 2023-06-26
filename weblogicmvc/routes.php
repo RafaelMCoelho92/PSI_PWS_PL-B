@@ -48,7 +48,8 @@ return [
         'index' => ['GET', 'FolhaObraController', 'index'],
         'create' => ['GET', 'FolhaObraController', 'create'],
         'show' => ['GET', 'FolhaObraController', 'show'],
-        'edit' => ['GET|POST', 'FolhaObraController', 'edit'],
+        'edit' => ['GET', 'FolhaObraController', 'edit'],
+        'update' => ['GET', 'FolhaObraController', 'update'],
 
 
     ],

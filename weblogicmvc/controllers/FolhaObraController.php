@@ -43,10 +43,6 @@ class FolhaObraController extends Controller
     }
     public function edit($id)
     {
-        //$linhaobra = new Linhaobra();
-        //$linhaobra->idservico = $this->getHTTPGetParam('idservico');
-        //$linhaobra->idfolhaobra = $id;
-        //mostra a vista com form de edicao de um registo identificado pelo seu ID
         $services = Service::all();
         $empresa = Empresa::first();
         $folhaobra = Folhaobra::find($id);
@@ -55,7 +51,7 @@ class FolhaObraController extends Controller
             //TODO redirect to standard error page
         } else {
             //mostrar a vista edit passando os dados por parâmetro
-            $this->renderView('folhaObra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa,'linhaobras' => $linhaobras,'services'=>$services]);
+            $this->renderView('folhaobra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa,'linhaobras' => $linhaobras,'services'=>$services]);
         }
     }
     
@@ -67,33 +63,41 @@ class FolhaObraController extends Controller
         $ivas = Iva::all();
         $services = Service::all();
         $users = User::all();
-        $folhaObra = new Folhaobra($this->getHTTPPost());
-        if ($folhaObra->is_valid()) {
-            $folhaObra->save();
+        $folhaobra = new Folhaobra($this->getHTTPPost());
+        if ($folhaobra->is_valid()) {
+            $folhaobra->save();
             //redirecionar para o index das folhas de obra
-            $this->redirectToRoute('folhaObra', 'index');
+            $this->redirectToRoute('folhaobra', 'index');
         } else {
             //mostrar vista create passando o modelo como parâmetro
-            $this->renderView('folhaObra', 'create', ['folhaObra' => $folhaObra, 'empresas' => $empresas, 'ivas' => $ivas, 'services' => $services, 'users' => $users]);
+            $this->renderView('folhaobra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'ivas' => $ivas, 'services' => $services, 'users' => $users]);
         }
     }
 
     public function update($id)
     {
         // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
-        $folhaObra = Folhaobra::find($id);
-        $empresas = Empresa::all();
-        $ivas = Iva::all();
-        $services = Service::all();
-        $users = User::all();
-        $folhaObra->update_attributes($this->getHTTPPost());
-        if ($folhaObra->is_valid()) {
-            $folhaObra->save();
+        $folhaobra = Folhaobra::find($id);
+        $valortotal = 0;
+        $ivatotal = 0;
+        $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
+
+        foreach ($linhaobras as $linhaobra) {
+            $linhaobra->valor = $linhaobra->quantidade * $linhaobra->servico->precohora;
+            $linhaobra->valoriva = ($linhaobra->servico->precohora * $linhaobra->servico->iva->percentagem) / 100;
+           // $linhaobra->save();
+            $valortotal += $linhaobra->valor;
+            $ivatotal += $linhaobra->valoriva * $linhaobra->quantidade;
+        }
+        $folhaobra->valortotal = $valortotal;
+        $folhaobra->ivatotal = $ivatotal;
+        if ($folhaobra->is_valid()) {
+            $folhaobra->save();
             //redirecionar para o index
-            $this->redirectToRoute('folhaObra', 'index');
+            $this->redirectToRoute('folhaobra', 'edit',['id' => $id]);
         } else {
             //mostrar vista edit passando o modelo como parâmetro
-            $this->renderView('folhaObra', 'edit', ['folhaObra' => $folhaObra, 'empresas' => $empresas, 'ivas' => $ivas, 'services' => $services, 'users' => $users]);
+            $this->renderView('folhaobra', 'edit', ['folhaobra' => $folhaobra]);
         }
     }
 

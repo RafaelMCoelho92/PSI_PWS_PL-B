@@ -12,11 +12,13 @@ class LinhaobraController extends Controller
         $linhaobra = new Linhaobra();
         $linhaobra->idservico = ($this->getHTTPPostParam('servico'));
         $linhaobra->quantidade = ($this->getHTTPPostParam('quantidade'));
+        $linhaobra->valor = $linhaobra->quantidade * $linhaobra->servico->precohora;
+        $linhaobra->valoriva = ($linhaobra->servico->precohora * $linhaobra->servico->iva->percentagem)/100;
         $linhaobra->idfolhaobra = $id;
         if($linhaobra->is_valid()){  
         $linhaobra->save();
             //redirect para o edit da folha de obra e passa o modelo como parametro
-            $this->redirectToRoute('folhaobra', 'edit', ['id' => $id]);
+            $this->redirectToRoute('folhaobra', 'update', ['id' => $id]);
         } else{
             //mostra a vista do edit e passa o modelo como parametro
         }
