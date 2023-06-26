@@ -13,9 +13,6 @@ class User extends \ActiveRecord\Model
         array('role'),
     );
     static $validates_size_of = array(
-        array('username', 'maximum' => 10, 'message' => 'Máximo 10 caracteres.'),
-        array('password', 'maximum' => 10, 'message' => 'Máximo 10 caracteres.'),
-
         array('telefone', 'is' => 9, 'message' => 'O telefone tem de possuir 9 dígitos.'),
         array('nif', 'is' => 9, 'message' => 'O NIF tem de possuir 9 dígitos.'),
         array('codigopostal', 'is' => 7, 'message' => 'O codigo Postal deve possuir 7 dígitos'),

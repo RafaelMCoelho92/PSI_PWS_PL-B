@@ -33,7 +33,7 @@ class FolhaobraController extends Controller
         } elseif ($role == "Cliente") {
             $id = $auth->getId();
             $folhasObra = Folhaobra::find('all', ['conditions' => ['estado != ? and idcliente = ?', 'Anulada', $id]]);
-            $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra]);
+            $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra], 'frontoffice');
         } else {
             header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
@@ -44,19 +44,26 @@ class FolhaobraController extends Controller
 
     public function show($id)
     {
+        $auth = new Auth();
+        $role = $auth->getRole();
         $empresa = Empresa::first();
         $folhaObra = Folhaobra::find($id);
         $linhaObras = Linhaobra::find('all', array('conditions' => array('idfolhaObra = ?', $folhaObra->id)));
         if (is_null($folhaObra)) {
             //TODO redirect to standard error page
         } else {
-            //mostrar a vista show passando os dados por parâmetro
-            $this->renderView('folhaObra', 'show', ['folhaObra' => $folhaObra, 'empresa' => $empresa, 'linhaObras' => $linhaObras]);
+            if ($role == 'Cliente') {
+                $this->renderView('folhaObra', 'show', ['folhaObra' => $folhaObra, 'empresa' => $empresa, 'linhaObras' => $linhaObras], 'frontoffice');
+                //mostrar a vista show passando os dados por parâmetro
+            } else {
+                $this->renderView('folhaObra', 'show', ['folhaObra' => $folhaObra, 'empresa' => $empresa, 'linhaObras' => $linhaObras]);
+            }
         }
     }
 
     public function create($id)
     {
+
         //mostra vista com form de criacao de registo
         $empresas = Empresa::first();
         $services = Service::all();
@@ -75,6 +82,9 @@ class FolhaobraController extends Controller
     }
     public function edit($id)
     {
+        $auth = new Auth();
+        $role = $auth->getRole();
+
         $services = Service::all();
         $empresa = Empresa::first();
         $folhaobra = Folhaobra::find($id);
