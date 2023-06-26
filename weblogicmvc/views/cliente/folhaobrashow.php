@@ -116,7 +116,9 @@
 
     <div class="row no-print">
         <div class="col-12">
-            <a href="#" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+            <a href="#" rel="noopener" target="_blank" class="btn btn-default" onclick="window.print(); return false;">
+                <i class="fas fa-print"></i> Print
+            </a>
             <a href="index.php?c=cliente&a=pagar&id=<?= $folhaObra->id ?>" type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                 Payment
             </a>
