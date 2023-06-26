@@ -73,13 +73,16 @@
                 </thead>
                 <tbody>
     <?php foreach ($linhaobras as $linha) { ?>
+        <?php $folhaobra->valortotal += ($linha->servico->precohora * $linha->quantidade)?>
+        <?php $folhaobra->ivatotal += ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100 ?>
+
         <tr>
             <td><?php echo $linha->id; ?></td> <!-- Ref -->
             <td><?php echo $linha->quantidade; ?></td><!-- Qtd -->
             <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
             <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
-            <td><?php echo $linha->servico->iva->percentagem . " €" ?><!-- IVA -->
-            <td><?= ($linha->servico->precohora * $linha->quantidade) . " €"?><!-- Subtotal s/ iva -->
+            <td><?php echo $linha->servico->iva->percentagem . " €" ?></td><!-- IVA -->
+            <td><?= ($linha->servico->precohora * $linha->quantidade) . " €"?></td><!-- Subtotal s/ iva -->
             <td><?php echo ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100  . " €"?></td><!-- IVA TOTAL -->
             <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
             ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade))/100 . 
