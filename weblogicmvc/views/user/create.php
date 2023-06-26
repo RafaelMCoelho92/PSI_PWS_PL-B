@@ -117,7 +117,7 @@
                 <?php if ($auth == "Admin") {
                   $roles = array('Cliente', 'Funcionario', 'Admin');
                 } elseif ($auth == "Funcionario") {
-                  $roles = array('Cliente', 'Funcionario');
+                  $roles = array('Cliente');
                 } ?>
 
                 <?php foreach ($roles as $role) { ?>

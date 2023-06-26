@@ -18,6 +18,9 @@ class FolhaobraController extends Controller
     }
     public function index()
     {   // vai buscar todas as folhas de obras que nao tem no estado anulada
+        // ver o role  getRole()
+        //se for admin mostra todas menos as anulas (é o que ja esta embaixo)
+        // se for funcionario mostra apenas as emitidas por ele idfuncionario == getid(tem q se trocar a condicao)
         $folhasObra = Folhaobra::find('all', ['conditions' => ['estado != ?', 'Anulada']]);
         $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra]);
     }

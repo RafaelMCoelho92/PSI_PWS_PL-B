@@ -13,11 +13,15 @@ class UserController extends Controller
     }
     public function index()
     {
-        
-        $users = User::all(); // devolve sempre um array mesmo q seja só um 
-        //$books = Book::find('all');  VERSAO 8.2
-        //mostrar a vista index passando os dados por parâmetro
+        if($_SESSION['role'] == "Admin"){ // trocar session pelo getid
+        $users = User::all(); 
         $this->renderView('user', 'index', ['users' => $users]);
+        }elseif($_SESSION['role']== "Funcionario"){ // trocar session pelo getid
+        $users = User::find('all', ['conditions' => ['role = ?', 'Cliente']]);
+        $this->renderView('user', 'index', ['users' => $users]);
+        }else {
+            header('Location: index.php?' . INVALID_ACCESS_ROUTE);
+        }
 
     }
     public function show($id)
