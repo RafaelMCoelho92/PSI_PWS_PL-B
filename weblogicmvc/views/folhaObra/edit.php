@@ -42,30 +42,22 @@
                 <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
                     <div class="col">
                         <label for="servico">Serviço:</label><br>
-                        <!--<select class="form-control" name="servico">
-                            <? //php
-                            //foreach ($services as $service) { 
+                        <select class="form-control" name="servico">
+                            <?php
+                            foreach ($services as $service) { 
                             ?>
-                                <option value="<? //= $service->id 
-                                                ?>" selected><? //= $service->descricao; 
+                                <option value="<?= $service->id 
+                                                ?>" selected><?= $service->descricao; 
                                                                 ?> </option>
                                 </option>
-                            <? //php } 
+                            <?php } 
                             ?>
                             <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
                             <button class="btn btn-primary" role="button">Introduzir Serviço</button>
-                        </select>-->
-
-                        <input id="referencia" placeholder="Insira a referencia do serviço" class="form-control" type="text" value="<?php if (isset($service)) {
-                                                                                                                                        echo $service->referencia;
-                                                                                                                                    } ?>" name="referencia" id="referencia" required>
-
+                        </select>
                         <?php if (isset($referencia->errors)) {
                             echo $referencia->errors->on('referencia');
                         } ?>
-
-                        <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
-                        <button class="btn btn-primary" role="button">Introduzir Serviço</button>
                     </div>
                 </form>
                 <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
