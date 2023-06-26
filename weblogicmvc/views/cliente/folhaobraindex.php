@@ -38,7 +38,7 @@
                             <td><?= $folhaObra->user->username ?></td>
                             <td>
                                 <a href="index.php?c=cliente&a=folhaobrashow&id=<?= $folhaObra->id ?>" class="btn btn-primary" role="button">Ver mais</a>
-                                <a href="index.php?c=folhaobra&a=paga&id=<?= $folhaObra->id ?>" class="btn btn-success" role="button">Pagar</a>
+                                <a href="index.php?c=cliente&a=pagar&id=<?= $folhaObra->id ?>" class="btn btn-success" role="button">Pagar</a>
                             </td>
                         </tr>
                     <?php } ?>

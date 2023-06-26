@@ -22,4 +22,14 @@ class ClienteController extends Controller
         $linhaObras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $id)));
         $this->renderView('cliente', 'folhaobrashow', ['folhaObra' => $folhaobra, 'empresa' => $empresa, 'linhaObras' => $linhaObras], 'frontoffice');
     }
+
+    public function pagar($id)
+    {
+        $folhaobra = Folhaobra::find($id);
+        if ($folhaobra->estado == 'Emitida') {
+            $folhaobra->estado = 'Paga';
+            $folhaobra->save();
+        }
+        $this->redirectToRoute('cliente', 'folhaobraindex', ['id' => $folhaobra->idcliente]);
+    }
 }
