@@ -147,58 +147,31 @@
 
 
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="index.php?c=user&a=edit&id=<?= $auth->getId() ?>" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
-                  Folhas de Obra
-                  <i class="fas fa-angle-left right"></i>
-
+                  Todas as Folhas de Obra
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="index.php?c=&a=" class="nav-link">
-                    <i class="nav-icon far fa-circle text-info"></i>
-                    <p>Ver todos</p>
-                  </a>
-                </li>
-              </ul>
             </li>
 
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="index.php?c=user&a=edit&id=<?= $auth->getId() ?>" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
                   Folhas de Obra Pagas
-                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="index.php?c=&a=" class="nav-link">
-                    <i class="nav-icon far fa-circle text-info"></i>
-                    <p>Ver todos</p>
-                  </a>
-                </li>
-              </ul>
             </li>
 
+
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="index.php?c=user&a=edit&id=<?= $auth->getId() ?>" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
                   Folhas de Obra em Pagamento
-                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="index.php?c=&a=" class="nav-link">
-                    <i class="nav-icon far fa-circle text-info"></i>
-                    <p>Visualizar</p>
-                  </a>
-                </li>
-              </ul>
             </li>
 
             <li class="nav-item">
