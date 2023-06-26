@@ -11,7 +11,7 @@ class ClienteController extends Controller
 
     public function folhaobraindex($id)
     {
-        $folhaobra = Folhaobra::find('all', array('conditions' => array('idcliente = ?', $id)));
+        $folhaobra = Folhaobra::find('all', array('conditions' => array('idcliente = ? and estado != ? and estado != ?', $id, 'Anulada', 'Em Lançamento')));
         $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobra,], 'frontoffice');
     }
 
