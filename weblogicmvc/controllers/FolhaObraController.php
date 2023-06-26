@@ -10,7 +10,7 @@ class FolhaObraController extends Controller
     public function index()
     {
         $folhasObra = Folhaobra::all();
-        $this->renderView('folhaObra', 'index', ['folhasObra' => $folhasObra]);
+        $this->renderView('folhaObra', 'index', ['folhaObra' => $folhasObra]);
     }
 
     public function show($id)
@@ -39,7 +39,7 @@ class FolhaObraController extends Controller
         $folhaobra->valortotal = 0;
         $folhaobra->ivatotal = 0;
         $folhaobra->save();
-        $this->renderView('folhaObra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'services'=>$services]);
+        $this->renderView('folhaObra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'services' => $services]);
     }
     public function edit($id)
     {
@@ -55,10 +55,10 @@ class FolhaObraController extends Controller
             //TODO redirect to standard error page
         } else {
             //mostrar a vista edit passando os dados por parâmetro
-            $this->renderView('folhaObra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa,'linhaobras' => $linhaobras,'services'=>$services]);
+            $this->renderView('folhaObra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa, 'linhaobras' => $linhaobras, 'services' => $services]);
         }
     }
-    
+
 
     public function store()
     {
