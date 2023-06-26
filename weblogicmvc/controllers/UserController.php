@@ -1,5 +1,6 @@
 <?php
 require_once 'models/User.php';
+require_once 'models/Auth.php';
 require_once 'Controller.php';
 
 class UserController extends Controller
@@ -13,16 +14,18 @@ class UserController extends Controller
     }
     public function index()
     {
-        if($_SESSION['role'] == "Admin"){ // trocar session pelo getid
-        $users = User::all(); 
-        $this->renderView('user', 'index', ['users' => $users]);
-        }elseif($_SESSION['role']== "Funcionario"){ // trocar session pelo getid
-        $users = User::find('all', ['conditions' => ['role = ?', 'Cliente']]);
-        $this->renderView('user', 'index', ['users' => $users]);
-        }else {
+        $auth = new Auth();
+        $role = $auth->getRole();
+
+        if ($role == "Admin") {
+            $users = User::all();
+            $this->renderView('user', 'index', ['users' => $users]);
+        } elseif ($role == "Funcionario") {
+            $users = User::find('all', ['conditions' => ['role = ?', 'Cliente']]);
+            $this->renderView('user', 'index', ['users' => $users]);
+        } else {
             header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
-
     }
     public function show($id)
     {
@@ -33,13 +36,12 @@ class UserController extends Controller
         } else {
             //mostrar a vista show passando os dados por parâmetro
             $this->renderView('user', 'show', ['user' => $user]);
-
         }
     }
     public function create()
     {
         //mostra vista com form de criacao de registo
-        $this->renderView('user', 'create');//['roles' => $roles]
+        $this->renderView('user', 'create'); //['roles' => $roles]
 
     }
     public function store()
@@ -53,7 +55,7 @@ class UserController extends Controller
             //redirecionar para o index
         } else {
             //mostrar vista create passando o modelo como parâmetro
-            $this->renderView('user', 'create',['user'=> $user]);
+            $this->renderView('user', 'create', ['user' => $user]);
         }
     }
     public function edit($id)
@@ -63,7 +65,7 @@ class UserController extends Controller
         if (is_null($user)) {
             //TODO redirect to standard error page
         } else {
-            $this->renderView('user','edit',['user'=>$user]);
+            $this->renderView('user', 'edit', ['user' => $user]);
             //mostrar a vista edit passando os dados por parâmetro
         }
     }
@@ -78,7 +80,7 @@ class UserController extends Controller
             $this->redirectToRoute('user', 'index');
         } else {
             //mostrar vista edit passando o modelo como parâmetro
-            $this->renderView('user','edit',['user'=>$user]);
+            $this->renderView('user', 'edit', ['user' => $user]);
         }
     }
     public function delete($id)
