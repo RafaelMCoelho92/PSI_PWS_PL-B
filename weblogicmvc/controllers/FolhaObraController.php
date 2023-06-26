@@ -1,5 +1,5 @@
 <?php
-require_once 'models/FolhaObra.php';
+require_once 'models/Folhaobra.php';
 require_once 'models/Service.php';
 require_once 'models/Iva.php';
 require_once 'models/Empresa.php';
@@ -7,13 +7,14 @@ require_once 'Controller.php';
 require_once 'models/User.php';
 require_once 'models/Linhaobra.php';
 
-class FolhaObraController extends Controller
+class FolhaobraController extends Controller
 {
     public function index()
-    {
-        $folhasObra = Folhaobra::all();
-        $this->renderView('folhaObra', 'index', ['folhasObra' => $folhasObra]);
+    {   // vai buscar todas as folhas de obras que nao tem no estado anulada
+        $folhasObra = Folhaobra::find('all', ['conditions' => ['estado != ?', 'Anulada']]);
+        $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra]);
     }
+    
 
     public function show($id)
     {
@@ -110,5 +111,13 @@ class FolhaObraController extends Controller
         $folhaObra->delete();
         //redirecionar para o index
         $this->redirectToRoute('folhaObra', 'index');
+    }
+
+    public function anular($id)
+    {
+        $folhaobra = Folhaobra::find($id);
+        $folhaobra->estado = "Anulada";
+        $folhaobra->save();
+        $this->redirectToRoute('folhaobra', 'index');
     }
 }

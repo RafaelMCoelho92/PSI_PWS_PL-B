@@ -6,7 +6,7 @@ require_once 'controllers/UserController.php';
 require_once 'controllers/ServiceController.php';
 require_once 'controllers/LayoutController.php';
 require_once 'controllers/IvaController.php';
-require_once 'controllers/FolhaObraController.php';
+require_once 'controllers/FolhaobraController.php';
 require_once 'controllers/ClienteController.php';
 require_once 'controllers/LinhaobraController.php';
 
@@ -45,12 +45,12 @@ return [
         'frontoffice' => ['GET', 'LayoutController', 'frontoffice']
     ],
     'folhaobra' => [
-        'index' => ['GET', 'FolhaObraController', 'index'],
-        'create' => ['GET', 'FolhaObraController', 'create'],
-        'show' => ['GET', 'FolhaObraController', 'show'],
-        'edit' => ['GET', 'FolhaObraController', 'edit'],
-        'update' => ['GET', 'FolhaObraController', 'update'],
-        'anular' => ['GET', 'FolhaObraController', 'anular'],
+        'index' => ['GET', 'FolhaobraController', 'index'],
+        'create' => ['GET', 'FolhaobraController', 'create'],
+        'show' => ['GET', 'FolhaobraController', 'show'],
+        'edit' => ['GET', 'FolhaobraController', 'edit'],
+        'update' => ['GET', 'FolhaobraController', 'update'],
+        'anular' => ['GET', 'FolhaobraController', 'anular'],
 
 
 
