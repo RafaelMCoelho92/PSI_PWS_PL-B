@@ -4,6 +4,13 @@ require_once 'Controller.php';
 
 class IvaController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
+        //Ele chama o método authorizationFilter(['Funcionario','Admin']) definido na classe Controller. 
+        //Esse método verifica se o usuário está autenticado como "Funcionario" ou "Admin". 
+        //Caso contrário, o usuário é redirecionado para uma rota de acesso inválido.
+    }
     public function index()
     {
         $ivas = Iva::all();

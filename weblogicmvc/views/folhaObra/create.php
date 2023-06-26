@@ -37,23 +37,26 @@
             <br>
             <b>Order ID:</b> <?= $folhaobra->id ?><br>
             </b>
-                <br><br>
-                <div class="row">
-                <form method="post" action="index.php?c=linhaobra&a=store&id=<?=$folhaobra->id?>">
-                        <div class="col">
+            <br><br>
+            <div class="row">
+                <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
+                    <div class="col">
                         <label for="servico">Serviço:</label><br>
-                            <select class="form-control" name="servico">
-                                <?php
-                                foreach ($services as $service) { ?>
-                                        <option value="<?= $service->id ?>" selected><?= $service->descricao;?> </option>
-                                    </option>
-                                <?php } ?>
-                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>                        
+                        <select class="form-control" name="servico">
+                            <?php
+                            foreach ($services as $service) { ?>
+                                <option value="<?= $service->id ?>" selected><?= $service->descricao; ?> </option>
+                                </option>
+                            <?php } ?>
+                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
                             <button class="btn btn-primary" role="button">Introduzir Serviço</button>
-                        </div>
-                    </form>
-                </div>
-                <br>
+                    </div>
+                </form>
+                <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
+                    <button class="btn btn-info" role="button">Selecionar Serviço</button>
+                </form>
+            </div>
+            <br>
         </div>
     </div>
     <div class="row">
@@ -92,7 +95,7 @@
                     <tbody>
                         <tr>
                             <th style="width:50%">Subtotal:</th>
-                            <td><?= $folhaobra->valortotal; ?> €</td>
+                            <td><?= $folhaobra->subtotal; ?> €</td>
                         </tr>
                         <tr>
                             <th>IVA Total</th>
@@ -101,7 +104,7 @@
 
                         <tr>
                             <th>Total:</th>
-                            <td><?= $folhaobra->valortotal + $folhaobra->ivatotal; ?> €</td>
+                            <td><?= $folhaobra->valortotal; ?> €</td>
                         </tr>
                     </tbody>
                 </table>
@@ -114,12 +117,12 @@
     <div class="row no-print">
         <div class="col-12">
             <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-            <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                Payment
+            <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Emitir e Pagar
             </button>
 
             <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                <i class="fas fa-download"></i> Generate PDF
+                <i class="fas fa-download"></i> Emitir
+
             </button>
         </div>
     </div>

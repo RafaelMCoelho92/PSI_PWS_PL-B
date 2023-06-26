@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?= APP_NAME . ' -Admin' ?></title>
+  <title><?= APP_NAME . $auth->getUsername() ?></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -342,7 +342,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 pb-2 border-bottom"><?= APP_NAME ?> - Admin</h1>
+              <h1 class="m-0 pb-2 border-bottom"><?= APP_NAME . ' - ' . $auth->getUsername() ?> </h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">

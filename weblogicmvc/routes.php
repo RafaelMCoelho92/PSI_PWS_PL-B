@@ -6,7 +6,7 @@ require_once 'controllers/UserController.php';
 require_once 'controllers/ServiceController.php';
 require_once 'controllers/LayoutController.php';
 require_once 'controllers/IvaController.php';
-require_once 'controllers/FolhaObraController.php';
+require_once 'controllers/FolhaobraController.php';
 require_once 'controllers/ClienteController.php';
 require_once 'controllers/LinhaobraController.php';
 
@@ -45,15 +45,19 @@ return [
         'frontoffice' => ['GET', 'LayoutController', 'frontoffice']
     ],
     'folhaobra' => [
-        'index' => ['GET', 'FolhaObraController', 'index'],
-        'create' => ['GET', 'FolhaObraController', 'create'],
-        'show' => ['GET', 'FolhaObraController', 'show'],
-        'edit' => ['GET|POST', 'FolhaObraController', 'edit'],
-
+        'index' => ['GET', 'FolhaobraController', 'index'],
+        'create' => ['GET', 'FolhaobraController', 'create'],
+        'show' => ['GET', 'FolhaobraController', 'show'],
+        'edit' => ['GET', 'FolhaobraController', 'edit'],
+        'update' => ['GET', 'FolhaobraController', 'update'],
+        'anular' => ['GET', 'FolhaobraController', 'anular'],
+        'paga' => ['GET', 'FolhaobraController', 'paga'],
+        'emitir' => ['GET', 'FolhaobraController', 'emitir'],
 
     ],
     'linhaobra' => [
         'store' => ['POST', 'LinhaobraController', 'store'],
+        'delete' => ['GET', 'LinhaobraController', 'delete'],
     ],
 
     'user' => [
@@ -73,7 +77,8 @@ return [
         'show' => ['GET', 'ServiceController', 'show'],
         'edit' => ['GET', 'ServiceController', 'edit'],
         'update' => ['POST', 'ServiceController', 'update'],
-        'delete' => ['GET', 'ServiceController', 'delete']
+        'delete' => ['GET', 'ServiceController', 'delete'],
+        'select' => ['POST', 'ServiceController', 'select'],
     ],
 
     'iva' => [

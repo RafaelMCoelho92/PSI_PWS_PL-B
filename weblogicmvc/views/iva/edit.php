@@ -38,7 +38,7 @@
 
                     </td>
 
-                    <td><input class="form-control" id="percentagem" placeholder="percentagem" type="number" step="0.01" value="<?php if (isset($iva)) {
+                    <td><input class="form-control" name="percentagem" id="percentagem" placeholder="percentagem" type="number" step="0.01" value="<?php if (isset($iva)) {
                                                                                                                                     echo $iva->percentagem;
                                                                                                                                 } ?>" placeholder="percentagem">
                         <?php if (isset($iva->errors)) {

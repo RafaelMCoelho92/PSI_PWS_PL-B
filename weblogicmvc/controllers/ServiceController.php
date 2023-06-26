@@ -5,6 +5,13 @@ require_once 'Controller.php';
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
+        //Ele chama o método authorizationFilter(['Funcionario','Admin']) definido na classe Controller. 
+        //Esse método verifica se o usuário está autenticado como "Funcionario" ou "Admin". 
+        //Caso contrário, o usuário é redirecionado para uma rota de acesso inválido.
+    }
     public function index()
     {
         $services = Service::all();
@@ -23,8 +30,12 @@ class ServiceController extends Controller
             $this->renderView('service', 'show', ['service' => $service]);
         }
     }
-    public function select(){
-
+    public function select($id) //recebe id da folhaobra
+    {
+        $folhaobra = Folhaobra::find($id);
+        $services = Service::all();
+        //mostrar a vista index passando os dados por parâmetro
+        $this->renderView('service', 'select', ['services' => $services, 'folhaobra' => $folhaobra]); // envia id da folhaobra
     }
 
     public function create()

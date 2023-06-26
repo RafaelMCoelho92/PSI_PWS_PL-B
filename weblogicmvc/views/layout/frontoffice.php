@@ -91,7 +91,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="index.php?c=folhaObra&a=show" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="index.php?c=folhaobra&a=show" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

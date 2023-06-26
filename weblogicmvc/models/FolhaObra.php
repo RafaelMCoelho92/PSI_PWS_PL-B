@@ -20,4 +20,8 @@ class Folhaobra extends \ActiveRecord\Model
         array('user', 'class_name' => 'User', 'foreign_key' => 'idcliente'),
         array('funcionario', 'class_name' => 'User', 'foreign_key' => 'idfuncionario')
     );
+
+    static $has_many = array(
+        array('linhaobra')
+    );
 }

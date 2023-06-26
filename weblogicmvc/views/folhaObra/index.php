@@ -18,10 +18,13 @@
                             <h3>ID</h3>
                         </th>
                         <th>
-                            <h3>Descrição</h3>
+                            <h3>Data</h3>
                         </th>
                         <th>
-                            <h3>Data</h3>
+                            <h3>Estado</h3>
+                        </th>
+                        <th>
+                            <h3>Cliente</h3>
                         </th>
                         <th>
                             <a href="index.php?c=user&a=index" class="btn btn-success">Criar Folha de Obra</a>
@@ -29,15 +32,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($folhasObra as $folhaObra) { ?>
+                    <?php
+                    foreach ($folhasObra as $folhaObra) { ?>
                         <tr>
                             <td><?= $folhaObra->id ?></td>
-                            <td><?= $folhaObra->descricao ?></td>
                             <td><?= $folhaObra->data ?></td>
+                            <td><?= $folhaObra->estado ?></td>
+                            <td><?= $folhaObra->user->username ?></td>
                             <td>
-                                <a href="index.php?c=folhaObra&a=show&id=<?= $folhaObra->id ?>" class="btn btn-primary" role="button">Ver mais</a>
-                                <a href="index.php?c=folhaObra&a=edit&id=<?= $folhaObra->id ?>" class="btn btn-secondary" role="button">Editar</a>
-                                <a href="index.php?c=folhaObra&a=delete&id=<?= $folhaObra->id ?>" class="btn btn-danger" role="button">Delete</a>
+                                <a href="index.php?c=folhaobra&a=show&id=<?= $folhaObra->id ?>" class="btn btn-primary" role="button">Ver mais</a>
+                                <a href="index.php?c=folhaobra&a=edit&id=<?= $folhaObra->id ?>" class="btn btn-secondary" role="button">Editar</a>
+                                <a href="index.php?c=folhaobra&a=anular&id=<?= $folhaObra->id ?>" class="btn btn-danger" role="button">Anular</a>
+                                <a href="index.php?c=folhaobra&a=paga&id=<?= $folhaObra->id ?>" class="btn btn-success" role="button">Paga</a>
+                                <a href="index.php?c=folhaobra&a=emitir&id=<?= $folhaObra->id ?>" class="btn btn-info" role="button">Emitir</a>
+
                             </td>
                         </tr>
                     <?php } ?>
