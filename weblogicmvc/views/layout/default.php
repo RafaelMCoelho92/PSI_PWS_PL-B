@@ -194,7 +194,7 @@
             <img src="public/img/user.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="index.php?c=home&a=dashboardbo" class="d-block"><?= $auth->getUsername(); ?></a>
+            <a href="index.php?c=user&a=reservado" class="d-block"><?= $auth->getUsername(); ?></a>
           </div>
         </div>
 
