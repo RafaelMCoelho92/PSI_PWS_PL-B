@@ -52,6 +52,7 @@
                             <button class="btn btn-primary" role="button">Introduzir Serviço</button>
                     </div>
                 </form>
+                <button class="btn btn-primary" role="button">Selecionar Serviço</button>
             </div>
             <br>
         </div>
@@ -131,8 +132,8 @@
     <div class="row no-print">
         <div class="col-12">
             <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-            <a href="index.php?c=folhaobra&a=paga&id=<?= $folhaobra->id ?>" class="btn btn-success float-right" style="margin-right: 5px;"role="button">Emitir e Pagar</a>
-            <a href="index.php?c=folhaobra&a=emitir&id=<?= $folhaobra->id ?>" class="btn btn-info float-right" style="margin-right: 5px;"role="button">Emitir</a>
+            <a href="index.php?c=folhaobra&a=paga&id=<?= $folhaobra->id ?>" class="btn btn-success float-right" style="margin-right: 5px;" role="button">Emitir e Pagar</a>
+            <a href="index.php?c=folhaobra&a=emitir&id=<?= $folhaobra->id ?>" class="btn btn-info float-right" style="margin-right: 5px;" role="button">Emitir</a>
         </div>
     </div>
 </div>

@@ -30,8 +30,8 @@ class ServiceController extends Controller
             $this->renderView('service', 'show', ['service' => $service]);
         }
     }
-    public function select(){
-
+    public function select($id)
+    {
     }
 
     public function create()
