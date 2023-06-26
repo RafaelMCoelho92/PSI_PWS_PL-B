@@ -67,7 +67,9 @@ return [
         'delete' => ['GET', 'UserController', 'delete'],
         'show' => ['GET', 'UserController', 'show'],
         'edit' => ['GET', 'UserController', 'edit'],
-        'update' => ['POST', 'UserController', 'update']
+        'update' => ['POST', 'UserController', 'update'],
+        'reservado' => ['GET', 'UserController', 'reservado'],
+
     ],
 
     'service' => [

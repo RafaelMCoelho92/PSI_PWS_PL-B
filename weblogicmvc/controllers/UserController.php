@@ -99,4 +99,11 @@ class UserController extends Controller
         //redirecionar para o index
         $this->redirectToRoute('user', 'index');
     }
+    public function reservado()
+    {   $auth = new Auth();
+        $id = $auth->getId();
+        $user = User::find($id);
+        //redirecionar para o index
+        $this->renderView('user', 'reservado', ['user' => $user]);
+    }
 }
