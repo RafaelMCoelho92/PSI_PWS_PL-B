@@ -50,6 +50,8 @@ return [
         'show' => ['GET', 'FolhaObraController', 'show'],
         'edit' => ['GET', 'FolhaObraController', 'edit'],
         'update' => ['GET', 'FolhaObraController', 'update'],
+        'anular' => ['GET', 'FolhaObraController', 'anular'],
+
 
 
     ],
