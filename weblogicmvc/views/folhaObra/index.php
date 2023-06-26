@@ -43,6 +43,9 @@
                                 <a href="index.php?c=folhaobra&a=show&id=<?= $folhaObra->id ?>" class="btn btn-primary" role="button">Ver mais</a>
                                 <a href="index.php?c=folhaobra&a=edit&id=<?= $folhaObra->id ?>" class="btn btn-secondary" role="button">Editar</a>
                                 <a href="index.php?c=folhaobra&a=anular&id=<?= $folhaObra->id ?>" class="btn btn-danger" role="button">Anular</a>
+                                <a href="index.php?c=folhaobra&a=paga&id=<?= $folhaObra->id ?>" class="btn btn-success" role="button">Paga</a>
+                                <a href="index.php?c=folhaobra&a=emitir&id=<?= $folhaObra->id ?>" class="btn btn-info" role="button">Emitir</a>
+
                             </td>
                         </tr>
                     <?php } ?>

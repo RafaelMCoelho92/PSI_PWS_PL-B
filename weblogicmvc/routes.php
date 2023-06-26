@@ -51,8 +51,8 @@ return [
         'edit' => ['GET', 'FolhaobraController', 'edit'],
         'update' => ['GET', 'FolhaobraController', 'update'],
         'anular' => ['GET', 'FolhaobraController', 'anular'],
-
-
+        'paga' => ['GET', 'FolhaobraController', 'paga'],
+        'emitir' => ['GET', 'FolhaobraController', 'emitir'],
 
     ],
     'linhaobra' => [

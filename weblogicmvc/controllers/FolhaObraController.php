@@ -117,13 +117,27 @@ class FolhaobraController extends Controller
         $folhaObra = Folhaobra::find($id);
         $folhaObra->delete();
         //redirecionar para o index
-        $this->redirectToRoute('folhaObra', 'index');
+        $this->redirectToRoute('folhaobra', 'index');
     }
 
     public function anular($id)
     {
         $folhaobra = Folhaobra::find($id);
         $folhaobra->estado = "Anulada";
+        $folhaobra->save();
+        $this->redirectToRoute('folhaobra', 'index');
+    }
+    public function paga($id)
+    {
+        $folhaobra = Folhaobra::find($id);
+        $folhaobra->estado = "Paga";
+        $folhaobra->save();
+        $this->redirectToRoute('folhaobra', 'index');
+    }
+    public function emitir($id)
+    {
+        $folhaobra = Folhaobra::find($id);
+        $folhaobra->estado = "Emitida";
         $folhaobra->save();
         $this->redirectToRoute('folhaobra', 'index');
     }
