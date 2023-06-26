@@ -165,8 +165,12 @@ class FolhaobraController extends Controller
     public function emitir($id)
     {
         $folhaobra = Folhaobra::find($id);
+        if($folhaobra->estado == "Paga"){
+            $this->redirectToRoute('folhaobra', 'index');
+        }else{
         $folhaobra->estado = "Emitida";
         $folhaobra->save();
         $this->redirectToRoute('folhaobra', 'index');
+        }
     }
 }
