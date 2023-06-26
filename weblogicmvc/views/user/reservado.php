@@ -22,10 +22,10 @@
                 </div>
             </div>
         </div>
-
         <div class="card-footer">
             <button type="submit" class="btn btn-info">Alterar</button>
-            <button type="submit" class="btn btn-default float-right">Cancelar alterações</button>
+            <a href="index.php?c=home&a=dashboardbo" class="btn btn-default float-right">Cancelar alterações</a>
+            <!-- Dei indicação para retomar ao home , dashboard neste caso -->
         </div>
     </form>
 </div>

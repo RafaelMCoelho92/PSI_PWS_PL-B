@@ -40,10 +40,16 @@
                         <td><input id="nif" placeholder="nif" type="text" value="<?php if (isset($user)) {
                                                                                         echo $user->nif;
                                                                                     } ?>" name="nif" id="nif" required>
-
-                            <?php if (isset($user->errors)) {
+                            <!-- estava a dar erro neste codigo por supostamente estava a retomar o nif 
+                                                                    como uma array e nao numa strings -->
+                            <?php /* if (isset($user->errors)) {
                                 echo $user->errors->on('nif');
-                            } ?></td>
+                            } */ ?>
+                        </td>
+
+                        <?php if (isset($user->errors) && is_array($user->errors->on('nif'))) {
+                            echo $user->errors->on('nif')[0];
+                        } ?>
                     </tr>
 
                     <th>
@@ -84,8 +90,8 @@
                         <td>
                             <select class="form-select" name="role">
                                 <?php
-                                //$opcoes = array('Cliente', 'Funcionario', 'Admin');
-
+                                //$opcoes = array('Cliente', 'Funcionario', 'Admin'); estava a dar erro com isto comentado 
+                                $opcoes = array('Cliente', 'Funcionario', 'Admin');
                                 foreach ($opcoes as $opcao) {
                                     if ($opcao == $user->role) { ?>
                                         <option value="<?= $opcao ?>" selected><?= $opcao ?></option>
@@ -93,6 +99,7 @@
                                         <option value="<?= $opcao ?>"><?= $opcao ?></option>
                                 <?php }
                                 } ?>
+
                             </select>
 
                         </td>
