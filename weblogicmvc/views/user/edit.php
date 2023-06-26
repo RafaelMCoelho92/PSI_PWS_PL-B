@@ -43,7 +43,7 @@
 
                             <?php if (isset($user->errors)) {
                                 echo $user->errors->on('nif');
-                            } ?>
+                            } ?></td>
                     </tr>
 
                     <th>
