@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 25-Jun-2023 às 09:28
+-- Tempo de geração: 26-Jun-2023 às 10:40
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.1.13
 
@@ -60,20 +60,30 @@ CREATE TABLE IF NOT EXISTS `folhaobras` (
   `data` datetime NOT NULL,
   `valortotal` double NOT NULL,
   `ivatotal` double NOT NULL,
-  `estado` enum('Em Lançamento','Emitida','Paga') NOT NULL,
+  `estado` enum('Em Lançamento','Emitida','Paga','Anulada') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `idcliente` int NOT NULL,
   `idfuncionario` int NOT NULL,
+  `subtotal` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idcliente` (`idcliente`),
   KEY `idfuncionario` (`idfuncionario`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=292 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `folhaobras`
 --
 
-INSERT INTO `folhaobras` (`id`, `data`, `valortotal`, `ivatotal`, `estado`, `idcliente`, `idfuncionario`) VALUES
-(1, '0000-00-00 00:00:00', 100, 50, '', 1, 1);
+INSERT INTO `folhaobras` (`id`, `data`, `valortotal`, `ivatotal`, `estado`, `idcliente`, `idfuncionario`, `subtotal`) VALUES
+(282, '2023-06-26 09:19:34', 10, 2.3, 'Emitida', 16, 1, 0),
+(283, '2023-06-26 09:20:43', 184.5, 34.5, 'Em Lançamento', 16, 1, 150),
+(284, '2023-06-26 09:45:14', 0, 0, 'Paga', 24, 1, 0),
+(285, '2023-06-26 09:46:01', 70, 16.1, 'Anulada', 16, 1, 0),
+(286, '2023-06-26 10:27:14', 36.9, 6.9, 'Em Lançamento', 16, 1, 30),
+(287, '2023-06-26 10:32:13', 24.6, 4.6, 'Em Lançamento', 16, 1, 20),
+(288, '2023-06-26 10:34:45', 0, 0, 'Em Lançamento', 16, 1, 0),
+(289, '2023-06-26 10:34:52', 12.3, 2.3, 'Em Lançamento', 16, 1, 10),
+(290, '2023-06-26 10:38:22', 147.6, 27.6, 'Em Lançamento', 16, 1, 120),
+(291, '2023-06-26 10:38:40', 135.3, 25.3, 'Em Lançamento', 16, 1, 110);
 
 -- --------------------------------------------------------
 
@@ -95,12 +105,9 @@ CREATE TABLE IF NOT EXISTS `ivas` (
 --
 
 INSERT INTO `ivas` (`id`, `emvigor`, `descricao`, `percentagem`) VALUES
-(1, 'Sim', 'teste', 0),
-(2, 'Não', 'Taxa Normal – 23%', 1.23),
-(3, 'Não', 'Taxa Intermédia – 13%', 1.13),
-(4, 'Não', 'Taxa Reduzida – 6%\r\n', 1.06),
-(7, 'Não', 'teste', 12),
-(9, 'Sim', 'criar9', 11);
+(2, 'Sim', 'Taxa Normal – 23%', 23),
+(3, 'Sim', 'Taxa Intermédia – 13%', 13),
+(4, 'Sim', 'Taxa Reduzida – 6%', 6);
 
 -- --------------------------------------------------------
 
@@ -119,7 +126,30 @@ CREATE TABLE IF NOT EXISTS `linhaobras` (
   PRIMARY KEY (`id`),
   KEY `idservico` (`idservico`),
   KEY `idfolhaobra` (`idfolhaobra`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `linhaobras`
+--
+
+INSERT INTO `linhaobras` (`id`, `quantidade`, `valor`, `valoriva`, `idfolhaobra`, `idservico`) VALUES
+(53, 2, 20, 2.3, 283, 19),
+(54, 10, 100, 2.3, 283, 19),
+(55, 2, 20, 2.3, 285, 19),
+(56, 5, 50, 2.3, 285, 19),
+(57, 1, 10, 2.3, 282, 19),
+(58, 1, 10, 2.3, 283, 19),
+(59, 1, 10, 2.3, 283, 19),
+(60, 1, 10, 2.3, 283, 19),
+(61, 1, 10, 2.3, 286, 19),
+(62, 1, 10, 2.3, 286, 19),
+(63, 1, 10, 2.3, 286, 19),
+(64, 1, 10, 2.3, 287, 19),
+(65, 1, 10, 2.3, 287, 19),
+(66, 1, 10, 2.3, 289, 19),
+(67, 12, 120, 2.3, 290, 19),
+(68, 10, 100, 2.3, 291, 19),
+(69, 1, 10, 2.3, 291, 19);
 
 -- --------------------------------------------------------
 
@@ -136,14 +166,14 @@ CREATE TABLE IF NOT EXISTS `services` (
   `iva_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `services_ibfk_1` (`iva_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
 
 --
 -- Extraindo dados da tabela `services`
 --
 
 INSERT INTO `services` (`id`, `referencia`, `descricao`, `precohora`, `iva_id`) VALUES
-(17, 'aiai', 'ai', 10, 1);
+(19, 'Teste', 'Teste', 10, 2);
 
 -- --------------------------------------------------------
 
