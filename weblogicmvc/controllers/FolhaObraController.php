@@ -12,7 +12,7 @@ class FolhaObraController extends Controller
     public function index()
     {
         $folhasObra = Folhaobra::all();
-        $this->renderView('folhaObra', 'index', ['folhaObra' => $folhasObra]);
+        $this->renderView('folhaObra', 'index', ['folhasObra' => $folhasObra]);
     }
 
     public function show($id)

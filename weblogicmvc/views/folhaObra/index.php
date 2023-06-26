@@ -18,10 +18,13 @@
                             <h3>ID</h3>
                         </th>
                         <th>
-                            <h3>Descrição</h3>
+                            <h3>Data</h3>
                         </th>
                         <th>
-                            <h3>Data</h3>
+                            <h3>Estado</h3>
+                        </th>
+                        <th>
+                            <h3>Cliente</h3>
                         </th>
                         <th>
                             <a href="index.php?c=user&a=index" class="btn btn-success">Criar Folha de Obra</a>
@@ -33,8 +36,9 @@
                     foreach ($folhasObra as $folhaObra) { ?>
                         <tr>
                             <td><?= $folhaObra->id ?></td>
-                            <td><?= $folhaObra->descricao ?></td>
                             <td><?= $folhaObra->data ?></td>
+                            <td><?= $folhaObra->estado ?></td>
+                            <td><?= $folhaObra->user->username ?></td>
                             <td>
                                 <a href="index.php?c=folhaObra&a=show&id=<?= $folhaObra->id ?>" class="btn btn-primary" role="button">Ver mais</a>
                                 <a href="index.php?c=folhaObra&a=edit&id=<?= $folhaObra->id ?>" class="btn btn-secondary" role="button">Editar</a>

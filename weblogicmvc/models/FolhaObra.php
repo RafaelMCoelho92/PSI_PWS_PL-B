@@ -3,8 +3,7 @@
 class Folhaobra extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
-        array('descricao'),
-        array('data'),
+        //array('data'),
         //array('valortotal'),
         //array('ivatotal'),
         //array('estado'),
