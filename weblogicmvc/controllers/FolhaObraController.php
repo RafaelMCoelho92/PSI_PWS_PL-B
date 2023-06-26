@@ -14,7 +14,7 @@ class FolhaobraController extends Controller
         $folhasObra = Folhaobra::find('all', ['conditions' => ['estado != ?', 'Anulada']]);
         $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra]);
     }
-    
+
 
     public function show($id)
     {
@@ -49,12 +49,16 @@ class FolhaobraController extends Controller
         $services = Service::all();
         $empresa = Empresa::first();
         $folhaobra = Folhaobra::find($id);
-        $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
-        if (is_null($folhaobra)) {
-            //TODO redirect to standard error page
+        if ($folhaobra->estado  == "Emitida" || $folhaobra->estado  == "Paga") {
+            $this->redirectToRoute('folhaobra', 'index');
         } else {
-            //mostrar a vista edit passando os dados por parâmetro
-            $this->renderView('folhaobra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa, 'linhaobras' => $linhaobras, 'services' => $services]);
+            $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
+            if (is_null($folhaobra)) {
+                //TODO redirect to standard error page
+            } else {
+                //mostrar a vista edit passando os dados por parâmetro
+                $this->renderView('folhaobra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa, 'linhaobras' => $linhaobras, 'services' => $services]);
+            }
         }
     }
 
