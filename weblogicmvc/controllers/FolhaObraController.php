@@ -41,6 +41,7 @@ class FolhaobraController extends Controller
         $folhaobra->data = date('d-m-Y H:i:s');
         $folhaobra->valortotal = 0;
         $folhaobra->ivatotal = 0;
+        $folhaobra->subtotal = 0;
         $folhaobra->save();
         $this->renderView('folhaObra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'services' => $services]);
     }
@@ -87,17 +88,19 @@ class FolhaobraController extends Controller
         $folhaobra = Folhaobra::find($id);
         $valortotal = 0;
         $ivatotal = 0;
+        $subtotal = 0;
         $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
 
         foreach ($linhaobras as $linhaobra) {
-            $linhaobra->valor = $linhaobra->quantidade * $linhaobra->servico->precohora;
+            $subtotal += $linhaobra->quantidade * $linhaobra->servico->precohora;
             $linhaobra->valoriva = ($linhaobra->servico->precohora * $linhaobra->servico->iva->percentagem) / 100;
-            // $linhaobra->save();
-            $valortotal += $linhaobra->valor;
             $ivatotal += $linhaobra->valoriva * $linhaobra->quantidade;
         }
-        $folhaobra->valortotal = $valortotal;
+        $folhaobra->subtotal = $subtotal;
         $folhaobra->ivatotal = $ivatotal;
+        $folhaobra->valortotal = $subtotal + $ivatotal;
+
+        
         if ($folhaobra->is_valid()) {
             $folhaobra->save();
             //redirecionar para o index

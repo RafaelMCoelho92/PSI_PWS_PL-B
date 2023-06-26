@@ -112,7 +112,7 @@
                     <tbody>
                         <tr>
                             <th style="width:50%">Subtotal:</th>
-                            <td><?= $folhaobra->valortotal; ?> €</td>
+                            <td><?= $folhaobra->subtotal; ?> €</td>
                         </tr>
                         <tr>
                             <th>IVA Total</th>
@@ -121,7 +121,7 @@
 
                         <tr>
                             <th>Total:</th>
-                            <td><?= $folhaobra->valortotal + $folhaobra->ivatotal; ?> €</td>
+                            <td><?= $folhaobra->valortotal; ?> €</td>
                         </tr>
                     </tbody>
                 </table>
