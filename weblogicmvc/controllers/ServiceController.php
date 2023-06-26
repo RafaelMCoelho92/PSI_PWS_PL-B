@@ -30,11 +30,12 @@ class ServiceController extends Controller
             $this->renderView('service', 'show', ['service' => $service]);
         }
     }
-    public function select($id)//recebe id da folhaobra
-    {   $folhaobra = Folhaobra::find($id);
+    public function select($id) //recebe id da folhaobra
+    {
+        $folhaobra = Folhaobra::find($id);
         $services = Service::all();
         //mostrar a vista index passando os dados por parâmetro
-        $this->renderView('service', 'select', ['services' => $services,'folhaobra' => $folhaobra]);// envia id da folhaobra
+        $this->renderView('service', 'select', ['services' => $services, 'folhaobra' => $folhaobra]); // envia id da folhaobra
     }
 
     public function create()

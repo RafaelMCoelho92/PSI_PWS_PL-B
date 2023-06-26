@@ -78,7 +78,7 @@ return [
         'edit' => ['GET', 'ServiceController', 'edit'],
         'update' => ['POST', 'ServiceController', 'update'],
         'delete' => ['GET', 'ServiceController', 'delete'],
-        'select' => ['GET', 'ServiceController', 'select'],
+        'select' => ['POST', 'ServiceController', 'select'],
     ],
 
     'iva' => [

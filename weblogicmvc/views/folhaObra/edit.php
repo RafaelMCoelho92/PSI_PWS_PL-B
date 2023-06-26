@@ -38,7 +38,7 @@
             <b>Order ID:</b> <?= $folhaobra->id ?><br>
             </b>
             <br><br>
-            <div class="row">
+            <div class="col">
                 <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
                     <div class="col">
                         <label for="servico">Serviço:</label><br>
@@ -50,9 +50,12 @@
                             <?php } ?>
                             <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
                             <button class="btn btn-primary" role="button">Introduzir Serviço</button>
+                        </select>
                     </div>
                 </form>
-                <button class="btn btn-primary" role="button">Selecionar Serviço</button>
+                <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
+                    <button class="btn btn-info" role="button">Selecionar Serviço</button>
+                </form>
             </div>
             <br>
         </div>

@@ -52,6 +52,9 @@
                             <button class="btn btn-primary" role="button">Introduzir Serviço</button>
                     </div>
                 </form>
+                <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
+                    <button class="btn btn-info" role="button">Selecionar Serviço</button>
+                </form>
             </div>
             <br>
         </div>
@@ -90,7 +93,7 @@
             <div class="table-responsive">
                 <table class="table">
                     <tbody>
-                    <tr>
+                        <tr>
                             <th style="width:50%">Subtotal:</th>
                             <td><?= $folhaobra->subtotal; ?> €</td>
                         </tr>
@@ -112,14 +115,14 @@
 
 
     <div class="row no-print">
-    <div class="col-12">
+        <div class="col-12">
             <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
             <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Emitir e Pagar
             </button>
 
-            <button  type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                <i class="fas fa-download" ></i> Emitir
-                
+            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                <i class="fas fa-download"></i> Emitir
+
             </button>
         </div>
     </div>
