@@ -37,23 +37,23 @@
             <br>
             <b>Order ID:</b> <?= $folhaobra->id ?><br>
             </b>
-                <br><br>
-                <div class="row">
-                <form method="post" action="index.php?c=linhaobra&a=store&id=<?=$folhaobra->id?>">
-                        <div class="col">
+            <br><br>
+            <div class="row">
+                <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
+                    <div class="col">
                         <label for="servico">Serviço:</label><br>
-                            <select class="form-control" name="servico">
-                                <?php
-                                foreach ($services as $service) { ?>
-                                        <option value="<?= $service->id ?>" selected><?= $service->descricao;?> </option>
-                                    </option>
-                                <?php } ?>
-                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>                        
+                        <select class="form-control" name="servico">
+                            <?php
+                            foreach ($services as $service) { ?>
+                                <option value="<?= $service->id ?>" selected><?= $service->descricao; ?> </option>
+                                </option>
+                            <?php } ?>
+                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
                             <button class="btn btn-primary" role="button">Introduzir Serviço</button>
-                        </div>
-                    </form>
-                </div>
-                <br>
+                    </div>
+                </form>
+            </div>
+            <br>
         </div>
     </div>
     <div class="row">

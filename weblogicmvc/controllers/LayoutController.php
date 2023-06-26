@@ -9,18 +9,18 @@ class LayoutController extends Controller
         $this->authenticationFilter(); // chamando a função de verificação de autenticação
     }
     public function default()
-    {     
-        $role = $_SESSION['role'];                         
-            if ($role == "Admin" || $role == "Funcionario"){
-                $folhasobras = Folhaobra::all();
-                $numfolhasobras = count($folhasobras);
-            $this->renderView('home', 'dashboardbo', ['numfolhasobras'=> $numfolhasobras],'default');
-            }
+    {
+        $role = $_SESSION['role'];
+        if ($role == "Admin" || $role == "Funcionario") {
+            $folhasobras = Folhaobra::all();
+            $numfolhasobras = count($folhasobras);
+            $this->renderView('home', 'dashboardbo', ['numfolhasobras' => $numfolhasobras], 'default');
+        }
     }
     public function frontoffice()
-    {   
-        $role = $_SESSION['role'];                          
-        if ($role == "Cliente"){
+    {
+        $role = $_SESSION['role'];
+        if ($role == "Cliente") {
             $this->renderView('layout', 'frontoffice');
         }
     }

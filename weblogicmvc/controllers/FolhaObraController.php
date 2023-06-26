@@ -18,12 +18,20 @@ class FolhaobraController extends Controller
 
     public function show($id)
     {
+        $empresa = Empresa::first();
+        $services = Service::all();
+        //$funcionario = new Auth();
+        //$user = User::find($id);
         $folhaObra = Folhaobra::find($id);
+        $linhaObras = Linhaobra::find('all', array('conditions' => array('idfolhaObra = ?', $folhaObra->id)));
+        //$idfuncionario = $funcionario->getId();
+        //$folhaObra->idfuncionario = $idfuncionario;
+        //$folhaObra->idcliente = $user->id;
         if (is_null($folhaObra)) {
             //TODO redirect to standard error page
         } else {
             //mostrar a vista show passando os dados por parâmetro
-            $this->renderView('folhaObra', 'show', ['folhaObra' => $folhaObra]);
+            $this->renderView('folhaObra', 'show', ['folhaObra' => $folhaObra, 'empresa' => $empresa, 'linhaObras' => $linhaObras, 'services' => $services]);
         }
     }
 
