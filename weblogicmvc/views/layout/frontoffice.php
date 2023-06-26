@@ -202,22 +202,16 @@
             </li>
 
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
+              <a href="index.php?c=user&a=edit&id=<?= $auth->getId() ?>" class="nav-link">
+                <i class="nav-icon fas fa-pencil-alt"></i>
                 <p>
                   Área Pessoal
-                  <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="index.php?c=&a=" class="nav-link">
-                    <i class="nav-icon far fa-circle text-info"></i>
-                    <p>Abrir</p>
-                  </a>
-                </li>
-              </ul>
             </li>
+
+          </ul>
+          </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
