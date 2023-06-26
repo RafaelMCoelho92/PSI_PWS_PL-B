@@ -39,11 +39,13 @@ return [
     'cliente' => [
         'empresa' => ['GET', 'ClienteController', 'empresa'],
         'folhaobraindex' => ['GET', 'ClienteController', 'folhaobraindex'],
+        'folhaobrashow' => ['GET', 'ClienteController', 'folhaobrashow'],
     ],
 
     'layout' => [
         'default' => ['GET', 'LayoutController', 'default'],
         'frontoffice' => ['GET', 'LayoutController', 'frontoffice']
+
     ],
     'folhaobra' => [
         'index' => ['GET', 'FolhaobraController', 'index'],
