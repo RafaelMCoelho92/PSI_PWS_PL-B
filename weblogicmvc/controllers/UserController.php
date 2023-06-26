@@ -62,10 +62,18 @@ class UserController extends Controller
     {
         //mostra a vista com form de edicao de um registo identificado pelo seu ID
         $user = User::find($id);
+        $auth = new Auth();
+        $role = $auth->getRole();
+        if ($role == 'Admin') {
+            $opcoes = ['Cliente', 'Funcionario', 'Admin'];
+        } else {
+            $opcoes = ['Cliente'];
+        }
+
         if (is_null($user)) {
             //TODO redirect to standard error page
         } else {
-            $this->renderView('user', 'edit', ['user' => $user]);
+            $this->renderView('user', 'edit', ['user' => $user, 'opcoes' => $opcoes]);
             //mostrar a vista edit passando os dados por parâmetro
         }
     }

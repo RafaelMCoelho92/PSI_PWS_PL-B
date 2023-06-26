@@ -40,6 +40,10 @@
                         <td><input id="nif" placeholder="nif" type="text" value="<?php if (isset($user)) {
                                                                                         echo $user->nif;
                                                                                     } ?>" name="nif" id="nif" required>
+
+                            <?php if (isset($user->errors)) {
+                                echo $user->errors->on('nif');
+                            } ?>
                     </tr>
 
                     <th>
@@ -57,9 +61,6 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <?php if (isset($user->errors)) {
-                            echo $user->errors->on('nif');
-                        } ?></td>
                         <td><input id="morada" placeholder="morada" type="text" value="<?php if (isset($user)) {
                                                                                             echo $user->morada;
                                                                                         } ?>" name="morada" id="morada" required>
@@ -83,7 +84,7 @@
                         <td>
                             <select class="form-select" name="role">
                                 <?php
-                                $opcoes = array('Cliente', 'Funcionario', 'Admin');
+                                //$opcoes = array('Cliente', 'Funcionario', 'Admin');
 
                                 foreach ($opcoes as $opcao) {
                                     if ($opcao == $user->role) { ?>
