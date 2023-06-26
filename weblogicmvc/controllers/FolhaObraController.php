@@ -16,14 +16,30 @@ class FolhaobraController extends Controller
         //Esse método verifica se o usuário está autenticado como "Funcionario" ou "Admin". 
         //Caso contrário, o usuário é redirecionado para uma rota de acesso inválido.
     }
+
+
     public function index()
-    {   // vai buscar todas as folhas de obras que nao tem no estado anulada
-        // ver o role  getRole()
-        //se for admin mostra todas menos as anulas (é o que ja esta embaixo)
-        // se for funcionario mostra apenas as emitidas por ele idfuncionario == getid(tem q se trocar a condicao)
-        $folhasObra = Folhaobra::find('all', ['conditions' => ['estado != ?', 'Anulada']]);
-        $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra]);
+    {
+        $auth = new Auth();
+        $role = $auth->getRole();
+
+        if ($role == "Admin") {
+            $folhasObra = Folhaobra::find('all', ['conditions' => ['estado != ?', 'Anulada']]);
+            $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra]);
+        } elseif ($role == "Funcionario") {
+            $id = $auth->getId();
+            $folhasObra = Folhaobra::find('all', ['conditions' => ['estado != ? and idfuncionario = ?', 'Anulada', $id]]);
+            $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra]);
+        } elseif ($role == "Cliente") {
+            $id = $auth->getId();
+            $folhasObra = Folhaobra::find('all', ['conditions' => ['estado != ? and idcliente = ?', 'Anulada', $id]]);
+            $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra]);
+        } else {
+            header('Location: index.php?' . INVALID_ACCESS_ROUTE);
+        }
     }
+
+
 
 
     public function show($id)
