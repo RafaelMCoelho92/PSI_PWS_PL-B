@@ -2,6 +2,10 @@
 require_once 'Controller.php';
 class ClienteController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizationFilter(['Cliente']);
+    }
     public function empresa()
     {
         $empresa = Empresa::all();
