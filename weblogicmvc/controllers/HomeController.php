@@ -33,12 +33,21 @@ class HomeController extends Controller
     {
         $role = $_SESSION['role'];
         if ($role == "Cliente") {
-            $folhasobras = Folhaobra::all();
+            $auth = new Auth();
+            $id = $auth->getId();
+
+            $folhasobras = Folhaobra::find('all', ['conditions' => ['idcliente = ?', $id]]);
             $numfolhasobras = count($folhasobras);
-            $users = User::all();
-            $numusers = count($users);
-            $this->renderView('home', 'dashboardfo', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers], 'frontoffice');
-        }else {
+
+            $folhasobraspagas = Folhaobra::find('all', ['conditions' => ['idcliente = ? AND estado = ?', $id, 'Paga']]);
+            $numfolhasobraspagas = count($folhasobraspagas);
+
+            $folhasobrasemitidas = Folhaobra::find('all', ['conditions' => ['idcliente = ? AND estado = ?', $id, 'Emitida']]);
+            $numfolhasobrasemitidas = count($folhasobrasemitidas);
+
+            $this->renderView('home', 'dashboardfo', ['numfolhasobras' => $numfolhasobras, 'numfolhasobraspagas' => $numfolhasobraspagas, 'numfolhasobrasemitidas' => $numfolhasobrasemitidas], 'frontoffice');
+        }
+        else {
             header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
     }

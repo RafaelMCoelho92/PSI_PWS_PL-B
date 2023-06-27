@@ -19,7 +19,7 @@ class AuthController extends Controller
             if ($role == 'Admin' || $role == 'Funcionario') { // se for admin ou funcionario vai para o BACKoffice
                 $this->redirectToRoute("home", "dashboardbo");
             } elseif ($role == 'Cliente') {                     // se for funcionario vai para o FRONToffice
-                $this->redirectToRoute("layout", "frontoffice");
+                $this->redirectToRoute("home", "dashboardfo");
             }
             //header('Location: index.php?c=layout&a=backoffice'); //redirectroroute??
         } else {

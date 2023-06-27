@@ -12,7 +12,6 @@ class Folhaobra extends \ActiveRecord\Model
     );
 
     static $validates_numericality_of = array(
-        //array('data', 'only_date' => true), // only date n existe
         array('valortotal', 'greater_than_or_equal_to' => 0),
         array('ivatotal', 'greater_than_or_equal_to' => 0),
     );
@@ -22,6 +21,6 @@ class Folhaobra extends \ActiveRecord\Model
     );
 
     static $has_many = array(
-        array('linhaobra')
+        array('linhaobras')// foi add um s
     );
 }

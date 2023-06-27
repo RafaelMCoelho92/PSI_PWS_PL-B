@@ -61,12 +61,11 @@ class FolhaobraController extends Controller
         }
     }
 
-    public function create($id)
+    public function store($id)
     {
 
         //mostra vista com form de criacao de registo
-        $empresas = Empresa::first();
-        $services = Service::all();
+        
         $user = User::find($id);
         $folhaobra = new Folhaobra();
         $folhaobra->idcliente = $user->id;
@@ -78,7 +77,7 @@ class FolhaobraController extends Controller
         $folhaobra->ivatotal = 0;
         $folhaobra->subtotal = 0;
         $folhaobra->save();
-        $this->renderView('folhaObra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'services' => $services]);
+        $this->redirectToRoute('linhaobra', 'index', ['idfolhaobra' => $folhaobra->id]);
     }
     public function edit($id)
     {
@@ -102,7 +101,7 @@ class FolhaobraController extends Controller
     }
 
 
-    public function store()
+  /*  public function store()
     {
         //recebe os dados do form de criacao valida e persiste na BD
         $empresas = Empresa::all();
@@ -118,7 +117,7 @@ class FolhaobraController extends Controller
             //mostrar vista create passando o modelo como parâmetro
             $this->renderView('folhaobra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'ivas' => $ivas, 'services' => $services, 'users' => $users]);
         }
-    }
+    }*/
 
     public function update($id)
     {

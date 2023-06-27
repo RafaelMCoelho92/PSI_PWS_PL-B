@@ -4,7 +4,6 @@ require_once 'controllers/HomeController.php';
 require_once 'controllers/EmpresaController.php';
 require_once 'controllers/UserController.php';
 require_once 'controllers/ServiceController.php';
-require_once 'controllers/LayoutController.php';
 require_once 'controllers/IvaController.php';
 require_once 'controllers/FolhaobraController.php';
 require_once 'controllers/ClienteController.php';
@@ -46,11 +45,6 @@ return [
         'edit' => ['GET', 'ClienteController', 'edit'],
     ],
 
-    'layout' => [
-        'default' => ['GET', 'LayoutController', 'default'],
-        'frontoffice' => ['GET', 'LayoutController', 'frontoffice']
-
-    ],
     'folhaobra' => [
         'index' => ['GET', 'FolhaobraController', 'index'],
         'create' => ['GET', 'FolhaobraController', 'create'],
@@ -60,11 +54,17 @@ return [
         'anular' => ['GET', 'FolhaobraController', 'anular'],
         'paga' => ['GET', 'FolhaobraController', 'paga'],
         'emitir' => ['GET', 'FolhaobraController', 'emitir'],
+        'store' => ['GET', 'FolhaobraController', 'store'],
+
 
     ],
     'linhaobra' => [
         'store' => ['POST', 'LinhaobraController', 'store'],
         'delete' => ['GET', 'LinhaobraController', 'delete'],
+        'index' => ['GET', 'LinhaobraController', 'index'],
+        'create' => ['GET', 'LinhaobraController', 'create'],
+
+
     ],
 
     'user' => [

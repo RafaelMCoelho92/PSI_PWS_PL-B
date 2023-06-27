@@ -17,7 +17,8 @@ class LinhaobraController extends Controller
     public function store($id) // recebe o id da folha de obra
     {
         $linhaobra = new Linhaobra();
-        $linhaobra->idservico = ($this->getHTTPPostParam('servico'));
+        $servico = Service::find_by_referencia($this->getHTTPPostParam('referencia'));
+        $linhaobra->idservico = $servico->id;
         $linhaobra->quantidade = ($this->getHTTPPostParam('quantidade'));
         $linhaobra->valor = $linhaobra->quantidade * $linhaobra->servico->precohora;
         $linhaobra->valoriva = ($linhaobra->servico->precohora * $linhaobra->servico->iva->percentagem) / 100;
@@ -40,7 +41,20 @@ class LinhaobraController extends Controller
         $this->redirectToRoute('folhaobra', 'update', ['id' => $linhaobra->idfolhaobra]);
     }
 
+    public function index($idfolhaobra){
+        $empresas = Empresa::first();
+        $folhaobra = Folhaobra::find($idfolhaobra);
+        $this->renderView('linhaobra', 'index', ['folhaobra'=> $folhaobra, 'empresas'=> $empresas]);
 
+
+    }
+    public function create($idfolhaobra, $idservico){
+        $empresas = Empresa::first();
+        $folhaobra = Folhaobra::find($idfolhaobra);
+        $servico = Service::find($idservico);
+        $this->renderView('linhaobra', 'create',['folhaobra'=> $folhaobra, 'servico'=>$servico, 'empresas'=> $empresas]);
+
+    }
     // redirect para o edit
     //$this->renderView('linhaobra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas,  'services' => $services]); // iva ja esta associado ao serviço em principio n precisa de aparecer aqui 'ivas'=>$ivas, users vai estar associado a folhaobra , 'users'=>$users
 
