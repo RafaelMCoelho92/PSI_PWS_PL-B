@@ -16,6 +16,7 @@
           <a href="index.php?c=service&a=index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
+
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
@@ -31,6 +32,7 @@
           <a href="index.php?c=folhaobra&a=index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
+
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
@@ -46,6 +48,7 @@
           <a href="index.php?c=user&a=index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
+
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
@@ -61,8 +64,7 @@
           <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <!-- ./col -->
     </div>
 
-  </div><!-- /.container-fluid -->
+  </div>
 </section>
