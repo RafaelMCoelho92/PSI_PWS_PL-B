@@ -15,6 +15,8 @@ class LayoutController extends Controller
             $folhasobras = Folhaobra::all();
             $numfolhasobras = count($folhasobras);
             $this->renderView('home', 'dashboardbo', ['numfolhasobras' => $numfolhasobras], 'default');
+        }else {
+            header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
     }
     public function frontoffice()
@@ -22,6 +24,9 @@ class LayoutController extends Controller
         $role = $_SESSION['role'];
         if ($role == "Cliente") {
             $this->renderView('layout', 'frontoffice');
+        }
+        else {
+            header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
     }
 }
