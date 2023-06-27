@@ -21,7 +21,19 @@ class LayoutController extends Controller
     {
         $role = $_SESSION['role'];
         if ($role == "Cliente") {
-            $this->renderView('layout', 'frontoffice');
+            $auth = new Auth();
+            $id = $auth->getId();
+
+            $folhasobras = Folhaobra::find('all', ['conditions' => ['idcliente = ?', $id]]);
+            $numfolhasobras = count($folhasobras);
+
+            $folhasobraspagas = Folhaobra::find('all', ['conditions' => ['idcliente = ? AND estado = ?', $id, 'Paga']]);
+            $numfolhasobraspagas = count($folhasobraspagas);
+
+            $folhasobrasemitidas = Folhaobra::find('all', ['conditions' => ['idcliente = ? AND estado = ?', $id, 'Emitida']]);
+            $numfolhasobrasemitidas = count($folhasobrasemitidas);
+
+            $this->renderView('layout', 'frontoffice', ['numfolhasobras' => $numfolhasobras, 'numfolhasobraspagas' => $numfolhasobraspagas, 'numfolhasobrasemitidas' => $numfolhasobrasemitidas], 'default');
         }
     }
 }

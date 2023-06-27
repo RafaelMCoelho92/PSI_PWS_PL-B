@@ -35,7 +35,7 @@ class HomeController extends Controller
             $numfolhasobras = count($folhasobras);
             $users = User::all();
             $numusers = count($users);
-            $this->renderView('home', 'frontoffice', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers], 'default');
+            $this->renderView('home', 'frontoffice', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers], 'frontoffice');
         }
     }
 }

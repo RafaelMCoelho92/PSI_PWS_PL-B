@@ -53,13 +53,13 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?= $numfolhasobras = 0 ?></h3>
+                <h3><?= $numfolhasobras ?></h3>
                 <p>N.º de Folhas de obra</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="index.php?c=folhaobra&a=index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="index.php?c=cliente&a=folhaobraindex&id=<?= $auth->getId() ?>" class="small-box-footer">Ver Todas <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
@@ -69,13 +69,13 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3><?= $numfolhasobras = 0 ?><sup style="font-size: 20px"></sup></h3>
+                <h3><?= $numfolhasobraspagas ?><sup style="font-size: 20px"></sup></h3>
                 <p>N.º Folhas de Obra Pagas</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="index.php?c=folhaobra&a=index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="index.php?c=cliente&a=folhaobrapaga&id=<?= $auth->getId() ?>" class="small-box-footer">Ver Pagas <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -85,31 +85,15 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3><?= $numusers = 0 ?></h3>
-                <p>N.º Folhas de Obra em Pagamento</p>
+                <h3><?= $numfolhasobrasemitidas ?></h3>
+                <p>N.º Folhas de Obras Emitidas</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="index.php?c=folhaobra&a=show" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="index.php?c=cliente&a=folhaobraemitida&id=<?= $auth->getId() ?>" class="small-box-footer">Ver Emitidas <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Realizar pagamentos em Falta </p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
         </div>
 
       </div><!-- /.container-fluid -->
@@ -119,7 +103,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index.php?c=home&a=dashboardfo" class="brand-link">
+      <a href="index.php?c=layout&a=frontoffice" class="brand-link">
         <img src="public/img/tesp.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light"><?= APP_NAME ?></span>
       </a>
@@ -132,7 +116,7 @@
             <img src="public/img/user.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="index.php?c=home&a=dashboardfo" class="d-block"><?= $auth->getUsername(); ?></a>
+            <a href="index.php?c=cliente&a=edit" class="d-block"><?= $auth->getUsername(); ?></a>
           </div>
         </div>
 
@@ -156,7 +140,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="index.php?c=user&a=edit&id=<?= $auth->getId() ?>" class="nav-link">
+              <a href="index.php?c=cliente&a=folhaobrapaga&id=<?= $auth->getId() ?>" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
                   Folhas de Obra Pagas
@@ -166,16 +150,16 @@
 
 
             <li class="nav-item">
-              <a href="index.php?c=user&a=edit&id=<?= $auth->getId() ?>" class="nav-link">
+              <a href="index.php?c=cliente&a=folhaobraemitida&id=<?= $auth->getId() ?>" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
-                  Folhas de Obra em Pagamento
+                  Folhas de Obra Emitidas
                 </p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="index.php?c=user&a=edit&id=<?= $auth->getId() ?>" class="nav-link">
+              <a href="index.php?c=cliente&a=edit" <?= $auth->getId() ?>" class="nav-link">
                 <i class="nav-icon fas fa-pencil-alt"></i>
                 <p>
                   Área Pessoal

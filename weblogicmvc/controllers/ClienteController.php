@@ -32,4 +32,24 @@ class ClienteController extends Controller
         }
         $this->redirectToRoute('cliente', 'folhaobraindex', ['id' => $folhaobra->idcliente]);
     }
+
+    public function folhaobrapaga($id)
+    {
+        $folhaobra = Folhaobra::find('all', array('conditions' => array('idcliente = ? and estado = ? ', $id, 'Paga')));
+        $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobra,], 'frontoffice');
+    }
+
+    public function folhaobraemitida($id)
+    {
+        $folhaobra = Folhaobra::find('all', array('conditions' => array('idcliente = ? and estado = ? ', $id, 'Emitida')));
+        $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobra,], 'frontoffice');
+    }
+
+    public function edit()
+    {
+        $auth = new Auth;
+        $id = $auth->getId();
+        $user = User::find_by_id($id);
+        $this->renderView('cliente', 'edit', ['user' => $user], 'frontoffice');
+    }
 }

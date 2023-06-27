@@ -41,6 +41,9 @@ return [
         'folhaobraindex' => ['GET', 'ClienteController', 'folhaobraindex'],
         'folhaobrashow' => ['GET', 'ClienteController', 'folhaobrashow'],
         'pagar' => ['GET', 'ClienteController', 'pagar'],
+        'folhaobrapaga' => ['GET', 'ClienteController', 'folhaobrapaga'],
+        'folhaobraemitida' => ['GET', 'ClienteController', 'folhaobraemitida'],
+        'edit' => ['GET', 'ClienteController', 'edit'],
     ],
 
     'layout' => [
