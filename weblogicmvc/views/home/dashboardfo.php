@@ -51,7 +51,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>5</h3>
 
                         <p>Área Pessoal</p>
                     </div>

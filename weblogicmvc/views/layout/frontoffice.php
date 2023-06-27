@@ -159,7 +159,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="index.php?c=cliente&a=edit" <?= $auth->getId() ?>" class="nav-link">
+              <a href="index.php?c=cliente&a=edit" <?= $auth->getId() ?> class="nav-link">
                 <i class="nav-icon fas fa-pencil-alt"></i>
                 <p>
                   Área Pessoal
