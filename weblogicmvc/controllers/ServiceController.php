@@ -98,4 +98,26 @@ class ServiceController extends Controller
         //redirecionar para o index
         $this->redirectToRoute('service', 'index');
     }
+
+    public function search_service()
+    {
+        $pesquisa = $this->getHTTPPostParam('pesquisa');
+        if (!empty($pesquisa)) {
+            if ($services = Service::find_all_by_referencia($pesquisa) != null) {
+                $services = Service::find_all_by_referencia($pesquisa);
+                $this->renderView('service', 'index', ['services' => $services]);
+            } elseif ($services = Service::find_all_by_descricao($pesquisa) != null) {
+                $services  = Service::find_all_by_descricao($pesquisa);
+                $this->renderView('service', 'index', ['services' => $services]);
+            } elseif ($services = Service::find_all_by_precohora($pesquisa) != null) {
+                $services  = Service::find_all_by_precohora($pesquisa);
+                $this->renderView('service', 'index', ['services' => $services]);
+            } elseif ($services = Service::find_all_by_iva_id($pesquisa) != null) {
+                $services  = Service::find_all_by_iva_id($pesquisa);
+                $this->renderView('service', 'index', ['services' => $services]);
+            }
+        } else {
+            $this->redirectToRoute('service', 'index');
+        }
+    }
 }

@@ -157,8 +157,8 @@ class UserController extends Controller
             } elseif ($users = User::find_all_by_email($pesquisa) != null) {
                 $users  = User::find_all_by_email($pesquisa);
                 $this->renderView('user', 'index', ['users' => $users]);
-            } else {
-                $users = User::find_all_by_role('Cliente');
+            } elseif ($users = User::find_all_by_telefone($pesquisa) != null) {
+                $users  = User::find_all_by_telefone($pesquisa);
                 $this->renderView('user', 'index', ['users' => $users]);
             }
         } else {

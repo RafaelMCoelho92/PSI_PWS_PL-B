@@ -91,6 +91,7 @@ return [
         'update' => ['POST', 'ServiceController', 'update'],
         'delete' => ['GET', 'ServiceController', 'delete'],
         'select' => ['POST', 'ServiceController', 'select'],
+        'search_service' => ['POST', 'ServiceController', 'search_service'],
     ],
 
     'iva' => [
