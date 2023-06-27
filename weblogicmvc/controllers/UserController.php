@@ -106,4 +106,18 @@ class UserController extends Controller
         //redirecionar para o index
         $this->renderView('user', 'reservado', ['user' => $user]);
     }
+    public function select(){
+        $auth = new Auth();
+        $role = $auth->getRole();
+
+        if ($role == "Admin") {
+            $users = User::all();
+            $this->renderView('user', 'select', ['users' => $users]);
+        } elseif ($role == "Funcionario") {
+            $users = User::find('all', ['conditions' => ['role = ?', 'Cliente']]);
+            $this->renderView('user', 'select', ['users' => $users]);
+        } else {
+            header('Location: index.php?' . INVALID_ACCESS_ROUTE);
+        }
+    }
 }

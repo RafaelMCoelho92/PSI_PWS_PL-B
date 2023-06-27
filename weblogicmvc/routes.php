@@ -64,7 +64,6 @@ return [
         'index' => ['GET', 'LinhaobraController', 'index'],
         'create' => ['GET', 'LinhaobraController', 'create'],
 
-
     ],
 
     'user' => [
@@ -76,6 +75,7 @@ return [
         'edit' => ['GET', 'UserController', 'edit'],
         'update' => ['POST', 'UserController', 'update'],
         'reservado' => ['GET', 'UserController', 'reservado'],
+        'select'=> ['GET', 'UserController', 'select'],
 
     ],
 

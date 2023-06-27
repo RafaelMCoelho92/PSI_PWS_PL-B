@@ -297,7 +297,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="index.php?c=user&a=index" class="nav-link">
+                  <a href="index.php?c=user&a=select" class="nav-link">
                     <i class="nav-icon far fa-circle text-warning"></i>
                     <p>Criar nova</p>
                   </a>
