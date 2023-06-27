@@ -39,17 +39,12 @@
             </b>
             <br><br>
             <div class="row">
-                <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
+            <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
                     <div class="col">
                         <label for="servico">Serviço:</label><br>
-                        <select class="form-control" name="servico">
-                            <?php
-                            foreach ($services as $service) { ?>
-                                <option value="<?= $service->id ?>" selected><?= $service->descricao; ?> </option>
-                                </option>
-                            <?php } ?>
+                        <input type="text" name="referencia" placeholder="" value="">
                             <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
-                            <button class="btn btn-primary" role="button">Introduzir Serviço</button>
+                            <button class="btn btn-primary" role="button">Adicionar Serviço</button>
                     </div>
                 </form>
                 <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
