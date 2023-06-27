@@ -100,13 +100,15 @@ class UserController extends Controller
         $this->redirectToRoute('user', 'index');
     }
     public function reservado()
-    {   $auth = new Auth();
+    {
+        $auth = new Auth();
         $id = $auth->getId();
         $user = User::find($id);
         //redirecionar para o index
         $this->renderView('user', 'reservado', ['user' => $user]);
     }
-    public function select(){
+    public function select()
+    {
         $auth = new Auth();
         $role = $auth->getRole();
 
@@ -117,34 +119,50 @@ class UserController extends Controller
             header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
     }
-    public function search(){
+    public function search()
+    {
         $pesquisa = $this->getHTTPPostParam('pesquisa');
-        if(!empty($pesquisa)){
-            if($users = User::find_all_by_username($pesquisa) != null){
+        if (!empty($pesquisa)) {
+            if ($users = User::find_all_by_username($pesquisa) != null) {
                 $users = User::find_all_by_username($pesquisa);
                 $this->renderView('user', 'select', ['users' => $users]);
-    
-            }elseif ($users = User::find_all_by_telefone($pesquisa) != null){
+            } elseif ($users = User::find_all_by_telefone($pesquisa) != null) {
                 $users  = User::find_all_by_telefone($pesquisa);
                 $this->renderView('user', 'select', ['users' => $users]);
-    
-            }elseif ($users = User::find_all_by_nif($pesquisa) != null){
+            } elseif ($users = User::find_all_by_nif($pesquisa) != null) {
                 $users  = User::find_all_by_nif($pesquisa);
                 $this->renderView('user', 'select', ['users' => $users]);
-    
-            }elseif ($users = User::find_all_by_email($pesquisa) != null){
+            } elseif ($users = User::find_all_by_email($pesquisa) != null) {
                 $users  = User::find_all_by_email($pesquisa);
                 $this->renderView('user', 'select', ['users' => $users]);
-    
-            }else{
+            } else {
                 $users = User::find_all_by_role('Cliente');
                 $this->renderView('user', 'select', ['users' => $users]);
             }
-        }
-        else{
+        } else {
             $this->redirectToRoute('user', 'select');
         }
     }
-        
-    
+
+    public function search_user()
+    {
+        $pesquisa = $this->getHTTPPostParam('pesquisa');
+        if (!empty($pesquisa)) {
+            if ($users = User::find_all_by_username($pesquisa) != null) {
+                $users = User::find_all_by_username($pesquisa);
+                $this->renderView('user', 'index', ['users' => $users]);
+            } elseif ($users = User::find_all_by_nif($pesquisa) != null) {
+                $users  = User::find_all_by_nif($pesquisa);
+                $this->renderView('user', 'index', ['users' => $users]);
+            } elseif ($users = User::find_all_by_email($pesquisa) != null) {
+                $users  = User::find_all_by_email($pesquisa);
+                $this->renderView('user', 'index', ['users' => $users]);
+            } else {
+                $users = User::find_all_by_role('Cliente');
+                $this->renderView('user', 'index', ['users' => $users]);
+            }
+        } else {
+            $this->redirectToRoute('user', 'index');
+        }
+    }
 }

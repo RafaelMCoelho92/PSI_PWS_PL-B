@@ -3,37 +3,38 @@
 <div class="row">
     <div class="col-sm-12">
         <table class="table table-striped">
-        <thead>
-        <tr>
-        <th colspan="4">
-            <div class="row">
-                <div class="col">
-                    <input type="text" id="searchInput" placeholder="Digite o termo de pesquisa" class="form-control">
-                </div>
-                <div class="col-auto">
-                    <button id="searchButton" class="btn btn-primary" role="button">Pesquisar</button>
-                </div>
-            </div>
-        </th>
-    </tr>
-    <tr>
-        <th>
-            <h3>Nome</h3>
-        </th>
-        <th>
-            <h3>Email</h3>
-        </th>
-        <th>
-            <h3>NIF</h3>
-        </th>
-        <th>
-            <h3>Role</h3>
-        </th>
-        <th>
-            <a href='index.php?c=user&a=create' class="btn btn-success">Criar Utilizador</a>
-        </th>
-    </tr>
-</thead>
+            <thead>
+                <tr>
+                    <th colspan="4">
+                        <div class="row">
+                            <form method="post" action="index.php?c=user&a=search_user">
+                                <div class="col">
+                                    <input type="text" name="pesquisa" id="searchInput" placeholder="Nome/Email/NIF/Role" class="form-control">
+                                </div>
+                                <div class="col-auto">
+                                    <input type="submit" value="Pesquisar" class="btn btn-primary">
+                                </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <h3>Nome</h3>
+                    </th>
+                    <th>
+                        <h3>Email</h3>
+                    </th>
+                    <th>
+                        <h3>NIF</h3>
+                    </th>
+                    <th>
+                        <h3>Role</h3>
+                    </th>
+                    <th>
+                        <a href='index.php?c=user&a=create' class="btn btn-success">Criar Utilizador</a>
+                    </th>
+                </tr>
+            </thead>
 
             <tbody>
                 <?php foreach ($users as $user) { ?>
