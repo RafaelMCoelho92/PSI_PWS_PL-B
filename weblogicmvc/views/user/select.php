@@ -7,12 +7,14 @@
         <tr>
         <th colspan="4">
             <div class="row">
+                <form  method="post" action="index.php?c=user&a=search" >
                 <div class="col">
-                    <input type="text" id="searchInput" placeholder="Digite o termo de pesquisa" class="form-control">
+                    <input type="text" name="pesquisa" id="searchInput" placeholder="Nome/Email/NIF/Telefone" class="form-control">
                 </div>
                 <div class="col-auto">
-                    <button id="searchButton" class="btn btn-primary" role="button">Pesquisar</button>
+                    <input type="submit" value="Pesquisar" class="btn btn-primary">
                 </div>
+                </form>
             </div>
         </th>
     </tr>

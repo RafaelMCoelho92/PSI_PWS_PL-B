@@ -54,7 +54,7 @@
         </table>
     </div>
 </div>
-<script>
+<!-- <script>
     document.getElementById('searchButton').addEventListener('click', function () {
         var input = document.getElementById('searchInput').value.toLowerCase();
         var rows = document.getElementsByTagName('tr');
@@ -72,4 +72,4 @@
             }
         }
     });
-</script>
+</script> -->

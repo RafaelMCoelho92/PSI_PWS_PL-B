@@ -110,14 +110,41 @@ class UserController extends Controller
         $auth = new Auth();
         $role = $auth->getRole();
 
-        if ($role == "Admin") {
-            $users = User::all();
-            $this->renderView('user', 'select', ['users' => $users]);
-        } elseif ($role == "Funcionario") {
-            $users = User::find('all', ['conditions' => ['role = ?', 'Cliente']]);
+        if ($role != "Cliente") {
+            $users = User::find_all_by_role('Cliente');
             $this->renderView('user', 'select', ['users' => $users]);
         } else {
             header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
     }
+    public function search(){
+        $pesquisa = $this->getHTTPPostParam('pesquisa');
+        if(!empty($pesquisa)){
+            if($users = User::find_all_by_username($pesquisa) != null){
+                $users = User::find_all_by_username($pesquisa);
+                $this->renderView('user', 'select', ['users' => $users]);
+    
+            }elseif ($users = User::find_all_by_telefone($pesquisa) != null){
+                $users  = User::find_all_by_telefone($pesquisa);
+                $this->renderView('user', 'select', ['users' => $users]);
+    
+            }elseif ($users = User::find_all_by_nif($pesquisa) != null){
+                $users  = User::find_all_by_nif($pesquisa);
+                $this->renderView('user', 'select', ['users' => $users]);
+    
+            }elseif ($users = User::find_all_by_email($pesquisa) != null){
+                $users  = User::find_all_by_email($pesquisa);
+                $this->renderView('user', 'select', ['users' => $users]);
+    
+            }else{
+                $users = User::find_all_by_role('Cliente');
+                $this->renderView('user', 'select', ['users' => $users]);
+            }
+        }
+        else{
+            $this->redirectToRoute('user', 'select');
+        }
+    }
+        
+    
 }
