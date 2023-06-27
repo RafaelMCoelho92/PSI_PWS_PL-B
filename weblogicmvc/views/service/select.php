@@ -29,7 +29,7 @@
                             <td><?= $service->precohora ?></td>
                             <td><?= $service->iva->descricao ?></td>
                             <td>
-                            <a href="index.php?c=linhaobra&a=create&idfolhaobra=<?= $folhaobra->id ?>&idservico=<?= $service->id ?>" class="btn btn-success"> Registar novo Serviço </a>
+                            <a href="index.php?c=linhaobra&a=create&idfolhaobra=<?= $folhaobra->id ?>&idservico=<?= $service->id ?>" class="btn btn-success"> Selecionar  </a>
  
                             </td>
                         </tr>
