@@ -46,7 +46,7 @@ class LinhaobraController extends Controller
         $linhaobra->quantidade = $novaQuantidade;
         $folhaobra = Folhaobra::find($linhaobra->idfolhaobra);
         $linhaobra->save(); 
-        $this->redirectToRoute('folhaobra','edit',['id'=>$folhaobra->id]);
+        $this->redirectToRoute('folhaobra','update',['id'=>$folhaobra->id]);
 
     }
 
