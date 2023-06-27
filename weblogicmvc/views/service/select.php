@@ -16,9 +16,7 @@
                 <th>
                     <h3>IVA</h3>
                 </th>
-                <th>
-                    <a href='index.php?c=service&a=create' class="btn btn-success"> Registar novo Serviço </a>
-                </th>
+
             </thead>
             <tbody>
                 <?php foreach ($services as $service) { ?>
