@@ -9,7 +9,7 @@
                         <div class="row">
                             <form method="post" action="index.php?c=user&a=search_user">
                                 <div class="col">
-                                    <input type="text" name="pesquisa" id="searchInput" placeholder="Nome/Email/NIF/Role" class="form-control">
+                                    <input type="text" name="pesquisa" id="searchInput" placeholder="Nome/Email/NIF/Telefone" class="form-control">
                                 </div>
                                 <div class="col-auto">
                                     <input type="submit" value="Pesquisar" class="btn btn-primary">
