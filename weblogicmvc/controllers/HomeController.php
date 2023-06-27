@@ -16,15 +16,25 @@ class HomeController extends Controller
     public function dashboardbo()
     {
         $role = $_SESSION['role'];
-        if ($role == "Admin" || $role == "Funcionario") {
+        if ($role == "Admin") {
             $folhasobras = Folhaobra::all();
             $numfolhasobras = count($folhasobras);
             $users = User::all();
             $numusers = count($users);
             $servicos = Service::all();
             $numservicos = count($servicos);
-            $this->renderView('home', 'dashboardbo', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers, 'numservicos' => $numservicos], 'default');           
-        }else {
+            $this->renderView('home', 'dashboardbo', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers, 'numservicos' => $numservicos], 'default');
+        } elseif ($role == "Funcionario") {
+            $auth = new Auth();
+            $id = $auth->getId();
+            $users = User::all();
+            $numusers = count($users);
+            $servicos = Service::all();
+            $numservicos = count($servicos);
+            $folhasobras = Folhaobra::find_all_by_idfuncionario($id);
+            $numfolhasobras = count($folhasobras);
+            $this->renderView('home', 'dashboardbo', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers, 'numservicos' => $numservicos], 'default');
+        } else {
             header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
     }
@@ -46,8 +56,7 @@ class HomeController extends Controller
             $numfolhasobrasemitidas = count($folhasobrasemitidas);
 
             $this->renderView('home', 'dashboardfo', ['numfolhasobras' => $numfolhasobras, 'numfolhasobraspagas' => $numfolhasobraspagas, 'numfolhasobrasemitidas' => $numfolhasobrasemitidas], 'frontoffice');
-        }
-        else {
+        } else {
             header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
     }
