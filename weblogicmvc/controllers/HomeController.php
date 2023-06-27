@@ -5,7 +5,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->authenticationFilter(); // chamando a função de verificação de autenticação
+        $this->authenticationFilter(['Funcionario', 'Admin', 'Cliente']); // chamando a função de verificação de autenticação
     }
     public function index()
     {
@@ -23,7 +23,9 @@ class HomeController extends Controller
             $numusers = count($users);
             $servicos = Service::all();
             $numservicos = count($servicos);
-            $this->renderView('home', 'dashboardbo', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers, 'numservicos' => $numservicos], 'default');
+            $this->renderView('home', 'dashboardbo', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers, 'numservicos' => $numservicos], 'default');           
+        }else {
+            header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
     }
 
@@ -35,7 +37,9 @@ class HomeController extends Controller
             $numfolhasobras = count($folhasobras);
             $users = User::all();
             $numusers = count($users);
-            $this->renderView('home', 'frontoffice', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers], 'frontoffice');
+            $this->renderView('home', 'dashboardfo', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers], 'frontoffice');
+        }else {
+            header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
     }
 }
