@@ -70,6 +70,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($linhaobras as $linha) { ?>
+
+                        <tr>
+                            <td><?php echo $linha->id; ?></td> <!-- Ref -->
+                            <td><?php echo $linha->quantidade; ?></td><!-- Qtd -->
+                            <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
+                            <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
+                            <td><?php echo $linha->servico->iva->percentagem . " %" ?></td><!-- IVA -->
+                            <td><?= ($linha->servico->precohora * $linha->quantidade) . " €" ?></td><!-- Subtotal s/ iva -->
+                            <td><?php echo ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100  . " €" ?></td><!-- IVA TOTAL -->
+                            <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
+                                    ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100 .
+                                    "€" ?></td><!-- VALOR TOTAL-->
+                            <td><a href="index.php?c=linhaobra&a=delete&id=<?= $linha->id ?>" class="btn btn-info" role="button">Remover Linha</a></td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

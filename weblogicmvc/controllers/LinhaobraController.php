@@ -52,7 +52,8 @@ class LinhaobraController extends Controller
         $empresas = Empresa::first();
         $folhaobra = Folhaobra::find($idfolhaobra);
         $servico = Service::find($idservico);
-        $this->renderView('linhaobra', 'create',['folhaobra'=> $folhaobra, 'servico'=>$servico, 'empresas'=> $empresas]);
+        $linhaobras = Linhaobra::find_all_by_idfolhaobra($folhaobra->id);
+        $this->renderView('linhaobra', 'create',['folhaobra'=> $folhaobra, 'servico'=>$servico, 'empresas'=> $empresas, 'linhaobras'=> $linhaobras]);
 
     }
     // redirect para o edit
