@@ -67,6 +67,7 @@
                         <th>Subtotal (s/ IVA)</th>
                         <th>IVA Total</th>
                         <th>Valor Total</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -84,6 +85,8 @@
                                     ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100 .
                                     "€" ?></td><!-- VALOR TOTAL-->
                             <td><a href="index.php?c=linhaobra&a=delete&id=<?= $linha->id ?>" class="btn btn-info" role="button">Remover Linha</a></td>
+                            <td><a href="index.php?c=linhaobra&a=edit&id=<?= $linha->id ?>" class="btn btn-warning" role="button">Alterar Qtd.</a></td>
+
                         </tr>
                     <?php } ?>
                 </tbody>
