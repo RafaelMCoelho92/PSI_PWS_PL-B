@@ -73,6 +73,7 @@
                     <?php foreach ($linhaobras as $linha) { ?>
 
                         <tr>
+                            <form action="index.php?c=linhaobra&a=update&id=<?= $linha->id ?>" method="post">
                             <td><?php echo $linha->id; ?></td> <!-- Ref -->
                             <td><input type="text" name="quantidade" placeholder="<?php echo $linha->quantidade; ?>" value="<?php echo $linha->quantidade; ?>"></td><!-- Qtd -->
                             <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
@@ -83,8 +84,8 @@
                             <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
                                     ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100 .
                                     "€" ?></td><!-- VALOR TOTAL-->
-                            <td><a href="index.php?c=linhaobra&a=update&id=<?= $linha->id ?>" class="btn btn-danger" role="button">Atualizar</a></td>
-                        </tr>
+                            <td><button class="btn btn-info" role="button">Atualizar</button></td>
+                            </form></tr>
                     <?php } ?>
                 </tbody>
             </table>

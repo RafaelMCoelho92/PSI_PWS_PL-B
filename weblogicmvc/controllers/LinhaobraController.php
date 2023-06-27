@@ -40,6 +40,15 @@ class LinhaobraController extends Controller
         //redirecionar 
         $this->redirectToRoute('folhaobra', 'update', ['id' => $linhaobra->idfolhaobra]);
     }
+    public function update($id){
+        $linhaobra = Linhaobra::find_by_id($id);
+        $novaQuantidade = $this->getHTTPPostParam('quantidade');
+        $linhaobra->quantidade = $novaQuantidade;
+        $folhaobra = Folhaobra::find($linhaobra->idfolhaobra);
+        $linhaobra->save(); 
+        $this->redirectToRoute('folhaobra','edit',['id'=>$folhaobra->id]);
+
+    }
 
     public function index($idfolhaobra){
         $empresas = Empresa::first();

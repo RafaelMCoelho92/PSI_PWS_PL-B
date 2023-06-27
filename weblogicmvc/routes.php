@@ -59,11 +59,13 @@ return [
 
     ],
     'linhaobra' => [
-        'store' => ['POST', 'LinhaobraController', 'store'],
+        'store' => ['POST|GET', 'LinhaobraController', 'store'],
         'delete' => ['GET', 'LinhaobraController', 'delete'],
         'index' => ['GET', 'LinhaobraController', 'index'],
         'create' => ['GET', 'LinhaobraController', 'create'],
         'edit' => ['GET', 'LinhaobraController', 'edit'],
+        'update' => ['POST', 'LinhaobraController', 'update'],
+
 
     ],
 
