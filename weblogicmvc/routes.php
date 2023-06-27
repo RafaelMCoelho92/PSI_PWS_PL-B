@@ -76,8 +76,9 @@ return [
         'edit' => ['GET', 'UserController', 'edit'],
         'update' => ['POST', 'UserController', 'update'],
         'reservado' => ['GET', 'UserController', 'reservado'],
-        'select'=> ['GET', 'UserController', 'select'],
-        'search'=> ['POST', 'UserController', 'search'],
+        'select' => ['GET', 'UserController', 'select'],
+        'search' => ['POST', 'UserController', 'search'],
+        'search_user' => ['POST', 'UserController', 'search_user'],
 
     ],
 
