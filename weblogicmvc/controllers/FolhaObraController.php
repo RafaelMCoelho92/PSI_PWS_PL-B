@@ -77,7 +77,7 @@ class FolhaobraController extends Controller
         $folhaobra->ivatotal = 0;
         $folhaobra->subtotal = 0;
         if ($folhaobra->is_valid()) {
-        $folhaobra->save(); }
+        $folhaobra->save(); }// redirect se n for tem q se fazer renderview
         $this->redirectToRoute('linhaobra', 'index', ['idfolhaobra' => $folhaobra->id]);
     }
     public function edit($id)
