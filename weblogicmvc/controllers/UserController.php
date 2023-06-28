@@ -77,7 +77,6 @@ class UserController extends Controller
             //mostrar a vista edit passando os dados por parâmetro
         }
     }
-
     public function update($id)
     {
         // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
@@ -123,7 +122,6 @@ class UserController extends Controller
     public function search() // https://www.phpactiverecord.org/projects/main/wiki/Finders
     {
         $pesquisa = $this->getHTTPPostParam('pesquisa');
-    
         if (!empty($pesquisa)) {
             $conditions = array(
                 'conditions' => array(
@@ -134,7 +132,6 @@ class UserController extends Controller
                     "%$pesquisa%"
                 )
             );
-    
             $users = User::all($conditions);
     
             if (!empty($users)) {
@@ -147,27 +144,26 @@ class UserController extends Controller
             $this->redirectToRoute('user', 'select');
         }
     }
-    
 
     public function search_user()
     {
         $pesquisa = $this->getHTTPPostParam('pesquisa');
         if (!empty($pesquisa)) {
-            if ($users = User::find_all_by_username($pesquisa) != null) {
-                $users = User::find_all_by_username($pesquisa);
-                $this->renderView('user', 'index', ['users' => $users]);
-            } elseif ($users = User::find_all_by_nif($pesquisa) != null) {
-                $users  = User::find_all_by_nif($pesquisa);
-                $this->renderView('user', 'index', ['users' => $users]);
-            } elseif ($users = User::find_all_by_email($pesquisa) != null) {
-                $users  = User::find_all_by_email($pesquisa);
-                $this->renderView('user', 'index', ['users' => $users]);
-            } elseif ($users = User::find_all_by_telefone($pesquisa) != null) {
-                $users  = User::find_all_by_telefone($pesquisa);
+            $conditions = array(
+                'conditions' => array(
+                    'username LIKE ? OR telefone LIKE ? OR nif LIKE ? OR email LIKE ?',
+                    "%$pesquisa%",
+                    "%$pesquisa%",
+                    "%$pesquisa%",
+                    "%$pesquisa%"
+                )
+            );
+            $users = User::all($conditions);
+    
+            if (!empty($users)) {
                 $this->renderView('user', 'index', ['users' => $users]);
             } else {
-                $users = User::find_all_by_role('Cliente');
-                $this->renderView('user', 'index', ['users' => $users]);
+                $this->redirectToRoute('user', 'index');
             }
         } else {
             $this->redirectToRoute('user', 'index');
