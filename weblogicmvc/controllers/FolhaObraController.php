@@ -24,7 +24,7 @@ class FolhaobraController extends Controller
         $role = $auth->getRole();
 
         if ($role == "Admin") {
-            $folhasObra = Folhaobra::find('all', ['conditions' => ['estado = ?', ['Emitida', 'Em Lançamento', 'Paga']]]);
+            $folhasObra = Folhaobra::find('all', ['conditions' => ['estado IN (?)', ['Emitida', 'Em Lançamento', 'Paga']]]);
             $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra]);
         } elseif ($role == "Funcionario") {
             $id = $auth->getId();
