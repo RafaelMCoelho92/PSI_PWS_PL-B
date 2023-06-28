@@ -116,15 +116,9 @@
 
     <div class="row no-print">
         <div class="col-12">
-            <a href="#" rel="noopener" target="_blank" class="btn btn-default" onclick="window.print(); return false;">
-                <i class="fas fa-print"></i> Print
-            </a>
-            <a href="index.php?c=cliente&a=pagar&id=<?= $folhaObra->id ?>" type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                Payment
-            </a>
+            <a href="index.php?c=cliente&a=pagar&id=<?= $folhaObra->id ?>" type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Pagar </a>
             <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                <i class="fas fa-download"></i> Generate PDF
-            </button>
+                <i class="fas fa-download"></i> Imprimir</button>
         </div>
     </div>
 </div>
