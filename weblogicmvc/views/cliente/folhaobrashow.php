@@ -20,6 +20,7 @@
                 Telefone: <?= $empresa->telefone ?><br>
                 Email: <?= $empresa->email ?>
             </address>
+
         </div>
 
         <div class="col-sm-4 invoice-col">
@@ -117,7 +118,7 @@
 
     <div class="row no-print">
         <div class="col-12">
-        <?php if ($folhaObra->estado != 'Paga') { ?>
+            <?php if ($folhaObra->estado != 'Paga') { ?>
                 <a href="index.php?c=cliente&a=pagar&id=<?= $folhaObra->id ?>" type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Pagar </a>
             <?php } ?>
             <a href="index.php?c=cliente&a=imprimir&id=<?= $folhaObra->id ?>" target="_blank" type="button" class="btn btn-primary float-right " style="margin-right: 5px;"><i class="fas fa-download"></i> Imprimir </a>
