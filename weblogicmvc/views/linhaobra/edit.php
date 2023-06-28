@@ -4,7 +4,7 @@
         <div class="col-12">
             <h4>
                 <i class="fas fa-globe"></i> <?= APP_NAME ?>
-                <small class="float-right"><?= date('D, d M Y H:i', strtotime($folhaobra->data))?> </small>
+                <small class="float-right"><?= date('D, d M Y H:i', strtotime($folhaobra->data)) ?> </small>
             </h4>
         </div>
 
@@ -74,18 +74,24 @@
 
                         <tr>
                             <form action="index.php?c=linhaobra&a=update&id=<?= $linha->id ?>" method="post">
-                            <td><?php echo $linha->id; ?></td> <!-- Ref -->
-                            <td><input type="number" name="quantidade" placeholder="<?php echo $linha->quantidade; ?>" value="<?php echo $linha->quantidade; ?>"></td><!-- Qtd -->
-                            <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
-                            <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
-                            <td><?php echo $linha->servico->iva->percentagem . " %" ?></td><!-- IVA -->
-                            <td><?= ($linha->servico->precohora * $linha->quantidade) . " €" ?></td><!-- Subtotal s/ iva -->
-                            <td><?php echo ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100  . " €" ?></td><!-- IVA TOTAL -->
-                            <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
-                                    ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100 .
-                                    "€" ?></td><!-- VALOR TOTAL-->
-                            <td><button class="btn btn-info" role="button">Atualizar</button></td>
-                            </form></tr>
+                                <td><?php echo $linha->id; ?></td> <!-- Ref -->
+                                <?php
+                                if ($linha->id == $idlinha) { ?>
+                                    <td><input type="number" name="quantidade" placeholder="<?php echo $linha->quantidade; ?>" value="<?php echo $linha->quantidade; ?>"></td><!-- Qtd -->
+                                <?php } else { ?>
+                                    <td><?php echo $linha->quantidade; ?></td><!-- Qtd -->
+                                <?php } ?>
+                                <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
+                                <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
+                                <td><?php echo $linha->servico->iva->percentagem . " %" ?></td><!-- IVA -->
+                                <td><?= ($linha->servico->precohora * $linha->quantidade) . " €" ?></td><!-- Subtotal s/ iva -->
+                                <td><?php echo ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100  . " €" ?></td><!-- IVA TOTAL -->
+                                <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
+                                        ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100 .
+                                        "€" ?></td><!-- VALOR TOTAL-->
+                                <td><button class="btn btn-info" role="button">Atualizar</button></td>
+                            </form>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>

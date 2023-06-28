@@ -95,7 +95,7 @@ return [
         'edit' => ['GET', 'ServiceController', 'edit'],
         'update' => ['POST', 'ServiceController', 'update'],
         'delete' => ['GET', 'ServiceController', 'delete'],
-        'select' => ['POST', 'ServiceController', 'select'],
+        'select' => ['POST|GET', 'ServiceController', 'select'],
         'search_service' => ['POST', 'ServiceController', 'search_service'],
     ],
 
