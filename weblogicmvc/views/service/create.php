@@ -39,9 +39,9 @@
                         </div>
                         <div class="col-12">
                             <label for="precohora" class="form-label">Preço / hora</label><br>
-                            <input type="number" min="0" class="form-control" name="precohora" value="<?php if (isset($service)) {
-                                                                                                echo $service->precohora;
-                                                                                            } ?>" placeholder="Preço / hora" required>
+                            <input min='0' type="number" min="0" class="form-control" name="precohora" value="<?php if (isset($service)) {
+                                                                                                                    echo $service->precohora;
+                                                                                                                } ?>" placeholder="Preço / hora" required>
                             <p>
                                 <?php
                                 if (isset($service->errors)) {
@@ -60,7 +60,7 @@
                             <label for="iva_id">Iva:</label><br>
                             <select class="form-control" name="iva_id">
                                 <?php
-   
+
                                 foreach ($ivas as $iva) { ?>
                                     <?php if ($iva->id == $service->iva_id) { ?>
                                         <option value="<?= $iva->id ?>" selected><?= $iva->descricao;

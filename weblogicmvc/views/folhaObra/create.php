@@ -20,32 +20,6 @@
                 Telefone: <?= $empresas->telefone ?><br>
                 Email: <?= $empresas->email ?>
             </address>
-            <div style="display: flex; align-items: center;">
-                <button class="btn btn-info" role="button" style="margin-left: 10px; flex-shrink: 0;">Selecionar Serviço</button>
-                <label for="servico" style="margin-left: 10px; flex-grow: 1;"></label>
-                <input type="text" name="referencia" placeholder="Insira o Serviço" value="" style="margin-left: 10px; flex-grow: 1;">
-                <button class="btn btn-primary" role="button" style="margin-left: 10px; flex-shrink: 0;">Adicionar Serviço</button>
-                <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required style="margin-left: 10px; flex-shrink: 0;">
-            </div>
-        </div>
-
-        <div class="col-sm-4 invoice-col">
-            To
-            <address>
-                <strong><?= $folhaobra->user->username ?></strong><br>
-                <?= $folhaobra->user->morada ?><br>
-                <?= $folhaobra->user->codigopostal ?>, <?= $folhaobra->user->localidade ?><br>
-                Teleone: <?= $folhaobra->user->telefone ?><br>
-                Email: <?= $folhaobra->user->email ?>
-            </address>
-        </div>
-
-        <div class="col-sm-4 invoice-col">
-            <br>
-            <b>Order ID:</b> <?= $folhaobra->id ?><br>
-            <b>Estado:</b> <?= $folhaobra->estado ?><br>
-            </b>
-            <br><br>
             <div class="row">
                 <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
                     <div class="col">
@@ -62,74 +36,93 @@
                             </option>
                         <?php } ?>
             </div>
-            <br>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Ref.</th>
-                        <th>Qtd</th>
-                        <th>Serviço</th>
-                        <th>Preço/Hora</th>
-                        <th>IVA</th>
-                        <th>Subtotal (s/ IVA)</th>
-                        <th>IVA Total</th>
-                        <th>Valor Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <p class="lead">Payment Methods:</p>
-            <img src="public/img/credit/visa.png" alt="Visa">
-            <img src="public/img/credit/mastercard.png" alt="Mastercard">
-            <img src="public/img/credit/american-express.png" alt="American Express">
-            <img src="public/img/credit/paypal2.png" alt="Paypal">
-        </div>
 
-        <div class="col-6">
-            <p class="lead">Amount Due 2/22/2014</p>
-            <div class="table-responsive">
-                <table class="table">
-                    <tbody>
+            <div class="col-sm-4 invoice-col">
+                To
+                <address>
+                    <strong><?= $folhaobra->user->username ?></strong><br>
+                    <?= $folhaobra->user->morada ?><br>
+                    <?= $folhaobra->user->codigopostal ?>, <?= $folhaobra->user->localidade ?><br>
+                    Teleone: <?= $folhaobra->user->telefone ?><br>
+                    Email: <?= $folhaobra->user->email ?>
+                </address>
+            </div>
+
+            <div class="col-sm-4 invoice-col">
+                <br>
+                <b>Order ID:</b> <?= $folhaobra->id ?><br>
+                <b>Estado:</b> <?= $folhaobra->estado ?><br>
+                </b>
+                <br><br>
+
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <th style="width:50%">Subtotal:</th>
-                            <td><?= $folhaobra->subtotal; ?> €</td>
-                        </tr>
-                        <tr>
+                            <th>Ref.</th>
+                            <th>Qtd</th>
+                            <th>Serviço</th>
+                            <th>Preço/Hora</th>
+                            <th>IVA</th>
+                            <th>Subtotal (s/ IVA)</th>
                             <th>IVA Total</th>
-                            <td><?= $folhaobra->ivatotal; ?> €</td>
+                            <th>Valor Total</th>
                         </tr>
-
-                        <tr>
-                            <th>Total:</th>
-                            <td><?= $folhaobra->valortotal; ?> €</td>
-                        </tr>
+                    </thead>
+                    <tbody>
                     </tbody>
                 </table>
             </div>
         </div>
+        <div class="row">
+            <div class="col-6">
+                <p class="lead">Payment Methods:</p>
+                <img src="public/img/credit/visa.png" alt="Visa">
+                <img src="public/img/credit/mastercard.png" alt="Mastercard">
+                <img src="public/img/credit/american-express.png" alt="American Express">
+                <img src="public/img/credit/paypal2.png" alt="Paypal">
+            </div>
 
-    </div>
+            <div class="col-6">
+                <p class="lead">Amount Due 2/22/2014</p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th style="width:50%">Subtotal:</th>
+                                <td><?= $folhaobra->subtotal; ?> €</td>
+                            </tr>
+                            <tr>
+                                <th>IVA Total</th>
+                                <td><?= $folhaobra->ivatotal; ?> €</td>
+                            </tr>
+
+                            <tr>
+                                <th>Total:</th>
+                                <td><?= $folhaobra->valortotal; ?> €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
 
 
-    <div class="row no-print">
-        <div class="col-12">
-            <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
-            <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Emitir e Pagar
-            </button>
+        <div class="row no-print">
+            <div class="col-12">
+                <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Emitir e Pagar
+                </button>
 
-            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                <i class="fas fa-download"></i> Emitir
+                <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                    <i class="fas fa-download"></i> Emitir
 
-            </button>
+                </button>
+            </div>
         </div>
     </div>
-</div>

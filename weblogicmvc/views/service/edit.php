@@ -34,9 +34,9 @@
                                 echo $service->errors->on('descricao');
                             } ?>
                         </td>
-                        <td><input class="form-control" id="precohora" placeholder="Preço / Hora" type="number" min="0" step="0.01" value="<?php if (isset($service)) {
-                                                                                                                                        echo $service->precohora;
-                                                                                                                                    } ?>" name="precohora" id="precohora" required>
+                        <td><input min='0' class="form-control" id="precohora" placeholder="Preço / Hora" type="number" min="0" step="0.01" value="<?php if (isset($service)) {
+                                                                                                                                                        echo $service->precohora;
+                                                                                                                                                    } ?>" name="precohora" id="precohora" required>
                             <?php if (isset($service->errors)) {
                                 echo $service->errors->on('precohora');
                             } ?>
