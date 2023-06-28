@@ -116,8 +116,6 @@
 
     <div class="row no-print">
         <div class="col-12">
-            <a href="index.php?c=cliente&a=pagar&id=<?= $folhaObra->id ?>" type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Pagar </a>
-            <a href="index.php?c=cliente&a=imprimir&id=<?= $folhaObra->id ?>" type="button" class="btn btn-primary float-right " style="margin-right: 5px;"><i class="fas fa-download"></i> Imprimir </a>
         </div>
     </div>
 </div>

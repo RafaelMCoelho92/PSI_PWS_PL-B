@@ -76,6 +76,12 @@ class ClienteController extends Controller
             $this->redirectToRoute('cliente', 'folhaobraindex', ['id' => $idCliente]);
         }
     }
+    public function imprimir($id){
+        $empresa = Empresa::first();
+        $folhaobra = Folhaobra::find($id);
+        $linhaObras = Linhaobra::find_all_by_idfolhaobra($id);
+        $this->renderView('cliente', 'folhaobraimprimir', ['folhaObra' => $folhaobra, 'empresa' => $empresa, 'linhaObras' => $linhaObras], 'login');
+    }
     
     
     

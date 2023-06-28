@@ -44,6 +44,8 @@ return [
         'folhaobraemitida' => ['GET', 'ClienteController', 'folhaobraemitida'],
         'edit' => ['GET', 'ClienteController', 'edit'],
         'search_cliente' => ['POST', 'ClienteController', 'search_cliente'],
+        'imprimir' => ['GET', 'ClienteController', 'imprimir'],
+
     ],
 
     'folhaobra' => [
