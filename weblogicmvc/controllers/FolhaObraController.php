@@ -77,8 +77,12 @@ class FolhaobraController extends Controller
         $folhaobra->ivatotal = 0;
         $folhaobra->subtotal = 0;
         if ($folhaobra->is_valid()) {
-        $folhaobra->save(); }// redirect se n for tem q se fazer renderview
-        $this->redirectToRoute('linhaobra', 'index', ['idfolhaobra' => $folhaobra->id]);
+            $folhaobra->save(); // redirect se n for tem q se fazer renderview
+            $this->redirectToRoute('linhaobra', 'index', ['idfolhaobra' => $folhaobra->id]);
+        }else {
+            $users = User::all();
+            $this->renderView('user', 'select', ['users' => $users] );
+        }
     }
     public function edit($id)
     {
@@ -153,7 +157,8 @@ class FolhaobraController extends Controller
         //apaga um registo da BD identificado pelo ID
         $folhaObra = Folhaobra::find($id);
         if ($folhaObra->is_valid()) {
-        $folhaObra->delete();}
+            $folhaObra->delete();
+        }
         //redirecionar para o index
         $this->redirectToRoute('folhaobra', 'index');
     }
@@ -163,7 +168,8 @@ class FolhaobraController extends Controller
         $folhaobra = Folhaobra::find($id);
         $folhaobra->estado = "Anulada";
         if ($folhaobra->is_valid()) {
-        $folhaobra->save();}
+            $folhaobra->save();
+        }
         $this->redirectToRoute('folhaobra', 'index');
     }
     public function paga($id)
@@ -171,7 +177,8 @@ class FolhaobraController extends Controller
         $folhaobra = Folhaobra::find($id);
         $folhaobra->estado = "Paga";
         if ($folhaobra->is_valid()) {
-        $folhaobra->save();}
+            $folhaobra->save();
+        }
         $this->redirectToRoute('folhaobra', 'index');
     }
     public function emitir($id)
@@ -181,9 +188,10 @@ class FolhaobraController extends Controller
             $this->redirectToRoute('folhaobra', 'index');
         } else {
             $folhaobra->estado = "Emitida";
-            $folhaobra->data = date('d-m-Y H:i:s');// atualiza as horas quando é emitida
+            $folhaobra->data = date('d-m-Y H:i:s'); // atualiza as horas quando é emitida
             if ($folhaobra->is_valid()) {
-            $folhaobra->save();}
+                $folhaobra->save();
+            }
             $this->redirectToRoute('folhaobra', 'index');
         }
     }
