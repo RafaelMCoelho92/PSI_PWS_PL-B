@@ -46,7 +46,7 @@ class HomeController extends Controller
             $auth = new Auth();
             $id = $auth->getId();
 
-            $folhasobras = Folhaobra::find('all', ['conditions' => ['idcliente = ?', $id]]);
+            $folhasobras = Folhaobra::find_all_by_idcliente($id);
             $numfolhasobras = count($folhasobras);
 
             $folhasobraspagas = Folhaobra::find('all', ['conditions' => ['idcliente = ? AND estado = ?', $id, 'Paga']]);
