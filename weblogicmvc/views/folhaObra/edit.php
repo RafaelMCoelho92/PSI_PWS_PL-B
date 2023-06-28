@@ -20,18 +20,6 @@
                 Telefone: <?= $empresa->telefone ?><br>
                 Email: <?= $empresa->email ?>
             </address>
-            <div class="col">
-                <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>" style="display: inline-block;">
-                    <label for="referencia">Serviço:</label>
-                    <input type="text" name="referencia" placeholder="Introduza um serviço" value="">
-                    <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
-                    <button class="btn btn-primary" role="button">Adicionar Serviço</button>
-                </form>
-                <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>" style="display: inline-block;">
-                    <button class="btn btn-info" role="button">Selecionar Serviço</button>
-                </form>
-            </div>
-
         </div>
 
         <div class="col-sm-4 invoice-col">
@@ -55,6 +43,32 @@
             <br>
         </div>
     </div>
+    <div class="card card-info">
+        <div class="card-header">
+            <h3 class="card-title">Serviço</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
+                        <input type="text" name="referencia" placeholder="Introduza um serviço" value="" class="form-control" required>
+                </div>
+                <div class="col-3">
+                    <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary form-control" role="button">Adicionar Serviço</button>
+                    </form>
+                </div>
+                <div class="col-3">
+                    <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
+                        <button class="btn btn-info form-control" role="button">Selecionar Serviço</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-12 table-responsive">
             <table class="table table-striped">
