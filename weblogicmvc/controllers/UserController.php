@@ -160,6 +160,9 @@ class UserController extends Controller
             } elseif ($users = User::find_all_by_telefone($pesquisa) != null) {
                 $users  = User::find_all_by_telefone($pesquisa);
                 $this->renderView('user', 'index', ['users' => $users]);
+            } else {
+                $users = User::find_all_by_role('Cliente');
+                $this->renderView('user', 'index', ['users' => $users]);
             }
         } else {
             $this->redirectToRoute('user', 'index');

@@ -34,7 +34,7 @@ class ClienteController extends Controller
             $folhaobra->estado = 'Paga';
             $folhaobra->save();
         }
-        $this->redirectToRoute('cliente', 'folhaobraindex', ['id' => $folhaobra->idcliente]);
+        $this->redirectToRoute('cliente', 'folhaobraindex', ['id' => $folhaobra->idcliente], 'frontoffice');
     }
 
     public function folhaobrapaga($id)
@@ -55,5 +55,31 @@ class ClienteController extends Controller
         $id = $auth->getId();
         $user = User::find_by_id($id);
         $this->renderView('cliente', 'edit', ['user' => $user], 'frontoffice');
+    }
+
+    public function search_cliente()
+    {
+        $pesquisa = $this->getHTTPPostParam('pesquisa');
+
+        if (!empty($pesquisa)) {
+            if ($folhaobras = Folhaobra::find_all_by_estado($pesquisa) != null) {
+                $folhaobras = Folhaobra::find_all_by_estado($pesquisa);
+                $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobras], 'frontoffice');
+            } elseif ($folhaobras = Folhaobra::find_all_by_id($pesquisa) != null) {
+                $folhaobras  = Folhaobra::find_all_by_id($pesquisa);
+                $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobras], 'frontoffice');
+            } else {
+                $auth = new Auth;
+                $id = $auth->getId();
+                $user = User::find_by_id($id);
+                $folhaobras = Folhaobra::find_all_by_id($user->id);
+                $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobras], 'frontoffice');
+            }
+        } else {
+            $auth = new Auth;
+            $id = $auth->getId();
+            $user = User::find_by_id($id);
+            $this->redirectToRoute('cliente', 'folhaobraindex', ['id' => $user->id]);
+        }
     }
 }

@@ -14,6 +14,19 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th colspan="4">
+                            <div class="row">
+                                <form method="post" action="index.php?c=cliente&a=search_cliente">
+                                    <div class="col">
+                                        <input type="text" name="pesquisa" id="searchInput" placeholder="ID/Estado" class="form-control">
+                                    </div>
+                                    <div class="col-auto">
+                                        <input type="submit" value="Pesquisar" class="btn btn-primary">
+                                    </div>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
                         <th>
                             <h3>ID</h3>
                         </th>
