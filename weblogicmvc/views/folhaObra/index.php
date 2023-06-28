@@ -40,7 +40,9 @@
                             <td><?= $folhaObra->estado ?></td>
                             <td><?= $folhaObra->user->username ?></td>
                             <td>
-                                <a href="index.php?c=folhaobra&a=show&id=<?= $folhaObra->id ?>" class="btn btn-primary" role="button">Ver mais</a>
+                            <?php if ($folhaObra->estado != 'Em Lançamento') { ?>
+                                    <a href="index.php?c=folhaobra&a=show&id=<?= $folhaObra->id ?>" class="btn btn-primary" role="button">Ver mais</a>
+                                <?php } ?>
                                 <?php if ($folhaObra->estado == 'Em Lançamento') { ?>
                                     <a href="index.php?c=folhaobra&a=edit&id=<?= $folhaObra->id ?>" class="btn btn-secondary" role="button">Editar</a>
                                 <?php } ?>
