@@ -44,7 +44,9 @@
                                 <?php if ($folhaObra->estado == 'Em Lançamento') { ?>
                                     <a href="index.php?c=folhaobra&a=edit&id=<?= $folhaObra->id ?>" class="btn btn-secondary" role="button">Editar</a>
                                 <?php } ?>
-                                <a href="index.php?c=folhaobra&a=anular&id=<?= $folhaObra->id ?>" class="btn btn-danger" role="button">Anular</a>
+                                <?php if ($folhaObra->estado != 'Paga') { ?>
+                                    <a href="index.php?c=folhaobra&a=anular&id=<?= $folhaObra->id ?>" class="btn btn-danger" role="button">Anular</a>
+                                <?php } ?>
                                 <?php if ($folhaObra->estado == 'Emitida') { ?>
                                     <a href="index.php?c=folhaobra&a=paga&id=<?= $folhaObra->id ?>" class="btn btn-success" role="button">Pagar</a>
                                 <?php } ?>
