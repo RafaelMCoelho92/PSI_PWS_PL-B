@@ -4,7 +4,7 @@
         <div class="col-12">
             <h4>
                 <i class="fas fa-globe"></i> <?= APP_NAME ?>
-                <small class="float-right"><?=  $folhaObra->data ?> </small>
+                <small class="float-right"><?= $folhaObra->data ?> </small>
             </h4>
         </div>
 
@@ -82,11 +82,6 @@
     <div class="row">
 
         <div class="col-6">
-            <p class="lead">Payment Methods:</p>
-            <img src="public/img/credit/visa.png" alt="Visa">
-            <img src="public/img/credit/mastercard.png" alt="Mastercard">
-            <img src="public/img/credit/american-express.png" alt="American Express">
-            <img src="public/img/credit/paypal2.png" alt="Paypal">
         </div>
 
         <div class="col-6">
