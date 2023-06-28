@@ -76,7 +76,8 @@ class FolhaobraController extends Controller
         $folhaobra->valortotal = 0;
         $folhaobra->ivatotal = 0;
         $folhaobra->subtotal = 0;
-        $folhaobra->save();
+        if ($folhaobra->is_valid()) {
+        $folhaobra->save(); }
         $this->redirectToRoute('linhaobra', 'index', ['idfolhaobra' => $folhaobra->id]);
     }
     public function edit($id)
@@ -151,7 +152,8 @@ class FolhaobraController extends Controller
     {
         //apaga um registo da BD identificado pelo ID
         $folhaObra = Folhaobra::find($id);
-        $folhaObra->delete();
+        if ($folhaObra->is_valid()) {
+        $folhaObra->delete();}
         //redirecionar para o index
         $this->redirectToRoute('folhaobra', 'index');
     }
@@ -160,14 +162,16 @@ class FolhaobraController extends Controller
     {
         $folhaobra = Folhaobra::find($id);
         $folhaobra->estado = "Anulada";
-        $folhaobra->save();
+        if ($folhaobra->is_valid()) {
+        $folhaobra->save();}
         $this->redirectToRoute('folhaobra', 'index');
     }
     public function paga($id)
     {
         $folhaobra = Folhaobra::find($id);
         $folhaobra->estado = "Paga";
-        $folhaobra->save();
+        if ($folhaobra->is_valid()) {
+        $folhaobra->save();}
         $this->redirectToRoute('folhaobra', 'index');
     }
     public function emitir($id)
@@ -178,7 +182,8 @@ class FolhaobraController extends Controller
         } else {
             $folhaobra->estado = "Emitida";
             $folhaobra->data = date('d-m-Y H:i:s');// atualiza as horas quando é emitida
-            $folhaobra->save();
+            if ($folhaobra->is_valid()) {
+            $folhaobra->save();}
             $this->redirectToRoute('folhaobra', 'index');
         }
     }
