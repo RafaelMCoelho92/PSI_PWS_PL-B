@@ -116,7 +116,7 @@ class ServiceController extends Controller
                 $services  = Service::find_all_by_iva_id($pesquisa);
                 $this->renderView('service', 'index', ['services' => $services]);
             } else {
-                $users = User::find_all_by_role('Cliente');
+                $services = Service::all();
                 $this->renderView('service', 'index', ['services' => $services]);
             }
         } else {
