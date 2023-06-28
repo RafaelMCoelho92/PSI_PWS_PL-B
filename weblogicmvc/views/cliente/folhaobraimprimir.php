@@ -36,6 +36,7 @@
         <div class="col-sm-4 invoice-col">
             <br>
             <b>Order ID:</b> <?= $folhaObra->id ?><br>
+            <b>Estado:</b> <?= $folhaObra->estado ?><br>
         </div>
 
     </div>
