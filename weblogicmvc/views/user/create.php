@@ -74,7 +74,7 @@
 
             <div class="col-md-3">
               <label for="codigopostal" class="form-label">Codigo Postal</label>
-              <input type="text" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
+              <input type="number" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
                                                                                           echo $user->codigopostal;
                                                                                         } ?>" name="codigopostal" id="codigopostal">
               <p><?php if (isset($user->errors)) {
@@ -87,7 +87,7 @@
 
             <div class="col-md-3">
               <label for="telefone" class="form-label">Telefone</label>
-              <input type="text" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
+              <input type="number" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
                                                                                           echo $user->telefone;
                                                                                         } ?>" name="telefone" id="telefone">
               <p><?php if (isset($user->errors)) {
@@ -99,7 +99,7 @@
             </div>
             <div class="col-md-3">
               <label for="nif" class="form-label">NIF</label>
-              <input type="text" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
+              <input type="number" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
                                                                                           echo $user->nif;
                                                                                         } ?>" name="nif" id="nif">
               <p><?php if (isset($user->errors)) {

@@ -8,7 +8,7 @@ class Iva extends \ActiveRecord\Model
     );
 
     static $validates_size_of = array(
-        array('percentagem', 'maximum' => 6, 'message' => 'Máximo 2 caracteres.'), // 6 porque 100.00 ok?
+        array('percentagem', 'maximum' => 5, 'message' => 'Máximo 5 caracteres.'), // 5 porque 99.99 ok?
     );
 
     static $validates_numericality_of = array(

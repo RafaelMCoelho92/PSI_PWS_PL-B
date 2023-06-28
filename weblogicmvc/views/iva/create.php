@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-12">
                             <label for="percentagem" class="form-label">Percentagem</label><br>
-                            <input type="text" class="form-control" name="percentagem" value="<?php if (isset($iva)) {
+                            <input type="number" class="form-control" name="percentagem" value="<?php if (isset($iva)) {
                                                                                                     echo $iva->percentagem;
                                                                                                 } ?>" placeholder="Percentagem" required>
                             <p>
