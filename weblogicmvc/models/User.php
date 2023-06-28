@@ -21,6 +21,9 @@ class User extends \ActiveRecord\Model
     static $validates_numericality_of = array(
         array('nif', 'only_integer' => true),
         array('telefone', 'only_integer' => true),
+        array('telefone', 'greater_than_or_equal_to' => 0 ,'message' => 'O valor tem de ser superior ou igual a 0.'),
+        array('codigopostal', 'greater_than_or_equal_to' => 0 ,'message' => 'O valor tem de ser superior ou igual a 0.'),
+        array('nif', 'greater_than_or_equal_to' => 0 ,'message' => 'O valor tem de ser superior ou igual a 0.')
 
     );
 
