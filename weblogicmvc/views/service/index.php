@@ -52,8 +52,6 @@
         </table>
     </div>
     <div class="col-sm-6">
-        <p>
-            <a href="index.php?c=service&a=index" class="btn btn-info">Lista de Serviços</a>
-        </p>
+
     </div>
 </div>
