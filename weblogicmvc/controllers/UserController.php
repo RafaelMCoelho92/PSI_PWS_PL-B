@@ -119,21 +119,24 @@ class UserController extends Controller
             header('Location: index.php?' . INVALID_ACCESS_ROUTE);
         }
     }
-    public function search()
+    public function search() // https://www.phpactiverecord.org/projects/main/wiki/Finders
     {
         $pesquisa = $this->getHTTPPostParam('pesquisa');
+    
         if (!empty($pesquisa)) {
-            if ($users = User::find_all_by_username($pesquisa) != null) {
-                $users = User::find_all_by_username($pesquisa);
-                $this->renderView('user', 'select', ['users' => $users]);
-            } elseif ($users = User::find_all_by_telefone($pesquisa) != null) {
-                $users  = User::find_all_by_telefone($pesquisa);
-                $this->renderView('user', 'select', ['users' => $users]);
-            } elseif ($users = User::find_all_by_nif($pesquisa) != null) {
-                $users  = User::find_all_by_nif($pesquisa);
-                $this->renderView('user', 'select', ['users' => $users]);
-            } elseif ($users = User::find_all_by_email($pesquisa) != null) {
-                $users  = User::find_all_by_email($pesquisa);
+            $conditions = array(
+                'conditions' => array(
+                    'username LIKE ? OR telefone LIKE ? OR nif LIKE ? OR email LIKE ?',
+                    "%$pesquisa%",
+                    "%$pesquisa%",
+                    "%$pesquisa%",
+                    "%$pesquisa%"
+                )
+            );
+    
+            $users = User::all($conditions);
+    
+            if (!empty($users)) {
                 $this->renderView('user', 'select', ['users' => $users]);
             } else {
                 $users = User::find_all_by_role('Cliente');
@@ -143,6 +146,7 @@ class UserController extends Controller
             $this->redirectToRoute('user', 'select');
         }
     }
+    
 
     public function search_user()
     {
