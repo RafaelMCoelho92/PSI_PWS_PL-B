@@ -77,6 +77,7 @@ class UserController extends Controller
             //mostrar a vista edit passando os dados por parâmetro
         }
     }
+
     public function update($id)
     {
         // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
