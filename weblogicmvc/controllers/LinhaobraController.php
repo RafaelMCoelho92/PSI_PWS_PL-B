@@ -28,8 +28,8 @@ class LinhaobraController extends Controller
             //redirect para o update da folha de obra e passa o id como parametro
             $this->redirectToRoute('folhaobra', 'update', ['id' => $id]);
         } else {
-            //mostra a vista do edit e passa o modelo como parametro
-            //renderview aqui
+            //mostra a vista do que???? e passa o modelo como parametro
+            //renderview aqui     $this->renderView();
         }
     }
     public function delete($id)
@@ -47,9 +47,13 @@ class LinhaobraController extends Controller
         $novaQuantidade = $this->getHTTPPostParam('quantidade');
         $linhaobra->quantidade = $novaQuantidade;
         $folhaobra = Folhaobra::find($linhaobra->idfolhaobra);
-        // falta o isvalid
-        $linhaobra->save();// redirect se n for tem q se fazer renderview
-        $this->redirectToRoute('folhaobra', 'update', ['id' => $folhaobra->id]);
+        if ($linhaobra->is_valid()) {
+            $linhaobra->save(); // redirect se n for tem q se fazer renderview
+            $this->redirectToRoute('folhaobra', 'update', ['id' => $folhaobra->id]);
+        } else {
+            // renderview do que ?????
+            //$this->renderView();
+        }
     }
 
     public function index($idfolhaobra)

@@ -48,6 +48,7 @@ class UserController extends Controller
     {
         //recebe os dados do form de criacao valida e persiste na BD
         $user = new User($this->getHTTPPost());
+        //$user->password = md5($user->password);
         if ($user->is_valid()) {
             $user->save();
 
