@@ -102,25 +102,22 @@ class ServiceController extends Controller
     public function search_service()
     {
         $pesquisa = $this->getHTTPPostParam('pesquisa');
+    
         if (!empty($pesquisa)) {
-            if ($services = Service::find_all_by_referencia($pesquisa) != null) {
-                $services = Service::find_all_by_referencia($pesquisa);
-                $this->renderView('service', 'index', ['services' => $services]);
-            } elseif ($services = Service::find_all_by_descricao($pesquisa) != null) {
-                $services  = Service::find_all_by_descricao($pesquisa);
-                $this->renderView('service', 'index', ['services' => $services]);
-            } elseif ($services = Service::find_all_by_precohora($pesquisa) != null) {
-                $services  = Service::find_all_by_precohora($pesquisa);
-                $this->renderView('service', 'index', ['services' => $services]);
-            } elseif ($services = Service::find_all_by_iva_id($pesquisa) != null) {
-                $services  = Service::find_all_by_iva_id($pesquisa);
+            $conditions = array('conditions' => array(
+                'referencia LIKE ? OR descricao LIKE ? OR precohora LIKE ? OR iva_id LIKE ?',
+                "%$pesquisa%", "%$pesquisa%", "%$pesquisa%", "%$pesquisa%"));
+            $services = Service::all($conditions);
+            if (!empty($services)) {
                 $this->renderView('service', 'index', ['services' => $services]);
             } else {
                 $services = Service::all();
                 $this->renderView('service', 'index', ['services' => $services]);
             }
         } else {
+            $services = Service::all();
             $this->redirectToRoute('service', 'index');
         }
     }
+    
 }
