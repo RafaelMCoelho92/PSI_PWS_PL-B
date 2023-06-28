@@ -40,30 +40,29 @@ class LinhaobraController extends Controller
         //redirecionar 
         $this->redirectToRoute('folhaobra', 'update', ['id' => $linhaobra->idfolhaobra]);
     }
-    public function update($id){
+    public function update($id)
+    {
         $linhaobra = Linhaobra::find_by_id($id);
         $novaQuantidade = $this->getHTTPPostParam('quantidade');
         $linhaobra->quantidade = $novaQuantidade;
         $folhaobra = Folhaobra::find($linhaobra->idfolhaobra);
-        $linhaobra->save(); 
-        $this->redirectToRoute('folhaobra','update',['id'=>$folhaobra->id]);
-
+        $linhaobra->save();
+        $this->redirectToRoute('folhaobra', 'update', ['id' => $folhaobra->id]);
     }
 
-    public function index($idfolhaobra){
+    public function index($idfolhaobra)
+    {
         $empresas = Empresa::first();
         $folhaobra = Folhaobra::find($idfolhaobra);
-        $this->renderView('linhaobra', 'index', ['folhaobra'=> $folhaobra, 'empresas'=> $empresas]);
-
-
+        $this->renderView('linhaobra', 'index', ['folhaobra' => $folhaobra, 'empresas' => $empresas]);
     }
-    public function create($idfolhaobra, $idservico){
+    public function create($idfolhaobra, $idservico)
+    {
         $empresas = Empresa::first();
         $folhaobra = Folhaobra::find($idfolhaobra);
         $servico = Service::find($idservico);
         $linhaobras = Linhaobra::find_all_by_idfolhaobra($folhaobra->id);
-        $this->renderView('linhaobra', 'create',['folhaobra'=> $folhaobra, 'servico'=>$servico, 'empresas'=> $empresas, 'linhaobras'=> $linhaobras]);
-
+        $this->renderView('linhaobra', 'create', ['folhaobra' => $folhaobra, 'servico' => $servico, 'empresas' => $empresas, 'linhaobras' => $linhaobras]);
     }
     public function edit($id)
     {
@@ -78,7 +77,7 @@ class LinhaobraController extends Controller
         if ($folhaobra->estado  == "Emitida" || $folhaobra->estado  == "Paga") {
             $this->redirectToRoute('folhaobra', 'index');
         } else {
-            $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
+            $linhaobras = Linhaobra::find_all_by_idfolhaobra($folhaobra->id);
             if (is_null($folhaobra)) {
                 //TODO redirect to standard error page
             } else {
