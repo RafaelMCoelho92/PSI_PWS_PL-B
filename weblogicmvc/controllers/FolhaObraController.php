@@ -65,7 +65,7 @@ class FolhaobraController extends Controller
     {
 
         //mostra vista com form de criacao de registo
-        
+
         $user = User::find($id);
         $folhaobra = new Folhaobra();
         $folhaobra->idcliente = $user->id;
@@ -101,7 +101,7 @@ class FolhaobraController extends Controller
     }
 
 
-  /*  public function store()
+    /*  public function store()
     {
         //recebe os dados do form de criacao valida e persiste na BD
         $empresas = Empresa::all();

@@ -115,6 +115,9 @@ class ServiceController extends Controller
             } elseif ($services = Service::find_all_by_iva_id($pesquisa) != null) {
                 $services  = Service::find_all_by_iva_id($pesquisa);
                 $this->renderView('service', 'index', ['services' => $services]);
+            } else {
+                $users = User::find_all_by_role('Cliente');
+                $this->renderView('service', 'index', ['services' => $services]);
             }
         } else {
             $this->redirectToRoute('service', 'index');
