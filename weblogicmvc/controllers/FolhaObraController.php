@@ -24,7 +24,7 @@ class FolhaobraController extends Controller
         $role = $auth->getRole();
 
         if ($role == "Admin") {
-            $folhasObra = Folhaobra::find('all', ['conditions' => ['estado != ?', 'Anulada']]);
+            $folhasObra = Folhaobra::find_all_by_estado('Anulada');
             $this->renderView('folhaobra', 'index', ['folhasObra' => $folhasObra]);
         } elseif ($role == "Funcionario") {
             $id = $auth->getId();
@@ -48,7 +48,7 @@ class FolhaobraController extends Controller
         $role = $auth->getRole();
         $empresa = Empresa::first();
         $folhaObra = Folhaobra::find($id);
-        $linhaObras = Linhaobra::find('all', array('conditions' => array('idfolhaObra = ?', $folhaObra->id)));
+        $linhaObras = Linhaobra::find_all_by_idfolhaObra($folhaObra->id);
         if (is_null($folhaObra)) {
             //TODO redirect to standard error page
         } else {
@@ -90,7 +90,7 @@ class FolhaobraController extends Controller
         if ($folhaobra->estado  == "Emitida" || $folhaobra->estado  == "Paga") {
             $this->redirectToRoute('folhaobra', 'index');
         } else {
-            $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
+            $linhaobras = Linhaobra::find_all_by_idfolhaobra($folhaobra->id);
             if (is_null($folhaobra)) {
                 //TODO redirect to standard error page
             } else {
@@ -125,7 +125,7 @@ class FolhaobraController extends Controller
         $folhaobra = Folhaobra::find($id);
         $ivatotal = 0;
         $subtotal = 0;
-        $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
+        $linhaobras = Linhaobra::find_all_by_idfolhaobra($folhaobra->id);
 
         foreach ($linhaobras as $linhaobra) {
             $subtotal += $linhaobra->quantidade * $linhaobra->servico->precohora;
