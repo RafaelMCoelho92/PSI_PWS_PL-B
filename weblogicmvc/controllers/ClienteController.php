@@ -60,26 +60,23 @@ class ClienteController extends Controller
     public function search_cliente()
     {
         $pesquisa = $this->getHTTPPostParam('pesquisa');
-
-        if (!empty($pesquisa)) {
-            if ($folhaobras = Folhaobra::find_all_by_estado($pesquisa) != null) {
-                $folhaobras = Folhaobra::find_all_by_estado($pesquisa);
-                $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobras], 'frontoffice');
-            } elseif ($folhaobras = Folhaobra::find_all_by_id($pesquisa) != null) {
-                $folhaobras  = Folhaobra::find_all_by_id($pesquisa);
-                $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobras], 'frontoffice');
-            } else {
-                $auth = new Auth;
-                $id = $auth->getId();
-                $user = User::find_by_id($id);
-                $folhaobras = Folhaobra::find_all_by_id($user->id);
-                $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobras], 'frontoffice');
-            }
+    
+        $auth = new Auth;
+        $idCliente = $auth->getId();
+    
+        $conditions = array('conditions' => array(
+                '((estado LIKE ? OR id LIKE ?) AND idcliente = ? AND estado != ? AND estado != ?)',// tive que usar ajuda do chat nesta que com as cenas do activerecord n estava a chegar la, mas basta olhar para como esta o search q da logo para perceber
+                "%$pesquisa%","%$pesquisa%",$idCliente,'Em Lançamento','Anulada'));
+    
+        $folhaobras = Folhaobra::all($conditions);
+    
+        if (!empty($folhaobras)) {
+            $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobras], 'frontoffice');
         } else {
-            $auth = new Auth;
-            $id = $auth->getId();
-            $user = User::find_by_id($id);
-            $this->redirectToRoute('cliente', 'folhaobraindex', ['id' => $user->id]);
+            $this->redirectToRoute('cliente', 'folhaobraindex', ['id' => $idCliente]);
         }
     }
+    
+    
+    
 }
