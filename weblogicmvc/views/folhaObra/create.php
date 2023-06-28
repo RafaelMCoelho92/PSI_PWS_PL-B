@@ -20,6 +20,22 @@
                 Telefone: <?= $empresas->telefone ?><br>
                 Email: <?= $empresas->email ?>
             </address>
+            <div class="row">
+                <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
+                    <div class="col">
+                        <label for="servico">Serviço:</label><br>
+                        <input type="text" name="referencia" placeholder="" value="">
+                        <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
+                        <button class="btn btn-primary" role="button">Adicionar Serviço</button>
+                    </div>
+                    <label for="servico">Serviço:</label><br>
+                    <select class="form-control" name="servico">
+                        <?php
+                        foreach ($services as $service) { ?>
+                            <option value="<?= $service->id ?>" selected><?= $service->descricao; ?> </option>
+                            </option>
+                        <?php } ?>
+            </div>
             <div style="display: flex; align-items: center;">
                 <button class="btn btn-info" role="button" style="margin-left: 10px; flex-shrink: 0;">Selecionar Serviço</button>
                 <label for="servico" style="margin-left: 10px; flex-grow: 1;"></label>
@@ -46,22 +62,7 @@
             <b>Estado:</b> <?= $folhaobra->estado ?><br>
             </b>
             <br><br>
-            <div class="row">
-                <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
-                    <div class="col">
-                        <label for="servico">Serviço:</label><br>
-                        <input type="text" name="referencia" placeholder="" value="">
-                        <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
-                        <button class="btn btn-primary" role="button">Adicionar Serviço</button>
-                    </div>
-                    <label for="servico">Serviço:</label><br>
-                    <select class="form-control" name="servico">
-                        <?php
-                        foreach ($services as $service) { ?>
-                            <option value="<?= $service->id ?>" selected><?= $service->descricao; ?> </option>
-                            </option>
-                        <?php } ?>
-            </div>
+
             <br>
         </div>
     </div>
