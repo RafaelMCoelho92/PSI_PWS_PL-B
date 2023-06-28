@@ -32,7 +32,8 @@ class ClienteController extends Controller
         $folhaobra = Folhaobra::find($id);
         if ($folhaobra->estado == 'Emitida') {
             $folhaobra->estado = 'Paga';
-            $folhaobra->save();
+            if ($folhaobra->is_valid()) {
+            $folhaobra->save();}
         }
         $this->redirectToRoute('cliente', 'folhaobraindex', ['id' => $folhaobra->idcliente], 'frontoffice');
     }
