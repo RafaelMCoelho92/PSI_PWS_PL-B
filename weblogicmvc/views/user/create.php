@@ -74,9 +74,9 @@
 
             <div class="col-md-3">
               <label for="codigopostal" class="form-label">Codigo Postal</label>
-              <input type="number" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
-                                                                                          echo $user->codigopostal;
-                                                                                        } ?>" name="codigopostal" id="codigopostal">
+              <input min='0' type="number" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
+                                                                                                    echo $user->codigopostal;
+                                                                                                  } ?>" name="codigopostal" id="codigopostal">
               <p><?php if (isset($user->errors)) {
                     echo $user->errors->on('codigopostal');
                   } ?></p>
@@ -87,9 +87,9 @@
 
             <div class="col-md-3">
               <label for="telefone" class="form-label">Telefone</label>
-              <input type="number" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
-                                                                                          echo $user->telefone;
-                                                                                        } ?>" name="telefone" id="telefone">
+              <input min='0' type="number" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
+                                                                                                    echo $user->telefone;
+                                                                                                  } ?>" name="telefone" id="telefone">
               <p><?php if (isset($user->errors)) {
                     echo $user->errors->on('telefone');
                   } ?></p>
@@ -99,9 +99,9 @@
             </div>
             <div class="col-md-3">
               <label for="nif" class="form-label">NIF</label>
-              <input type="number" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
-                                                                                          echo $user->nif;
-                                                                                        } ?>" name="nif" id="nif">
+              <input min='0' type="number" class="form-control" placeholder="" required="" value="<?php if (isset($user)) {
+                                                                                                    echo $user->nif;
+                                                                                                  } ?>" name="nif" id="nif">
               <p><?php if (isset($user->errors)) {
                     echo $user->errors->on('nif');
                   } ?></p>
@@ -113,7 +113,7 @@
             <div class="col-md-3">
               <label for="role">Role</label><br>
               <select class="form-select" name="role">
-              <?php $auth = $_SESSION['role'];?>
+                <?php $auth = $_SESSION['role']; ?>
                 <?php if ($auth == "Admin") {
                   $roles = array('Cliente', 'Funcionario', 'Admin');
                 } elseif ($auth == "Funcionario") {
