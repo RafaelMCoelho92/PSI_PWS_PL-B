@@ -24,7 +24,7 @@
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-info">Alterar</button>
-            <a href="index.php?c=layout&a=frontoffice" class="btn btn-default float-right">Cancelar alterações</a>
+            <a href="index.php?c=home&a=dashboardfo" class="btn btn-default float-right">Cancelar alterações</a>
             <!-- Dei indicação para retomar ao home , dashboard neste caso -->
         </div>
     </form>
