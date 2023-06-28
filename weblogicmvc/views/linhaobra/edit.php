@@ -75,7 +75,7 @@
                         <tr>
                             <form action="index.php?c=linhaobra&a=update&id=<?= $linha->id ?>" method="post">
                             <td><?php echo $linha->id; ?></td> <!-- Ref -->
-                            <td><input type="text" name="quantidade" placeholder="<?php echo $linha->quantidade; ?>" value="<?php echo $linha->quantidade; ?>"></td><!-- Qtd -->
+                            <td><input type="number" name="quantidade" placeholder="<?php echo $linha->quantidade; ?>" value="<?php echo $linha->quantidade; ?>"></td><!-- Qtd -->
                             <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
                             <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
                             <td><?php echo $linha->servico->iva->percentagem . " %" ?></td><!-- IVA -->
