@@ -177,6 +177,7 @@ class FolhaobraController extends Controller
             $this->redirectToRoute('folhaobra', 'index');
         } else {
             $folhaobra->estado = "Emitida";
+            $folhaobra->data = date('d-m-Y H:i:s');// atualiza as horas quando é emitida
             $folhaobra->save();
             $this->redirectToRoute('folhaobra', 'index');
         }
