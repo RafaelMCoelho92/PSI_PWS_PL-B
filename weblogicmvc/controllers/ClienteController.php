@@ -23,7 +23,7 @@ class ClienteController extends Controller
     {
         $empresa = Empresa::first();
         $folhaobra = Folhaobra::find($id);
-        $linhaObras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $id)));
+        $linhaObras = Linhaobra::find_all_by_idfolhaobra($id);
         $this->renderView('cliente', 'folhaobrashow', ['folhaObra' => $folhaobra, 'empresa' => $empresa, 'linhaObras' => $linhaObras], 'frontoffice');
     }
 
@@ -39,13 +39,13 @@ class ClienteController extends Controller
 
     public function folhaobrapaga($id)
     {
-        $folhaobra = Folhaobra::find('all', array('conditions' => array('idcliente = ? and estado = ? ', $id, 'Paga')));
+        $folhaobra = Folhaobra::find_all_by_idcliente_and_estado($id, 'Paga');
         $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobra,], 'frontoffice');
     }
 
     public function folhaobraemitida($id)
     {
-        $folhaobra = Folhaobra::find('all', array('conditions' => array('idcliente = ? and estado = ? ', $id, 'Emitida')));
+        $folhaobra = Folhaobra::find_all_by_idcliente_and_estado($id, 'Emitida');
         $this->renderView('cliente', 'folhaobraindex', ['folhasObra' => $folhaobra,], 'frontoffice');
     }
 
