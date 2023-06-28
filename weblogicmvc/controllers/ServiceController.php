@@ -102,11 +102,12 @@ class ServiceController extends Controller
     public function search_service()
     {
         $pesquisa = $this->getHTTPPostParam('pesquisa');
-    
+
         if (!empty($pesquisa)) {
             $conditions = array('conditions' => array(
                 'referencia LIKE ? OR descricao LIKE ? OR precohora LIKE ? OR iva_id LIKE ?',
-                "%$pesquisa%", "%$pesquisa%", "%$pesquisa%", "%$pesquisa%"));
+                "%$pesquisa%", "%$pesquisa%", "%$pesquisa%", "%$pesquisa%"
+            ));
             $services = Service::all($conditions);
             if (!empty($services)) {
                 $this->renderView('service', 'index', ['services' => $services]);
@@ -119,5 +120,4 @@ class ServiceController extends Controller
             $this->redirectToRoute('service', 'index');
         }
     }
-    
 }

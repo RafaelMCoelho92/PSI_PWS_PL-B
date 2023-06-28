@@ -17,19 +17,20 @@ class LinhaobraController extends Controller
     public function store($id) // recebe o id da folha de obra
     {
         $linhaobra = new Linhaobra();
-        $servico = Service::find_by_referencia($this->getHTTPPostParam('referencia'));
-        $linhaobra->idservico = $servico->id;
-        $linhaobra->quantidade = ($this->getHTTPPostParam('quantidade'));
-        $linhaobra->valor = $linhaobra->quantidade * $linhaobra->servico->precohora;
-        $linhaobra->valoriva = ($linhaobra->servico->precohora * $linhaobra->servico->iva->percentagem) / 100;
-        $linhaobra->idfolhaobra = $id;
-        if ($linhaobra->is_valid()) {
-            $linhaobra->save();
-            //redirect para o update da folha de obra e passa o id como parametro
-            $this->redirectToRoute('folhaobra', 'update', ['id' => $id]);
+        if ($servico = Service::find_by_referencia($this->getHTTPPostParam('referencia'))) {
+            $linhaobra->idservico = $servico->id;
+            $linhaobra->quantidade = ($this->getHTTPPostParam('quantidade'));
+            $linhaobra->valor = $linhaobra->quantidade * $linhaobra->servico->precohora;
+            $linhaobra->valoriva = ($linhaobra->servico->precohora * $linhaobra->servico->iva->percentagem) / 100;
+            $linhaobra->idfolhaobra = $id;
+            if ($linhaobra->is_valid()) {
+                $linhaobra->save();
+                //redirect para o update da folha de obra e passa o id como parametro
+                $this->redirectToRoute('folhaobra', 'update', ['id' => $id]);
+            }
         } else {
-            //mostra a vista do que???? e passa o modelo como parametro
-            //renderview aqui     $this->renderView();
+            $folhaobra = Folhaobra::find($id);
+            $this->redirectToRoute('service', 'select', ['id' => $folhaobra->id]);
         }
     }
     public function delete($id)
@@ -88,7 +89,7 @@ class LinhaobraController extends Controller
                 //TODO redirect to standard error page
             } else {
                 //mostrar a vista edit passando os dados por parâmetro
-                $this->renderView('linhaobra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa, 'linhaobras' => $linhaobras, 'services' => $services]);
+                $this->renderView('linhaobra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa, 'linhaobras' => $linhaobras, 'services' => $services, 'idlinha' => $id]);
             }
         }
     }
