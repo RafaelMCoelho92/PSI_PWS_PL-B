@@ -4,7 +4,7 @@
         <div class="col-12">
             <h4>
                 <i class="fas fa-globe"></i> <?= APP_NAME ?>
-                <small class="float-right"><?= date('d/m/Y') ?> </small>
+                <small class="float-right"><?= date('D, d M Y H:i', strtotime($folhaobra->data))?> </small>
             </h4>
         </div>
 
