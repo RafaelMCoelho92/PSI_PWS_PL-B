@@ -43,8 +43,8 @@
                     <div class="col">
                         <label for="servico">Serviço:</label><br>
                         <input type="text" name="referencia" placeholder="" value="">
-                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
-                            <button class="btn btn-primary" role="button">Adicionar Serviço</button>
+                        <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
+                        <button class="btn btn-primary" role="button">Adicionar Serviço</button>
                     </div>
                 </form>
                 <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
@@ -84,6 +84,8 @@
                                     ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100 .
                                     "€" ?></td><!-- VALOR TOTAL-->
                             <td><a href="index.php?c=linhaobra&a=delete&id=<?= $linha->id ?>" class="btn btn-info" role="button">Remover Linha</a></td>
+                            <td><a href="index.php?c=linhaobra&a=edit&id=<?= $linha->id ?>" class="btn btn-warning" role="button">Alterar Qtd.</a></td>
+
                         </tr>
                     <?php } ?>
                 </tbody>

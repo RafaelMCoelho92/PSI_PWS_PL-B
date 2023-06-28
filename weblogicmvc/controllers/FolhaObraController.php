@@ -123,7 +123,6 @@ class FolhaobraController extends Controller
     {
         // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
         $folhaobra = Folhaobra::find($id);
-        $valortotal = 0;
         $ivatotal = 0;
         $subtotal = 0;
         $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));

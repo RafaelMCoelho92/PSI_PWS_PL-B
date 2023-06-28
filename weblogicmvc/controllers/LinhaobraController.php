@@ -40,6 +40,15 @@ class LinhaobraController extends Controller
         //redirecionar 
         $this->redirectToRoute('folhaobra', 'update', ['id' => $linhaobra->idfolhaobra]);
     }
+    public function update($id){
+        $linhaobra = Linhaobra::find_by_id($id);
+        $novaQuantidade = $this->getHTTPPostParam('quantidade');
+        $linhaobra->quantidade = $novaQuantidade;
+        $folhaobra = Folhaobra::find($linhaobra->idfolhaobra);
+        $linhaobra->save(); 
+        $this->redirectToRoute('folhaobra','update',['id'=>$folhaobra->id]);
+
+    }
 
     public function index($idfolhaobra){
         $empresas = Empresa::first();
@@ -55,6 +64,28 @@ class LinhaobraController extends Controller
         $linhaobras = Linhaobra::find_all_by_idfolhaobra($folhaobra->id);
         $this->renderView('linhaobra', 'create',['folhaobra'=> $folhaobra, 'servico'=>$servico, 'empresas'=> $empresas, 'linhaobras'=> $linhaobras]);
 
+    }
+    public function edit($id)
+    {
+        $auth = new Auth();
+        $role = $auth->getRole();
+
+        $services = Service::all();
+        $empresa = Empresa::first();
+        $linhaobra = Linhaobra::find($id);
+
+        $folhaobra = Folhaobra::find($linhaobra->idfolhaobra);
+        if ($folhaobra->estado  == "Emitida" || $folhaobra->estado  == "Paga") {
+            $this->redirectToRoute('folhaobra', 'index');
+        } else {
+            $linhaobras = Linhaobra::find('all', array('conditions' => array('idfolhaobra = ?', $folhaobra->id)));
+            if (is_null($folhaobra)) {
+                //TODO redirect to standard error page
+            } else {
+                //mostrar a vista edit passando os dados por parâmetro
+                $this->renderView('linhaobra', 'edit', ['folhaobra' => $folhaobra, 'empresa' => $empresa, 'linhaobras' => $linhaobras, 'services' => $services]);
+            }
+        }
     }
     // redirect para o edit
     //$this->renderView('linhaobra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas,  'services' => $services]); // iva ja esta associado ao serviço em principio n precisa de aparecer aqui 'ivas'=>$ivas, users vai estar associado a folhaobra , 'users'=>$users

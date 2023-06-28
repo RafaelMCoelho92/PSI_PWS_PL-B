@@ -42,22 +42,9 @@
                 <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
                     <div class="col">
                         <label for="servico">Serviço:</label><br>
-                        <select class="form-control" name="servico">
-                            <?php
-                            foreach ($services as $service) {
-                            ?>
-                                <option value="<?= $service->id
-                                                ?>" selected><?= $service->descricao;
-                                                                ?> </option>
-                                </option>
-                            <?php }
-                            ?>
-                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
-                            <button class="btn btn-primary" role="button">Introduzir Serviço</button>
-                        </select>
-                        <?php if (isset($referencia->errors)) {
-                            echo $referencia->errors->on('referencia');
-                        } ?>
+                        <input type="text" name="referencia" placeholder="" value="">
+                        <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
+                        <button class="btn btn-primary" role="button">Adicionar Serviço</button>
                     </div>
                 </form>
                 <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
@@ -86,8 +73,9 @@
                     <?php foreach ($linhaobras as $linha) { ?>
 
                         <tr>
+                            <form action="index.php?c=linhaobra&a=update&id=<?= $linha->id ?>" method="post">
                             <td><?php echo $linha->id; ?></td> <!-- Ref -->
-                            <td><?php echo $linha->quantidade; ?></td><!-- Qtd -->
+                            <td><input type="text" name="quantidade" placeholder="<?php echo $linha->quantidade; ?>" value="<?php echo $linha->quantidade; ?>"></td><!-- Qtd -->
                             <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
                             <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
                             <td><?php echo $linha->servico->iva->percentagem . " %" ?></td><!-- IVA -->
@@ -96,8 +84,8 @@
                             <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
                                     ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100 .
                                     "€" ?></td><!-- VALOR TOTAL-->
-                            <td><a href="index.php?c=linhaobra&a=delete&id=<?= $linha->id ?>" class="btn btn-info" role="button">Remover Linha</a></td>
-                        </tr>
+                            <td><button class="btn btn-info" role="button">Atualizar</button></td>
+                            </form></tr>
                     <?php } ?>
                 </tbody>
             </table>
