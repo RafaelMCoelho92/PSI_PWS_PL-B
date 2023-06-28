@@ -145,7 +145,7 @@ class UserController extends Controller
         }
     }
 
-    public function search_user()
+    public function search_user() // https://www.phpactiverecord.org/projects/main/wiki/Finders
     {
         $pesquisa = $this->getHTTPPostParam('pesquisa');
         if (!empty($pesquisa)) {
