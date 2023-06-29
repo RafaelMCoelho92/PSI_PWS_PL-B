@@ -31,13 +31,13 @@
                             <?php if (isset($user->errors)) {
                                 echo $user->errors->on('email');
                             } ?></td>
-                        <td><input id="telefone" placeholder="telefone" type="text" value="<?php if (isset($user)) {
+                        <td><input id="telefone" placeholder="telefone" min="0" type="number" value="<?php if (isset($user)) {
                                                                                                 echo $user->telefone;
                                                                                             } ?>" name="telefone" id="telefone" required>
                             <?php if (isset($user->errors)) {
                                 echo $user->errors->on('telefone');
                             } ?></td>
-                        <td><input id="nif" placeholder="nif" type="text" value="<?php if (isset($user)) {
+                        <td><input id="nif" placeholder="nif" min="0" type="number" value="<?php if (isset($user)) {
                                                                                         echo $user->nif;
                                                                                     } ?>" name="nif" id="nif" required>
                             <!-- estava a dar erro neste codigo por supostamente estava a retomar o nif 
@@ -71,7 +71,7 @@
                             <?php if (isset($user->errors)) {
                                 echo $user->errors->on('morada');
                             } ?></td>
-                        <td><input id="codigopostal" placeholder="codigopostal" type="text" value="<?php if (isset($user)) {
+                        <td><input id="codigopostal" placeholder="codigopostal" min="0" type="number" value="<?php if (isset($user)) {
                                                                                                         echo $user->codigopostal;
                                                                                                     } ?>" name="codigopostal" id="codigopostal" required>
                             <?php if (isset($user->errors)) {
