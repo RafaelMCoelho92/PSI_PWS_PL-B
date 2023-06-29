@@ -15,7 +15,8 @@ class HomeController extends Controller
 
     public function dashboardbo()
     {
-        $role = $_SESSION['role'];
+        $auth = new Auth();
+        $role = $auth->getRole();
         if ($role == "Admin") {
             $folhasobras = Folhaobra::all();
             $numfolhasobras = count($folhasobras);
@@ -25,7 +26,6 @@ class HomeController extends Controller
             $numservicos = count($servicos);
             $this->renderView('home', 'dashboardbo', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers, 'numservicos' => $numservicos], 'default');
         } elseif ($role == "Funcionario") {
-            $auth = new Auth();
             $id = $auth->getId();
             $users = User::all();
             $numusers = count($users);
@@ -41,9 +41,10 @@ class HomeController extends Controller
 
     public function dashboardfo()
     {
-        $role = $_SESSION['role'];
+        $auth = new Auth();
+
+        $role = $auth->getRole();
         if ($role == "Cliente") {
-            $auth = new Auth();
             $id = $auth->getId();
 
             $folhasobras = Folhaobra::find_all_by_idcliente($id);

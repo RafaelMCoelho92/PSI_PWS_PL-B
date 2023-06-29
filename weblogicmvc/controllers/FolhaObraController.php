@@ -79,9 +79,9 @@ class FolhaobraController extends Controller
         if ($folhaobra->is_valid()) {
             $folhaobra->save(); // redirect se n for tem q se fazer renderview
             $this->redirectToRoute('linhaobra', 'index', ['idfolhaobra' => $folhaobra->id]);
-        }else {
+        } else {
             $users = User::all();
-            $this->renderView('user', 'select', ['users' => $users] );
+            $this->renderView('user', 'select', ['users' => $users]);
         }
     }
     public function edit($id)
@@ -104,25 +104,6 @@ class FolhaobraController extends Controller
             }
         }
     }
-
-
-    /*  public function store()
-    {
-        //recebe os dados do form de criacao valida e persiste na BD
-        $empresas = Empresa::all();
-        $ivas = Iva::all();
-        $services = Service::all();
-        $users = User::all();
-        $folhaobra = new Folhaobra($this->getHTTPPost());
-        if ($folhaobra->is_valid()) {
-            $folhaobra->save();
-            //redirecionar para o index das folhas de obra
-            $this->redirectToRoute('folhaobra', 'index');
-        } else {
-            //mostrar vista create passando o modelo como parâmetro
-            $this->renderView('folhaobra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas, 'ivas' => $ivas, 'services' => $services, 'users' => $users]);
-        }
-    }*/
 
     public function update($id)
     {

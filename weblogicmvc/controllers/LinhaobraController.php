@@ -93,8 +93,5 @@ class LinhaobraController extends Controller
             }
         }
     }
-    // redirect para o edit
-    //$this->renderView('linhaobra', 'create', ['folhaobra' => $folhaobra, 'empresas' => $empresas,  'services' => $services]); // iva ja esta associado ao serviço em principio n precisa de aparecer aqui 'ivas'=>$ivas, users vai estar associado a folhaobra , 'users'=>$users
 
-    //}
 }
