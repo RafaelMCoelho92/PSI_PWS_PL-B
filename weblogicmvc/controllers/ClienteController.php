@@ -64,7 +64,6 @@ class ClienteController extends Controller
 
         $auth = new Auth;
         $idCliente = $auth->getId();
-
         $conditions = array('conditions' => array(
             '((estado LIKE ? OR id LIKE ?) AND idcliente = ? AND estado != ? AND estado != ?)', // tive que usar ajuda do chat nesta que com as cenas do activerecord n estava a chegar la, mas basta olhar para como esta o search q da logo para perceber
             "%$pesquisa%", "%$pesquisa%", $idCliente, 'Em Lançamento', 'Anulada'
