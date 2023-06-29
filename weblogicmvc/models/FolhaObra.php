@@ -3,12 +3,15 @@
 class Folhaobra extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
-        //array('data'),
-        //array('valortotal'),
-        //array('ivatotal'),
-        //array('estado'),
-        //array('idclientes'),
-        //array('idfuncionario'),
+
+        //Validações abaixo não são precisas porque são inseridas automaticamente pelo programa
+
+        //array('data', 'message' => 'Tem de possuir data'),
+        //array('valortotal','message' => 'Tem de possuir um valor total'),
+        //array('ivatotal','message' => 'Tem de possuir um iva total'),
+        //array('estado','message' => 'Tem de possuir estado'),
+        //array('idclientes','message' => 'Tem de possuir um id do cliente'),
+        //array('idfuncionario','message' => 'Tem de possuir um id do funcionario'),
     );
 
     static $validates_numericality_of = array(
