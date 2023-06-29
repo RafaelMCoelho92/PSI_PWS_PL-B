@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 29-Jun-2023 às 10:50
+-- Tempo de geração: 29-Jun-2023 às 11:15
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.1.13
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `folhaobras` (
   PRIMARY KEY (`id`),
   KEY `idcliente` (`idcliente`),
   KEY `idfuncionario` (`idfuncionario`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `folhaobras`
@@ -77,7 +77,8 @@ INSERT INTO `folhaobras` (`id`, `data`, `valortotal`, `ivatotal`, `estado`, `idc
 (1, '2023-06-29 10:37:29', 139.725, 22.225, 'Emitida', 4, 2, 117.5),
 (2, '2023-06-29 10:38:01', 180.975, 23.475, 'Paga', 4, 2, 157.5),
 (3, '2023-06-29 10:39:37', 118.08, 17.08, 'Em Lançamento', 5, 2, 101),
-(4, '2023-06-29 10:40:38', 112.98, 11.98, 'Em Lançamento', 6, 3, 101);
+(4, '2023-06-29 10:40:38', 112.98, 11.98, 'Em Lançamento', 6, 3, 101),
+(5, '2023-06-29 10:52:44', 662.988, 107.388, 'Emitida', 6, 2, 555.6);
 
 -- --------------------------------------------------------
 
@@ -121,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `linhaobras` (
   PRIMARY KEY (`id`),
   KEY `idservico` (`idservico`),
   KEY `idfolhaobra` (`idfolhaobra`)
-) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=244 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `linhaobras`
@@ -139,7 +140,9 @@ INSERT INTO `linhaobras` (`id`, `quantidade`, `valor`, `valoriva`, `idfolhaobra`
 (238, 1, 15, 0.9, 3, 32),
 (239, 2, 20, 2.3, 4, 30),
 (240, 3, 36, 1.56, 4, 31),
-(241, 3, 45, 0.9, 4, 32);
+(241, 3, 45, 0.9, 4, 32),
+(242, 8, 120, 0.9, 5, 32),
+(243, 44, 435.6, 2.277, 5, 34);
 
 -- --------------------------------------------------------
 
