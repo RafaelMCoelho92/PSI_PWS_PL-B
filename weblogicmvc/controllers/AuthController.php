@@ -15,19 +15,21 @@ class AuthController extends Controller
         $password = $this->getHTTPPostParam('password');
         $auth = new Auth();
         //
-        $user = User::find_by_username($username);
-        $passHash = $user->password;
-        if (password_verify($password, $passHash)){
+        if ($user = User::find_by_username($username)) {
+            $passHash = $user->password;
+            if (password_verify($password, $passHash)) {
 
-        if ($auth->checkAuth($username, $passHash) == true) { //e seja cliente ,func, admin manda pra sitios diferentes
-            $role = $auth->getRole();                           // obter o role do user
-            if ($role == 'Admin' || $role == 'Funcionario') { // se for admin ou funcionario vai para o BACKoffice
-                $this->redirectToRoute("home", "dashboardbo");
-            } elseif ($role == 'Cliente') {                     // se for funcionario vai para o FRONToffice
-                $this->redirectToRoute("home", "dashboardfo");
+                if ($auth->checkAuth($username, $passHash) == true) { //e seja cliente ,func, admin manda pra sitios diferentes
+                    $role = $auth->getRole();                           // obter o role do user
+                    if ($role == 'Admin' || $role == 'Funcionario') { // se for admin ou funcionario vai para o BACKoffice
+                        $this->redirectToRoute("home", "dashboardbo");
+                    } elseif ($role == 'Cliente') {                     // se for funcionario vai para o FRONToffice
+                        $this->redirectToRoute("home", "dashboardfo");
+                    }
+                    //header('Location: index.php?c=layout&a=backoffice'); //redirectroroute??
+                }
             }
-            //header('Location: index.php?c=layout&a=backoffice'); //redirectroroute??
-        } }else {
+        } else {
             $this->renderView('home', 'index', [], 'login');
         }
     }
