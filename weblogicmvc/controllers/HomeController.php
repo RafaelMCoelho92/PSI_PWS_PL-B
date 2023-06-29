@@ -27,7 +27,7 @@ class HomeController extends Controller
             $this->renderView('home', 'dashboardbo', ['numfolhasobras' => $numfolhasobras, 'numusers' => $numusers, 'numservicos' => $numservicos], 'default');
         } elseif ($role == "Funcionario") {
             $id = $auth->getId();
-            $users = User::all();
+            $users = User::find_all_by_role('Cliente');
             $numusers = count($users);
             $servicos = Service::all();
             $numservicos = count($servicos);
