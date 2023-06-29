@@ -89,7 +89,13 @@
                                 <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
                                         ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100 .
                                         "€" ?></td><!-- VALOR TOTAL-->
-                                <td><button class="btn btn-info" role="button">Atualizar</button></td>
+                                <?php
+                                if ($linha->id == $idlinha) { ?>
+                                    <td><button class="btn btn-info" role="button">Atualizar</button></td>
+                                <?php } else { ?>
+                                    <td></td>
+                                <?php } ?>
+
                             </form>
                         </tr>
                     <?php } ?>
