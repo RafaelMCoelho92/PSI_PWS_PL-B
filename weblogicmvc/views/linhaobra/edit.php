@@ -57,6 +57,7 @@
                 </div>
                 <div class="col-3">
                     <button class="btn btn-primary form-control" role="button">Adicionar Serviço</button>
+                    </form>
                 </div>
                 <div class="col-3">
                     <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
