@@ -13,6 +13,7 @@ class EmpresaController extends Controller // acesso aos métodos e propriedades
     }
     public function index()
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         $empresas = Empresa::all(); // devolve sempre um array mesmo q seja só um 
         //$books = Book::find('all');  VERSAO 8.2
         //mostrar a vista index passando os dados por parâmetro
