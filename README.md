@@ -33,8 +33,8 @@ folhas de obra.
 ## Configuração
 
 1. É nescessario utilizar o ficheiro da base de dados (bdtespzorro.sql) para o programa correr sem erros.
-2. Para realizar login como ADMIN utilizar credenciais de Utilizador: 'admin' e Password: 'admin'.
-3. Para realizar login como FUNCIONARIO utilizar credenciais de Utilizador: 'funcionario' e Password: 'funcionario', ou Utiizador: 'funcionario2' e Password: 'funcionario'.
+2. Para realizar login como **ADMIN** utilizar credenciais de Utilizador: **'admin'** e Password: **'admin'**.
+3. Para realizar login como **FUNCIONARIO** utilizar credenciais de Utilizador: **'funcionario'** e Password: **'funcionario'**, ou Utiizador: **'funcionario2'** e Password: **'funcionario'**.
 
 ## Execução
 
