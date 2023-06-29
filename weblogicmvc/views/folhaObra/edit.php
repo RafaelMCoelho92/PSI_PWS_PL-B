@@ -54,7 +54,7 @@
                         <input type="text" name="referencia" placeholder="Introduza um serviço" value="" class="form-control" required>
                 </div>
                 <div class="col-3">
-                    <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
+                    <input min='0' type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
                 </div>
                 <div class="col-3">
                     <button class="btn btn-primary form-control" role="button">Adicionar Serviço</button>
