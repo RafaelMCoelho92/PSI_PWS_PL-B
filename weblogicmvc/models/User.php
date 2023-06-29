@@ -2,15 +2,15 @@
 class User extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
-        array('username'),
-        array('password'),
-        array('email'),
-        array('telefone'),
-        array('nif'),
-        array('morada'),
-        array('codigopostal'),
-        array('localidade'),
-        array('role'),
+        array('username', 'message' => 'Insira o nome'),
+        array('password', 'message' => 'Insira a password'),
+        array('email', 'message' => 'Insira o email'),
+        array('telefone', 'message' => 'Insira o telefone'),
+        array('nif', 'message' => 'Insira o NIF'),
+        array('morada', 'message' => 'Insira a morada'),
+        array('codigopostal', 'message' => 'Insira o codigo postal'),
+        array('localidade', 'message' => 'Insira a localidade'),
+        array('role', 'message' => 'Selecione um Role'),
     );
     static $validates_size_of = array(
         array('telefone', 'is' => 9, 'message' => 'O telefone tem de possuir 9 dígitos.'),

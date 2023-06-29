@@ -2,10 +2,10 @@
 class Service extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
-        array('referencia'),
-        array('descricao'),
-        array('precohora'),
-        array('iva'),
+        array('referencia', 'message' => 'Insira uma referencia'),
+        array('descricao', 'message' => 'Insira uma descricao'),
+        array('precohora', 'message' => 'Insira um preço/hora'),
+        array('iva', 'message' => 'Insira o valor do iva'),
     );
 
     static $validates_size_of = array(
@@ -18,6 +18,6 @@ class Service extends \ActiveRecord\Model
     );
 
     static $belongs_to = array(
-        array('iva')
+        array('iva', 'class_name' => 'Iva', 'foreign_key' => 'iva_id')
     );
 }

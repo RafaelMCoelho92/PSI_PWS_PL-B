@@ -21,6 +21,6 @@ class Folhaobra extends \ActiveRecord\Model
     );
 
     static $has_many = array(
-        array('linhaobras')// foi add um s
+        array('linhaobras')// , 'class_name' => 'Linhaobra', 'foreign_key' => 'idfolhaobra')
     );
 }

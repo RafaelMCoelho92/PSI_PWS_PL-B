@@ -2,9 +2,9 @@
 class Iva extends \ActiveRecord\Model
 {
     static $validates_presence_of = array(
-        array('emvigor'),
-        array('descricao'),
-        array('percentagem'),
+        array('emvigor', 'message' => 'Selecione se esta em vigor ou não '),
+        array('descricao', 'message' => 'Insira uma descrição'),
+        array('percentagem', 'message' => 'Insira a percentagem'),
     );
 
     static $validates_size_of = array(
