@@ -41,7 +41,7 @@
                             </td>
                         <?php } ?>
                         <td name="descricao" value="<?= $iva->descricao ?>"><?= $iva->descricao ?></td>
-                        <td name="percentagem" value="<?= $iva->percentagem ?>"><?= $iva->percentagem ?></td>
+                        <td name="percentagem" value="<?= $iva->percentagem ?>"><?= $iva->percentagem . "%"?></td>
                         <td>
                             <a href="index.php?c=iva&a=show&id=<?php echo $iva->id; ?>" class="btn btn-primary" role="button">Ver mais</a>
                             <a href="index.php?c=iva&a=edit&id=<?php echo $iva->id; ?>" class="btn btn-secondary" role="button">Editar</a>
