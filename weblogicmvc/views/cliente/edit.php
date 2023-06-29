@@ -16,9 +16,7 @@
             <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-2 col-form-label">Nova Password</label>
                 <div class="col-sm-10">
-                    <input value="<?php if (isset($user)) {
-                                        echo $user->password;
-                                    } ?>" type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password">
+                    <input value="" type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password">
                 </div>
             </div>
         </div>

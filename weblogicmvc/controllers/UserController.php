@@ -7,13 +7,14 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->authorizationFilter(['Funcionario', 'Admin']);
+        $this->authorizationFilter(['Funcionario', 'Admin','Cliente']);
         //Ele chama o método authorizationFilter(['Funcionario','Admin']) definido na classe Controller. 
         //Esse método verifica se o usuário está autenticado como "Funcionario" ou "Admin". 
         //Caso contrário, o usuário é redirecionado para uma rota de acesso inválido.
     }
     public function index()
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         $auth = new Auth();
         $role = $auth->getRole();
 
@@ -29,6 +30,7 @@ class UserController extends Controller
     }
     public function show($id)
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         //mostra vista com detalhes
         $user = User::find($id);
         if (is_null($user)) {
@@ -40,12 +42,14 @@ class UserController extends Controller
     }
     public function create()
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         //mostra vista com form de criacao de registo
         $this->renderView('user', 'create'); //['roles' => $roles]
 
     }
     public function store()
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         //recebe os dados do form de criacao valida e persiste na BD
         $user = new User($this->getHTTPPost());
         $user->password = password_hash($user->password, PASSWORD_DEFAULT); // podemos usar em vez de default bcrypt, scrypt ou argon2 , mas o default seleciona o mais adequado disponivel no php
@@ -61,6 +65,7 @@ class UserController extends Controller
     }
     public function edit($id)
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         //mostra a vista com form de edicao de um registo identificado pelo seu ID
         $user = User::find($id);
         $auth = new Auth();
@@ -80,6 +85,7 @@ class UserController extends Controller
     }
     public function update($id)
     {
+        $this->authorizationFilter(['Funcionario', 'Admin', 'Cliente']);
         // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
         $user = User::find($id);
         $user->update_attributes($this->getHTTPPost());
@@ -95,6 +101,7 @@ class UserController extends Controller
     }
     public function delete($id)
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         //apaga um registo da BD identificado pelo ID
         $user = User::find($id);
         $user->delete();
@@ -103,6 +110,7 @@ class UserController extends Controller
     }
     public function reservado()
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         $auth = new Auth();
         $id = $auth->getId();
         $user = User::find($id);
@@ -111,6 +119,7 @@ class UserController extends Controller
     }
     public function select()
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         $auth = new Auth();
         $role = $auth->getRole();
 
@@ -123,6 +132,7 @@ class UserController extends Controller
     }
     public function search() // https://www.phpactiverecord.org/projects/main/wiki/Finders
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         $pesquisa = $this->getHTTPPostParam('pesquisa');
         if (!empty($pesquisa)) {
             $conditions = array(
@@ -149,6 +159,7 @@ class UserController extends Controller
 
     public function search_user() // https://www.phpactiverecord.org/projects/main/wiki/Finders
     {
+        $this->authorizationFilter(['Funcionario', 'Admin']);
         $pesquisa = $this->getHTTPPostParam('pesquisa');
         if (!empty($pesquisa)) {
             $conditions = array(
