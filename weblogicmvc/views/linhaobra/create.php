@@ -39,20 +39,34 @@
             <b>Estado:</b> <?= $folhaobra->estado ?><br>
             </b>
             <br><br>
-            <div class="row">
-                <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
-                    <div class="col">
-                        <label for="servico">Serviço:</label><br>
-                        <input type="text" name="referencia" placeholder="" value="<?=$servico->referencia ?>">
-                            <input type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
-                            <button class="btn btn-primary" role="button">Adicionar Serviço</button>
-                    </div>
-                </form>
-                <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
-                    <button class="btn btn-info" role="button">Selecionar Serviço</button>
-                </form>
-            </div>
+
+
             <br>
+        </div>
+    </div>
+    <div class="card card-info">
+        <div class="card-header">
+            <h3 class="card-title">Serviço</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    <form method="post" action="index.php?c=linhaobra&a=store&id=<?= $folhaobra->id ?>">
+                        <input type="text" name="referencia" placeholder="" value="<?= $servico->referencia ?>" class="form-control" required>
+                </div>
+                <div class="col-3">
+                    <input min='0' type="number" name="quantidade" id="quantidade" placeholder="Insira a quantidade" class="form-control" required>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary form-control" role="button">Adicionar Serviço</button>
+                    </form>
+                </div>
+                <div class="col-3">
+                    <form method="post" action="index.php?c=service&a=select&id=<?= $folhaobra->id ?>">
+                        <button class="btn btn-info form-control" role="button">Selecionar Serviço</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -68,7 +82,7 @@
                         <th>Subtotal (s/ IVA)</th>
                         <th>IVA Total</th>
                         <th>Valor Total</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -131,7 +145,7 @@
 
     <div class="row no-print">
         <div class="col-12">
-        <a href="index.php?c=folhaobra&a=paga&id=<?= $folhaobra->id ?>" class="btn btn-success float-right" style="margin-right: 5px;" role="button">Emitir e Pagar</a>
+            <a href="index.php?c=folhaobra&a=paga&id=<?= $folhaobra->id ?>" class="btn btn-success float-right" style="margin-right: 5px;" role="button">Emitir e Pagar</a>
             <a href="index.php?c=folhaobra&a=emitir&id=<?= $folhaobra->id ?>" class="btn btn-info float-right" style="margin-right: 5px;" role="button">Emitir</a>
 
             </button>
