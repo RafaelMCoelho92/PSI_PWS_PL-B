@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 29-Jun-2023 às 11:15
+-- Tempo de geração: 29-Jun-2023 às 12:43
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.1.13
 
@@ -191,19 +191,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `localidade` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `role` enum('Cliente','Funcionario','Admin') CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `telefone`, `nif`, `morada`, `codigopostal`, `localidade`, `role`) VALUES
-(1, 'admin', 'admin', 'admin@tespzorro.com', 987987987, 266266266, 'IPLeiria ESTG', 1234567, 'Leiria', 'Admin'),
-(2, 'funcionario', 'funcionario', 'funcionario@tespzorro.com', 222222222, 222222222, 'IPLeiria', 1234567, 'Leiria', 'Funcionario'),
-(3, 'funcionario2', 'funcionario2', 'funcionario2@tespzorro.com', 333333333, 333333333, 'IPLeiria', 1234567, 'Leiria', 'Funcionario'),
-(4, 'Rafael', 'rafael', 'rafael@cliente.com', 444444444, 444444444, 'Rua do Estadio do Dragao', 1234567, 'Porto', 'Cliente'),
-(5, 'Andre', 'andre', 'andre@cliente.com', 555555555, 555555555, 'Rua do Estadio Municipal de Leiria', 1234567, 'Leiria', 'Cliente'),
-(6, 'Patrick', 'patrick', 'rafael@cliente.com', 666666666, 666666666, 'Rua do Estadio da Luz', 1234567, 'Porto', 'Cliente');
+(1, 'admin', '$2y$10$CQlRzEWEVl6swTSZ8KPoEeNXJ4Khibc/6sN5JBy523jeRSRuDBxsG', 'admin@tespzorro.com', 987987987, 266266266, 'IPLeiria ESTG', 1234567, 'Leiria', 'Admin'),
+(2, 'funcionario', '$2y$10$s0HwmniVOKejrlgGmhPXTOZFHSgrLuOy0BlSqUHhzGa83FvpKZcd2', 'funcionario@tespzorro.com', 222222222, 222222222, 'IPLeiria', 1234567, 'Leiria', 'Funcionario'),
+(3, 'funcionario2', '$2y$10$s0HwmniVOKejrlgGmhPXTOZFHSgrLuOy0BlSqUHhzGa83FvpKZcd2', 'funcionario2@tespzorro.com', 333333333, 333333333, 'IPLeiria', 1234567, 'Leiria', 'Funcionario'),
+(4, 'Rafael', '$2y$10$EIRnc5CmhoDBEpBn9kr/Jee5/vXVXxu9TfeE/S5KD8sFwXO07VzEi', 'rafael@cliente.com', 444444444, 444444444, 'Rua do Estadio do Dragao', 1234567, 'Porto', 'Cliente'),
+(5, 'Andre', '$2y$10$KpEqJLoBt2rB2j9ux5nJ9.FglHn6uHBaQ6VRxZNOXRa3m1gRVqllK', 'andre@cliente.com', 555555555, 555555555, 'Rua do Estadio Municipal de Leiria', 1234567, 'Leiria', 'Cliente'),
+(6, 'Patrick', '$2y$10$xgGE2chO83oDldiSQhFcCuVLVpSis1cSS4SeSEy3zy5smDZnICCWW', 'patrick@cliente.com', 666666666, 666666666, 'Rua do Estadio da Luz', 1234567, 'Porto', 'Cliente');
 
 --
 -- Restrições para despejos de tabelas
