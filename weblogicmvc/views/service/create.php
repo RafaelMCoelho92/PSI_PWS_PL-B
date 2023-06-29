@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-12">
                             <label for="precohora" class="form-label">Preço / hora</label><br>
-                            <input min='0' type="number" min="0" class="form-control" name="precohora" value="<?php if (isset($service)) {
+                            <input step="0.1" min='0' type="number" min="0" class="form-control" name="precohora" value="<?php if (isset($service)) {
                                                                                                                     echo $service->precohora;
                                                                                                                 } ?>" placeholder="Preço / hora" required>
                             <p>

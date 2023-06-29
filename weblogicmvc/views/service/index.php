@@ -39,7 +39,7 @@
                     <tr>
                         <td><?= $service->referencia ?></td>
                         <td><?= $service->descricao ?></td>
-                        <td><?= $service->precohora ?></td>
+                        <td><?= number_format($service->precohora, 2, ',', '.') . " €"?></td>
                         <td><?= $service->iva->descricao ?></td>
                         <td>
                             <a href="index.php?c=service&a=show&id=<?= $service->id ?>" class="btn btn-primary">Ver mais</a>
