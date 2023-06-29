@@ -87,13 +87,20 @@ class UserController extends Controller
     {
         $this->authorizationFilter(['Funcionario', 'Admin', 'Cliente']);
         // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
+        
         $user = User::find($id);
         $user->update_attributes($this->getHTTPPost());
         $user->password = password_hash($user->password, PASSWORD_DEFAULT); // podemos usar em vez de default bcrypt, scrypt ou argon2 , mas o default seleciona o mais adequado disponivel no php
         if ($user->is_valid()) {
             $user->save();
             //redirecionar para o index
+            $auth = new Auth();
+             $role = $auth->getRole();
+             if($role != 'Cliente'){
             $this->redirectToRoute('user', 'index');
+             }else{
+                $this->redirectToRoute('home', 'dashboardfo'); 
+             }
         } else {
             //mostrar vista edit passando o modelo como parâmetro
             $this->renderView('user', 'edit', ['user' => $user]);
