@@ -72,9 +72,19 @@ class IvaController extends Controller
 
     public function delete($id)
     {
-        // Apagar um registo do BD identificado pelo ID
         $iva = Iva::find($id);
-        $iva->delete();
-        $this->redirectToRoute('iva', 'index');
+        if ($iva) {
+            $services = Service::find_all_by_iva_id($iva->id); 
+            if (!empty($services)) {
+                $this->redirectToRoute('iva', 'index');
+            } else {
+                $iva->delete();
+                $this->redirectToRoute('iva', 'index');
+            }
+        } else {
+            $this->redirectToRoute('iva', 'index');
+        }
     }
+    
+    
 }
