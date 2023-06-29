@@ -1,9 +1,9 @@
 ![IPLeiria](doc/ipleiria.png)
 
-
 # PROGRAMAÇÃO PARA A WEB - SERVIDOR
 
 # Desenvolvido pelos alunos do TeSP de PSI-PL 22/23.
+
 # PSI_PWS_PL-B
 
 **2220894 Andre Duarte
@@ -12,13 +12,11 @@
 
 -- Descrição
 
-Este sistema desenvolvido segue as regras e convenções MVC e utiliza uma pequena base de dados de apoio para o seu correto funcionamento,a aplicação desenvolvida serve para emissão de folhas de obra, que possui como objetivo principal permitir  a um funcionário emitir folhas de obra de forma simples, rápida e
+Este sistema desenvolvido segue as regras e convenções MVC e utiliza uma pequena base de dados de apoio para o seu correto funcionamento,a aplicação desenvolvida serve para emissão de folhas de obra, que possui como objetivo principal permitir a um funcionário emitir folhas de obra de forma simples, rápida e
 direta. Através da aplicação, cada cliente pode visualizar as suas folhas de obra em formato
 próprio para impressão.
 A aplicação permite também a inserção e gestão dos dados necessários para emissão das
-folhas de obra. 
- 
-
+folhas de obra.
 
 ## Requisitos de Sistema
 
@@ -34,8 +32,9 @@ folhas de obra.
 
 ## Configuração
 
-1. É nescessario utilizar o ficheiro da base de dados para o programa correr sem erros.
-
+1. É nescessario utilizar o ficheiro da base de dados (bdtespzorro.sql) para o programa correr sem erros.
+2. Para realizar login como ADMIN utilizar credenciais de Utilizador: 'admin' e Password: 'admin'.
+3. Para realizar login como FUNCIONARIO utilizar credenciais de Utilizador: 'funcionario' e Password: 'funcionario', ou Utiizador: 'funcionario2' e Password: 'funcionario'.
 
 ## Execução
 
