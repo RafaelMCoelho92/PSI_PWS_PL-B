@@ -41,7 +41,7 @@
                         <th>
                             <h6>Telefone</h6>
                         </th>
-                        <td><input id="telefone" placeholder="telefone" type="text" value="<?php if (isset($empresa)) {
+                        <td><input id="telefone" min="0" placeholder="telefone" type="number" value="<?php if (isset($empresa)) {
                                                                                                 echo $empresa->telefone;
                                                                                             } ?>" name="telefone" id="telefone"><!-- required  tbm-->
                             <?php if (isset($empresa->errors)) {
@@ -52,7 +52,7 @@
                         <th>
                             <h6>NIF</h6>
                         </th>
-                        <td><input id="nif" placeholder="nif" type="text" value="<?php if (isset($empresa)) {
+                        <td><input id="nif" placeholder="nif" type="number" min="0" value="<?php if (isset($empresa)) {
                                                                                         echo $empresa->nif;
                                                                                     } ?>" name="nif" id="nif"><!-- required  tbm-->
                             <?php if (isset($empresa->errors)) {
@@ -74,7 +74,7 @@
                         <th>
                             <h6>Codigo Postal</h6>
                         </th>
-                        <td><input id="codigopostal" placeholder="codigopostal" type="text" value="<?php if (isset($empresa)) {
+                        <td><input id="codigopostal" placeholder="codigopostal" type="number" min="0" value="<?php if (isset($empresa)) {
                                                                                                         echo $empresa->codigopostal;
                                                                                                     } ?>" name="codigopostal" id="codigopostal"><!-- required  tbm-->
                             <?php if (isset($empresa->errors)) {
@@ -96,7 +96,7 @@
                         <th>
                             <h6>Capital Social</h6>
                         </th>
-                        <td><input id="capitalsocial" placeholder="capitalsocial" type="text" value="<?php if (isset($empresa)) {
+                        <td><input id="capitalsocial" placeholder="capitalsocial" min="0" type="number" value="<?php if (isset($empresa)) {
                                                                                                             echo $empresa->capitalsocial;
                                                                                                         } ?>" name="capitalsocial" id="capitalsocial"><!-- required  tbm-->
                             <?php if (isset($empresa->errors)) {
