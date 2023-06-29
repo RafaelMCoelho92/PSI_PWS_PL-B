@@ -48,7 +48,7 @@ class UserController extends Controller
     {
         //recebe os dados do form de criacao valida e persiste na BD
         $user = new User($this->getHTTPPost());
-        //$user->password = md5($user->password);
+        $user->password = password_hash($user->password, PASSWORD_DEFAULT); // podemos usar em vez de default bcrypt, scrypt ou argon2 , mas o default seleciona o mais adequado disponivel no php
         if ($user->is_valid()) {
             $user->save();
 
@@ -83,6 +83,7 @@ class UserController extends Controller
         // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
         $user = User::find($id);
         $user->update_attributes($this->getHTTPPost());
+        $user->password = password_hash($user->password, PASSWORD_DEFAULT); // podemos usar em vez de default bcrypt, scrypt ou argon2 , mas o default seleciona o mais adequado disponivel no php
         if ($user->is_valid()) {
             $user->save();
             //redirecionar para o index
