@@ -32,14 +32,14 @@
                                 echo $user->errors->on('email');
                             } ?></td>
                         <td><input id="telefone" placeholder="telefone" min="0" type="number" value="<?php if (isset($user)) {
-                                                                                                echo $user->telefone;
-                                                                                            } ?>" name="telefone" id="telefone" required>
+                                                                                                            echo $user->telefone;
+                                                                                                        } ?>" name="telefone" id="telefone" required>
                             <?php if (isset($user->errors)) {
                                 echo $user->errors->on('telefone');
                             } ?></td>
                         <td><input id="nif" placeholder="nif" min="0" type="number" value="<?php if (isset($user)) {
-                                                                                        echo $user->nif;
-                                                                                    } ?>" name="nif" id="nif" required>
+                                                                                                echo $user->nif;
+                                                                                            } ?>" name="nif" id="nif" required>
                             <!-- estava a dar erro neste codigo por supostamente estava a retomar o nif 
                                                                     como uma array e nao numa strings -->
                             <?php if (isset($user->errors)) {
@@ -72,8 +72,8 @@
                                 echo $user->errors->on('morada');
                             } ?></td>
                         <td><input id="codigopostal" placeholder="codigopostal" min="0" type="number" value="<?php if (isset($user)) {
-                                                                                                        echo $user->codigopostal;
-                                                                                                    } ?>" name="codigopostal" id="codigopostal" required>
+                                                                                                                    echo $user->codigopostal;
+                                                                                                                } ?>" name="codigopostal" id="codigopostal" required>
                             <?php if (isset($user->errors)) {
                                 echo $user->errors->on('codigopostal');
                             } ?></td>
@@ -86,19 +86,26 @@
                         </td>
 
                         <td>
-                            <select class="form-select" name="role">
-                                <?php
-                                //$opcoes = array('Cliente', 'Funcionario', 'Admin'); estava a dar erro com isto comentado 
-                                $opcoes = array('Cliente', 'Funcionario', 'Admin');
-                                foreach ($opcoes as $opcao) {
-                                    if ($opcao == $user->role) { ?>
-                                        <option value="<?= $opcao ?>" selected><?= $opcao ?></option>
-                                    <?php } else { ?>
-                                        <option value="<?= $opcao ?>"><?= $opcao ?></option>
-                                <?php }
-                                } ?>
+                            <div class="col-md-3">
+                                <select class="form-select" name="role">
+                                    <?php $auth = $auth->getRole(); ?>
+                                    <?php if ($auth == "Admin") {
+                                        $roles = array('Cliente', 'Funcionario', 'Admin');
+                                    } elseif ($auth == "Funcionario") {
+                                        $roles = array('Cliente');
+                                    } ?>
 
-                            </select>
+                                    <?php foreach ($roles as $role) { ?>
+                                        <option value="<?= $role ?>"> <?= $role; ?></option>
+                                    <?php } ?>
+                                </select>
+                                <p><?php if (isset($user->errors)) {
+                                        echo $user->errors->on('role');
+                                    } ?></p>
+                                <div class="invalid-feedback">
+                                    Campo Obrigatorio!
+                                </div>
+                            </div>
 
                         </td>
                     </tr>

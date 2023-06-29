@@ -113,7 +113,7 @@
             <div class="col-md-3">
               <label for="role">Role</label><br>
               <select class="form-select" name="role">
-                <?php $auth = $_SESSION['role']; ?>
+                <?php $auth = $auth->getRole(); ?>
                 <?php if ($auth == "Admin") {
                   $roles = array('Cliente', 'Funcionario', 'Admin');
                 } elseif ($auth == "Funcionario") {
