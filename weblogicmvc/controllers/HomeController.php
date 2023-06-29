@@ -50,10 +50,10 @@ class HomeController extends Controller
             $folhasobras = Folhaobra::find_all_by_idcliente($id);
             $numfolhasobras = count($folhasobras);
 
-            $folhasobraspagas = Folhaobra::find('all', ['conditions' => ['idcliente = ? AND estado = ?', $id, 'Paga']]);
+            $folhasobraspagas = Folhaobra::find_all_by_idcliente_and_estado($id, 'Paga');
             $numfolhasobraspagas = count($folhasobraspagas);
 
-            $folhasobrasemitidas = Folhaobra::find('all', ['conditions' => ['idcliente = ? AND estado = ?', $id, 'Emitida']]);
+            $folhasobrasemitidas = Folhaobra::find_all_by_idcliente_and_estado($id, 'Emitida');
             $numfolhasobrasemitidas = count($folhasobrasemitidas);
 
             $this->renderView('home', 'dashboardfo', ['numfolhasobras' => $numfolhasobras, 'numfolhasobraspagas' => $numfolhasobraspagas, 'numfolhasobrasemitidas' => $numfolhasobrasemitidas], 'frontoffice');
