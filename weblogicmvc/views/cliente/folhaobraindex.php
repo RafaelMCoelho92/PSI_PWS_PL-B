@@ -46,7 +46,7 @@
                     foreach ($folhasObra as $folhaObra) { ?>
                         <tr>
                             <td><?= $folhaObra->id ?></td>
-                            <td><?= $folhaObra->data ?></td>
+                            <td><?= date('D, d M Y H:i', strtotime($folhaObra->data)) ?></td>
                             <td><?= $folhaObra->estado ?></td>
                             <td><?= $folhaObra->user->username ?></td>
                             <td>
