@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 26-Jun-2023 às 10:40
+-- Tempo de geração: 29-Jun-2023 às 10:50
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.1.13
 
@@ -67,23 +67,17 @@ CREATE TABLE IF NOT EXISTS `folhaobras` (
   PRIMARY KEY (`id`),
   KEY `idcliente` (`idcliente`),
   KEY `idfuncionario` (`idfuncionario`)
-) ENGINE=InnoDB AUTO_INCREMENT=292 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `folhaobras`
 --
 
 INSERT INTO `folhaobras` (`id`, `data`, `valortotal`, `ivatotal`, `estado`, `idcliente`, `idfuncionario`, `subtotal`) VALUES
-(282, '2023-06-26 09:19:34', 10, 2.3, 'Emitida', 16, 1, 0),
-(283, '2023-06-26 09:20:43', 184.5, 34.5, 'Em Lançamento', 16, 1, 150),
-(284, '2023-06-26 09:45:14', 0, 0, 'Paga', 24, 1, 0),
-(285, '2023-06-26 09:46:01', 70, 16.1, 'Anulada', 16, 1, 0),
-(286, '2023-06-26 10:27:14', 36.9, 6.9, 'Em Lançamento', 16, 1, 30),
-(287, '2023-06-26 10:32:13', 24.6, 4.6, 'Em Lançamento', 16, 1, 20),
-(288, '2023-06-26 10:34:45', 0, 0, 'Em Lançamento', 16, 1, 0),
-(289, '2023-06-26 10:34:52', 12.3, 2.3, 'Em Lançamento', 16, 1, 10),
-(290, '2023-06-26 10:38:22', 147.6, 27.6, 'Em Lançamento', 16, 1, 120),
-(291, '2023-06-26 10:38:40', 135.3, 25.3, 'Em Lançamento', 16, 1, 110);
+(1, '2023-06-29 10:37:29', 139.725, 22.225, 'Emitida', 4, 2, 117.5),
+(2, '2023-06-29 10:38:01', 180.975, 23.475, 'Paga', 4, 2, 157.5),
+(3, '2023-06-29 10:39:37', 118.08, 17.08, 'Em Lançamento', 5, 2, 101),
+(4, '2023-06-29 10:40:38', 112.98, 11.98, 'Em Lançamento', 6, 3, 101);
 
 -- --------------------------------------------------------
 
@@ -98,16 +92,17 @@ CREATE TABLE IF NOT EXISTS `ivas` (
   `descricao` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `percentagem` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
 
 --
 -- Extraindo dados da tabela `ivas`
 --
 
 INSERT INTO `ivas` (`id`, `emvigor`, `descricao`, `percentagem`) VALUES
-(2, 'Sim', 'Taxa Normal – 23%', 23),
-(3, 'Sim', 'Taxa Intermédia – 13%', 13),
-(4, 'Sim', 'Taxa Reduzida – 6%', 6);
+(1, 'Sim', 'Taxa Normal – 23%', 23),
+(2, 'Sim', 'Taxa Intermédia – 13%', 13),
+(3, 'Sim', 'Taxa Reduzida – 6%', 6),
+(13, 'Não', 'Taxa Isenta - 0%', 0);
 
 -- --------------------------------------------------------
 
@@ -126,30 +121,25 @@ CREATE TABLE IF NOT EXISTS `linhaobras` (
   PRIMARY KEY (`id`),
   KEY `idservico` (`idservico`),
   KEY `idfolhaobra` (`idfolhaobra`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=242 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `linhaobras`
 --
 
 INSERT INTO `linhaobras` (`id`, `quantidade`, `valor`, `valoriva`, `idfolhaobra`, `idservico`) VALUES
-(53, 2, 20, 2.3, 283, 19),
-(54, 10, 100, 2.3, 283, 19),
-(55, 2, 20, 2.3, 285, 19),
-(56, 5, 50, 2.3, 285, 19),
-(57, 1, 10, 2.3, 282, 19),
-(58, 1, 10, 2.3, 283, 19),
-(59, 1, 10, 2.3, 283, 19),
-(60, 1, 10, 2.3, 283, 19),
-(61, 1, 10, 2.3, 286, 19),
-(62, 1, 10, 2.3, 286, 19),
-(63, 1, 10, 2.3, 286, 19),
-(64, 1, 10, 2.3, 287, 19),
-(65, 1, 10, 2.3, 287, 19),
-(66, 1, 10, 2.3, 289, 19),
-(67, 12, 120, 2.3, 290, 19),
-(68, 10, 100, 2.3, 291, 19),
-(69, 1, 10, 2.3, 291, 19);
+(230, 2, 20, 2.3, 1, 30),
+(231, 4, 48, 1.56, 1, 31),
+(232, 5, 49.5, 2.277, 1, 34),
+(233, 5, 75, 0.9, 2, 32),
+(234, 3, 52.5, 4.025, 2, 33),
+(235, 3, 30, 2.3, 2, 30),
+(236, 5, 50, 2.3, 3, 30),
+(237, 3, 36, 1.56, 3, 31),
+(238, 1, 15, 0.9, 3, 32),
+(239, 2, 20, 2.3, 4, 30),
+(240, 3, 36, 1.56, 4, 31),
+(241, 3, 45, 0.9, 4, 32);
 
 -- --------------------------------------------------------
 
@@ -166,14 +156,18 @@ CREATE TABLE IF NOT EXISTS `services` (
   `iva_id` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `services_ibfk_1` (`iva_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
 
 --
 -- Extraindo dados da tabela `services`
 --
 
 INSERT INTO `services` (`id`, `referencia`, `descricao`, `precohora`, `iva_id`) VALUES
-(19, 'Teste', 'Teste', 10, 2);
+(30, '10120', 'PHP - Master', 10, 1),
+(31, '10130', 'Desenvolvimento Servidor', 12, 2),
+(32, '10140', 'Testes ao Programa', 15, 3),
+(33, '10150', 'Segurança Servidor', 17.5, 1),
+(34, '10160', 'Validação de Dados', 9.9, 1);
 
 -- --------------------------------------------------------
 
@@ -194,18 +188,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `localidade` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   `role` enum('Cliente','Funcionario','Admin') CHARACTER SET latin1 COLLATE latin1_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `telefone`, `nif`, `morada`, `codigopostal`, `localidade`, `role`) VALUES
-(1, 'admin', 'admin', '', 0, 0, '', 0, '', 'Admin'),
-(2, 'user', 'user', '', 0, 0, '', 0, '', 'Cliente'),
-(3, 'funcionario', 'funcionario', '', 0, 0, '', 0, '', 'Funcionario'),
-(16, 'teste', 'teste', 'teste@teste.com', 123456789, 123456789, 'teste', 123456789, 'teste', 'Cliente'),
-(24, 'asd', 'a', 'a@a.a', 123123123, 123123123, 'a', 1234567, 'a', 'Cliente');
+(1, 'admin', 'admin', 'admin@tespzorro.com', 987987987, 266266266, 'IPLeiria ESTG', 1234567, 'Leiria', 'Admin'),
+(2, 'funcionario', 'funcionario', 'funcionario@tespzorro.com', 222222222, 222222222, 'IPLeiria', 1234567, 'Leiria', 'Funcionario'),
+(3, 'funcionario2', 'funcionario2', 'funcionario2@tespzorro.com', 333333333, 333333333, 'IPLeiria', 1234567, 'Leiria', 'Funcionario'),
+(4, 'Rafael', 'rafael', 'rafael@cliente.com', 444444444, 444444444, 'Rua do Estadio do Dragao', 1234567, 'Porto', 'Cliente'),
+(5, 'Andre', 'andre', 'andre@cliente.com', 555555555, 555555555, 'Rua do Estadio Municipal de Leiria', 1234567, 'Leiria', 'Cliente'),
+(6, 'Patrick', 'patrick', 'rafael@cliente.com', 666666666, 666666666, 'Rua do Estadio da Luz', 1234567, 'Porto', 'Cliente');
 
 --
 -- Restrições para despejos de tabelas

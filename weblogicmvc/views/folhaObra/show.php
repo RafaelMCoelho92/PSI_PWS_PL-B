@@ -64,12 +64,12 @@
                             <td><?php echo $linha->id; ?></td> <!-- Ref -->
                             <td><?php echo $linha->quantidade; ?></td><!-- Qtd -->
                             <td><?php echo $linha->servico->descricao; ?></td><!-- Serviço -->
-                            <td><?php echo $linha->servico->precohora . " €" ?></td><!-- preco hora -->
+                            <td><?php echo number_format($linha->servico->precohora, 2, ',', '.') . " €" ?></td><!-- preco hora -->
                             <td><?php echo $linha->servico->iva->percentagem . " %" ?></td><!-- IVA -->
-                            <td><?= ($linha->servico->precohora * $linha->quantidade) . " €" ?></td><!-- Subtotal s/ iva -->
-                            <td><?php echo ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100  . " €" ?></td><!-- IVA TOTAL -->
-                            <td><?php echo ($linha->servico->precohora * $linha->quantidade) +
-                                    ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100 .
+                            <td><?= number_format(($linha->servico->precohora * $linha->quantidade), 2, ',', '.') . " €" ?></td><!-- Subtotal s/ iva -->
+                            <td><?php echo number_format((($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100), 2, ',', '.')  . " €" ?></td><!-- IVA TOTAL -->
+                            <td><?php echo number_format((($linha->servico->precohora * $linha->quantidade) +
+                                    ($linha->servico->iva->percentagem * ($linha->servico->precohora * $linha->quantidade)) / 100), 2, ',', '.') .
                                     "€" ?></td><!-- VALOR TOTAL-->
                         </tr>
                     <?php } ?>
@@ -96,16 +96,16 @@
                     <tbody>
                         <tr>
                             <th style="width:50%">Subtotal:</th>
-                            <td><?= $folhaObra->valortotal; ?> €</td>
+                            <td><?= number_format($folhaObra->valortotal, 2, ',', '.'); ?> €</td>
                         </tr>
                         <tr>
                             <th>IVA Total</th>
-                            <td><?= $folhaObra->ivatotal; ?> €</td>
+                            <td><?= number_format($folhaObra->ivatotal, 2, ',', '.'); ?> €</td>
                         </tr>
 
                         <tr>
                             <th>Total:</th>
-                            <td><?= $folhaObra->valortotal + $folhaObra->ivatotal; ?> €</td>
+                            <td><?= number_format($folhaObra->valortotal + $folhaObra->ivatotal, 2, ',', '.'); ?> €</td>
                         </tr>
                     </tbody>
                 </table>
