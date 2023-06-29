@@ -20,13 +20,19 @@ class EmpresaController extends Controller // acesso aos métodos e propriedades
     }
     public function show($id)
     {
-        //mostra vista com detalhes
+        $auth = new Auth();
+        $role = $auth->getRole();
         $empresa = Empresa::find($id);
-        if (is_null($empresa)) {
-            //TODO redirect to standard error page
+        if ($role != 'Cliente') {
+            //mostra vista com detalhes
+            if (is_null($empresa)) {
+                //TODO redirect to standard error page
+            } else {
+                //mostrar a vista show passando os dados por parâmetro
+                $this->renderView('empresa', 'show', ['empresa' => $empresa]);
+            }
         } else {
-            //mostrar a vista show passando os dados por parâmetro
-            $this->renderView('empresa', 'show', ['empresa' => $empresa]);
+            $this->renderView('cliente', 'empresa', ['empresa' => $empresa], 'frontoffice');
         }
     }
     public function create()

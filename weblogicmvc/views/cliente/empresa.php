@@ -1,7 +1,3 @@
-<a href="index.php?c=home&a=index">
-    <h1 class="text-left top-space">Pagina Inicial <?= APP_NAME ?></h1>
-</a>
-<br><br><br><br>
 <div class="row">
     <div class="col-sm-6 align-middle ">
         <table class="table table-striped ">
