@@ -8,6 +8,7 @@ require_once 'controllers/IvaController.php';
 require_once 'controllers/FolhaobraController.php';
 require_once 'controllers/ClienteController.php';
 require_once 'controllers/LinhaobraController.php';
+require_once 'controllers/TaskController.php';
 
 
 
@@ -45,6 +46,17 @@ return [
         'edit' => ['GET', 'ClienteController', 'edit'],
         'search_cliente' => ['POST', 'ClienteController', 'search_cliente'],
         'imprimir' => ['GET', 'ClienteController', 'imprimir'],
+
+    ],
+    'task'=> [
+        'index' => ['GET', 'TaskController', 'index'],
+        'create' => ['GET', 'TaskController', 'create'],
+        'store' => ['POST', 'TaskController', 'store'],
+        'show' => ['GET', 'TaskController', 'show'],
+        'edit' => ['GET', 'TaskController', 'edit'],
+        'update' => ['POST', 'TaskController', 'update'],
+        'delete' => ['GET', 'TaskController', 'delete'],
+
 
     ],
 

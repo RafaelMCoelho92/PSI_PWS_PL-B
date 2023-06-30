@@ -227,6 +227,29 @@
                 </li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Tasks
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="index.php?c=task&a=index" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p>Visualizar</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="index.php?c=task&a=create" class="nav-link">
+                    <i class="nav-icon far fa-circle text-warning"></i>
+                    <p>Criar Nova</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

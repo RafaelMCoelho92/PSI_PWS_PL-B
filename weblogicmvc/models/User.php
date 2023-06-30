@@ -35,4 +35,7 @@ class User extends \ActiveRecord\Model
     static $validates_inclusion_of = array(
         array('role', 'in' => array('Cliente', 'Funcionario', 'Admin')),
     );
+    static $has_many = array(
+        array('tasks')
+    );
 }
