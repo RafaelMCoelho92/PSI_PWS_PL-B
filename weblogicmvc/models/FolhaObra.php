@@ -26,4 +26,35 @@ class Folhaobra extends \ActiveRecord\Model
     static $has_many = array(
         array('linhaobras')// , 'class_name' => 'Linhaobra', 'foreign_key' => 'idfolhaobra')
     );
+    function storeFolha($id)
+    {
+        $user = User::find($id);
+        $folhaobra = new Folhaobra();
+        $folhaobra->idcliente = $user->id;
+        $funcionario = new Auth();
+        $idfuncionario = $funcionario->getId();
+        $folhaobra->idfuncionario = $idfuncionario;
+        $folhaobra->data = date('d-m-Y H:i:s');
+        $folhaobra->valortotal = 0;
+        $folhaobra->ivatotal = 0;
+        $folhaobra->subtotal = 0;
+        return $folhaobra;
+    }
+    function updateFolha($id)
+    {
+        $folhaobra = Folhaobra::find($id);
+        $ivatotal = 0;
+        $subtotal = 0;
+        $linhaobras = Linhaobra::find_all_by_idfolhaobra($folhaobra->id);
+
+        foreach ($linhaobras as $linhaobra) {
+            $subtotal += $linhaobra->quantidade * $linhaobra->servico->precohora;
+            $linhaobra->valoriva = ($linhaobra->servico->precohora * $linhaobra->servico->iva->percentagem) / 100;
+            $ivatotal += $linhaobra->valoriva * $linhaobra->quantidade;
+        }
+        $folhaobra->subtotal = $subtotal;
+        $folhaobra->ivatotal = $ivatotal;
+        $folhaobra->valortotal = $subtotal + $ivatotal;
+        return $folhaobra;
+    }
 }

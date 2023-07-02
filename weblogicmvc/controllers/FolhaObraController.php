@@ -65,17 +65,8 @@ class FolhaobraController extends Controller
     {
 
         //mostra vista com form de criacao de registo
-
-        $user = User::find($id);
-        $folhaobra = new Folhaobra();
-        $folhaobra->idcliente = $user->id;
-        $funcionario = new Auth();
-        $idfuncionario = $funcionario->getId();
-        $folhaobra->idfuncionario = $idfuncionario;
-        $folhaobra->data = date('d-m-Y H:i:s');
-        $folhaobra->valortotal = 0;
-        $folhaobra->ivatotal = 0;
-        $folhaobra->subtotal = 0;
+        $folha = new Folhaobra();
+        $folhaobra = $folha->storeFolha($id);
         if ($folhaobra->is_valid()) {
             $folhaobra->save(); // redirect se n for tem q se fazer renderview
             $this->redirectToRoute('linhaobra', 'index', ['idfolhaobra' => $folhaobra->id]);
@@ -86,9 +77,6 @@ class FolhaobraController extends Controller
     }
     public function edit($id)
     {
-        $auth = new Auth();
-        $role = $auth->getRole();
-
         $services = Service::all();
         $empresa = Empresa::first();
         $folhaobra = Folhaobra::find($id);
@@ -107,22 +95,8 @@ class FolhaobraController extends Controller
 
     public function update($id)
     {
-        // recebe os dados do form de edicao de um registo identificado pelo seu id valida e persiste na BD
-        $folhaobra = Folhaobra::find($id);
-        $ivatotal = 0;
-        $subtotal = 0;
-        $linhaobras = Linhaobra::find_all_by_idfolhaobra($folhaobra->id);
-
-        foreach ($linhaobras as $linhaobra) {
-            $subtotal += $linhaobra->quantidade * $linhaobra->servico->precohora;
-            $linhaobra->valoriva = ($linhaobra->servico->precohora * $linhaobra->servico->iva->percentagem) / 100;
-            $ivatotal += $linhaobra->valoriva * $linhaobra->quantidade;
-        }
-        $folhaobra->subtotal = $subtotal;
-        $folhaobra->ivatotal = $ivatotal;
-        $folhaobra->valortotal = $subtotal + $ivatotal;
-
-
+        $folha = new Folhaobra();
+        $folhaobra = $folha->updateFolha($id);
         if ($folhaobra->is_valid()) {
             $folhaobra->save();
             //redirecionar para o index
