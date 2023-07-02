@@ -45,12 +45,10 @@ class LinhaobraController extends Controller
     public function update($id)
     {
         $linhaobra = Linhaobra::find_by_id($id);
-        $novaQuantidade = $this->getHTTPPostParam('quantidade');
-        $linhaobra->quantidade = $novaQuantidade;
-        $folhaobra = Folhaobra::find($linhaobra->idfolhaobra);
+        $linhaobra->quantidade = $this->getHTTPPostParam('quantidade');
         if ($linhaobra->is_valid()) {
             $linhaobra->save(); // redirect se n for tem q se fazer renderview
-            $this->redirectToRoute('folhaobra', 'update', ['id' => $folhaobra->id]);
+            $this->redirectToRoute('folhaobra', 'update', ['id' => $linhaobra->idfolhaobra]);
         } else {
             // renderview do que ?????
             //$this->renderView();
@@ -73,9 +71,6 @@ class LinhaobraController extends Controller
     }
     public function edit($id)
     {
-        $auth = new Auth();
-        $role = $auth->getRole();
-
         $services = Service::all();
         $empresa = Empresa::first();
         $linhaobra = Linhaobra::find($id);
